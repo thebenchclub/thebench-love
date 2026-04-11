@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMB Bench — AI Automation for Small Business Owners | The Bench Club</title>
+  <meta name="description" content="The SMB Bench is your AI right hand — email automation, client intake, process systems, and AI-in-a-box for small business owners ready to stop doing everything manually.">
+  <link rel="canonical" href="https://thebench.love/pages/smbbench.html">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"SMB Bench","provider":{"@type":"Organization","name":"The Bench Club","url":"https://thebench.love"},"description":"AI automation for small business owners. Email automation, client intake, process systems, and ongoing AI operations support.","areaServed":"United States","serviceType":"AI Automation"}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#07080f;--cream:#f5f0e8;--muted:rgba(245,240,232,0.55);--yellow:#d4f000;--border:rgba(245,240,232,0.08);--accent:#d4f000;--accent-dim:rgba(212,240,0,0.08);--card-bg:rgba(255,255,255,0.04)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--cream);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:rgba(7,8,15,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+    .nav-logo{font-weight:500;font-size:1rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--cream);text-decoration:none}
+    .nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+    .nav-links a{font-size:0.875rem;color:var(--muted);text-decoration:none;transition:color 0.2s}
+    .nav-links a:hover{color:var(--cream)}
+    .nav-links .cta{color:var(--yellow);border:1px solid rgba(212,240,0,0.4);padding:8px 20px;border-radius:100px}
+    .nav-links .cta:hover{background:var(--yellow);color:var(--bg)}
+    .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+    .nav-hamburger span{display:block;width:24px;height:2px;background:var(--cream);border-radius:2px}
+    .back-link{display:inline-flex;align-items:center;gap:8px;font-size:0.875rem;color:var(--muted);text-decoration:none;margin-bottom:32px;transition:color 0.2s}
+    .back-link:hover{color:var(--cream)}
+    .page-hero{padding:160px 24px 80px;position:relative;overflow:hidden}
+    .page-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:700px;height:500px;background:radial-gradient(circle,rgba(212,240,0,0.07) 0%,transparent 70%);pointer-events:none}
+    .hero-tag{display:inline-block;background:var(--accent-dim);color:var(--accent);border:1px solid rgba(212,240,0,0.25);border-radius:100px;padding:6px 18px;font-size:0.8125rem;font-weight:500;letter-spacing:0.04em;margin-bottom:24px}
+    h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,7vw,6rem);line-height:0.95;color:var(--cream);margin-bottom:24px}
+    .hero-sub{font-size:1.125rem;color:var(--muted);line-height:1.75;max-width:560px;margin-bottom:40px}
+    .cta-primary{display:inline-block;background:var(--yellow);color:var(--bg);font-weight:500;font-size:1rem;padding:16px 40px;border-radius:100px;text-decoration:none;transition:opacity 0.2s}
+    .cta-primary:hover{opacity:0.85}
+    .cta-secondary{display:inline-block;margin-left:16px;color:var(--muted);font-size:0.9375rem;text-decoration:none;border-bottom:1px solid rgba(245,240,232,0.2);padding-bottom:2px}
+    section{padding:80px 24px}
+    .container{max-width:1100px;margin:0 auto}
+    .section-label{font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+    h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,4vw,3rem);line-height:1;color:var(--cream);margin-bottom:32px}
+    .service-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+    .service-card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:28px;transition:border-color 0.3s,background 0.3s}
+    .service-card:hover{border-color:rgba(212,240,0,0.25);background:var(--accent-dim)}
+    .service-card h4{font-size:1rem;font-weight:500;color:var(--cream);margin-bottom:8px}
+    .service-card p{font-size:0.9375rem;color:var(--muted);line-height:1.65}
+    .before-after{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:32px}
+    .ba-card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:28px}
+    .ba-card h4{font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:20px}
+    .ba-card.before h4{color:rgba(245,240,232,0.3)}
+    .ba-card.after h4{color:var(--accent)}
+    .ba-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border);font-size:0.875rem}
+    .ba-row:last-child{border-bottom:none}
+    .ba-row .label{color:var(--muted)}
+    .ba-row .val{color:var(--cream);font-weight:500}
+    .steps{display:flex;flex-direction:column}
+    .step{display:flex;gap:24px;padding:32px 0;border-bottom:1px solid var(--border)}
+    .step:last-child{border-bottom:none}
+    .step-num{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:rgba(212,240,0,0.2);line-height:1;flex-shrink:0;width:48px}
+    .step-body h4{font-size:1rem;font-weight:500;color:var(--cream);margin-bottom:8px}
+    .step-body p{font-size:0.9375rem;color:var(--muted);line-height:1.65}
+    .services-list{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:32px}
+    .service-item{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:20px}
+    .service-item .name{font-size:0.9375rem;font-weight:500;color:var(--cream);margin-bottom:4px}
+    .service-item .desc{font-size:0.875rem;color:var(--muted)}
+    .pull-quote{background:var(--accent-dim);border:1px solid rgba(212,240,0,0.2);border-radius:16px;padding:40px;margin:48px 0;text-align:center}
+    .pull-quote p{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.5rem,3vw,2.25rem);color:var(--accent);line-height:1.2}
+    .faq{display:flex;flex-direction:column}
+    .faq-item{border-bottom:1px solid var(--border);padding:24px 0}
+    .faq-item h4{font-size:1rem;font-weight:500;color:var(--cream);margin-bottom:10px}
+    .faq-item p{font-size:0.9375rem;color:var(--muted);line-height:1.65}
+    .cta-band{text-align:center;padding:100px 24px;background:rgba(212,240,0,0.03);border-top:1px solid rgba(212,240,0,0.08)}
+    footer{border-top:1px solid var(--border);padding:48px 24px}
+    .footer-inner{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px}
+    .footer-links{display:flex;flex-wrap:wrap;gap:24px;list-style:none}
+    .footer-links a{font-size:0.875rem;color:var(--muted);text-decoration:none}
+    .footer-links a:hover{color:var(--cream)}
+    .footer-copy{width:100%;font-size:0.75rem;color:rgba(245,240,232,0.25);margin-top:32px}
+    @media(max-width:900px){nav{padding:16px 24px}.nav-links{display:none}.nav-links.open{display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:rgba(7,8,15,0.97);padding:32px 24px;gap:24px;border-bottom:1px solid var(--border)}.nav-hamburger{display:flex}.service-grid{grid-template-columns:1fr}.before-after{grid-template-columns:1fr}.services-list{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/" class="nav-logo">The Bench Club</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/pages/about.html">About</a></li>
+      <li><a href="/pages/results.html">Results</a></li>
+      <li><a href="/pages/dispatches.html">Dispatches</a></li>
+      <li><a href="/pages/contact.html">Contact</a></li>
+      <li><a href="https://calendar.app.google/6D2ej4pqdFta3xtJ7" class="cta" target="_blank" rel="noopener">Find Your Bench</a></li>
+    </ul>
+    <div class="nav-hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')"><span></span><span></span><span></span></div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="container">
+      <a href="/" class="back-link">← The Bench Club</a>
+      <div class="hero-tag">SMB Bench</div>
+      <h1>For the business that<br>needs a real right hand.</h1>
+      <p class="hero-sub">You're the visionary, the operator, the closer, and the admin. Your SMB Bench fills in everything else — so you can stay in the work that actually moves the business.</p>
+      <a href="https://calendar.app.google/6D2ej4pqdFta3xtJ7" class="cta-primary" target="_blank" rel="noopener">Book a Free Consultation</a>
+      <a href="mailto:christy@thebenchclub.ai" class="cta-secondary">Ask a question first</a>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="section-label">What your Bench handles</div>
+      <h2>Four systems that change everything</h2>
+      <div class="service-grid">
+        <div class="service-card"><h4>Email &amp; calendar automation</h4><p>Templates, sequences, and follow-ups that run on autopilot. Your inbox works for you, not against you.</p></div>
+        <div class="service-card"><h4>Client intake &amp; onboarding</h4><p>From first contact to first deliverable — systematized, professional, and smooth. No more manual back-and-forth.</p></div>
+        <div class="service-card"><h4>Operations &amp; process</h4><p>Turn scattered tasks into reliable systems that don't require you. Build once, run forever.</p></div>
+        <div class="service-card"><h4>AI in a box</h4><p>Your own AI assistant, trained on your business, answering and analyzing operations every day — without you having to manage it.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:rgba(255,255,255,0.02);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+    <div class="container">
+      <div class="section-label">What changes</div>
+      <h2>Before and after</h2>
+      <div class="before-after">
+        <div class="ba-card before">
+          <h4>Before SMB Bench</h4>
+          <div class="ba-row"><span class="label">Follow-up</span><span class="val">Inconsistent, missed</span></div>
+          <div class="ba-row"><span class="label">Intake process</span><span class="val">Manual, slow</span></div>
+          <div class="ba-row"><span class="label">Admin hours</span><span class="val">15–20 hrs/week</span></div>
+          <div class="ba-row"><span class="label">Client experience</span><span class="val">Reactive</span></div>
+          <div class="ba-row"><span class="label">Your bandwidth</span><span class="val">Drained by admin</span></div>
+        </div>
+        <div class="ba-card after">
+          <h4>With SMB Bench</h4>
+          <div class="ba-row"><span class="label">Follow-up</span><span class="val">Automated, reliable</span></div>
+          <div class="ba-row"><span class="label">Intake process</span><span class="val">Streamlined, professional</span></div>
+          <div class="ba-row"><span class="label">Admin hours</span><span class="val">Under 5 hrs/week</span></div>
+          <div class="ba-row"><span class="label">Client experience</span><span class="val">Proactive &amp; consistent</span></div>
+          <div class="ba-row"><span class="label">Your bandwidth</span><span class="val">Reserved for growth</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-label">How it works</div>
+      <h2>Three steps</h2>
+      <div class="steps">
+        <div class="step"><div class="step-num">01</div><div class="step-body"><h4>Audit your ops</h4><p>We map what's eating your time and where AI can take over. You see the full picture before we build anything.</p></div></div>
+        <div class="step"><div class="step-num">02</div><div class="step-body"><h4>Build your systems</h4><p>Custom automations in 2–5 days, built for how you actually work. Not templates — built specifically for your business.</p></div></div>
+        <div class="step"><div class="step-num">03</div><div class="step-body"><h4>Run and grow</h4><p>Your Bench handles the back office. You run the business. Stop doing manually what your Bench can do automatically.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:rgba(255,255,255,0.02);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+    <div class="container">
+      <div class="section-label">Services</div>
+      <h2>What we build</h2>
+      <div class="services-list">
+        <div class="service-item"><div class="name">AI Consultation</div><div class="desc">A focused session to map your systems and identify your highest-value automations. Starting at $250.</div></div>
+        <div class="service-item"><div class="name">AI Workshop: Optimization</div><div class="desc">Deep-dive into your current operations and build the first automations together.</div></div>
+        <div class="service-item"><div class="name">Email, Calendar &amp; Admin Automation</div><div class="desc">Complete automation of your communication workflows. Custom quote based on scope.</div></div>
+        <div class="service-item"><div class="name">AI in a Box</div><div class="desc">Your own AI assistant trained on your business, running daily. Monthly subscription.</div></div>
+      </div>
+      <div class="pull-quote" style="margin-top:48px"><p>"Stop doing manually<br>what your Bench can do automatically."</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-label">Common questions</div>
+      <h2>FAQ</h2>
+      <div class="faq">
+        <div class="faq-item"><h4>What is the SMB Bench?</h4><p>The SMB Bench is an AI automation service for small business owners who are ready to stop spending 15–20 hours a week on admin. We build the systems — you run the business.</p></div>
+        <div class="faq-item"><h4>What kinds of businesses do you work with?</h4><p>Service-based small businesses of all kinds — tutoring practices, wellness studios, coaching programs, consultancies, agencies, and more. If administrative complexity is standing between you and growth, the SMB Bench was made for you.</p></div>
+        <div class="faq-item"><h4>What tools do you use?</h4><p>We work with a range of AI and automation tools, but we always choose based on your business model, budget, and comfort level. Wherever possible, we build on tools you already use.</p></div>
+        <div class="faq-item"><h4>How much does it cost?</h4><p>Most clients start with a focused AI Consultation ($250), then expand once they see the value. We'll walk through options clearly before you commit to anything.</p></div>
+        <div class="faq-item"><h4>How quickly can I see results?</h4><p>Most clients feel the impact within the first week. The first automation that runs while you're doing something else is usually the moment it clicks.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <div class="container">
+      <div class="section-label">Get started</div>
+      <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4rem);color:var(--cream);margin-bottom:16px">Build your SMB Bench.</h2>
+      <p style="font-size:1.0625rem;color:var(--muted);line-height:1.75;max-width:520px;margin:0 auto 40px">The smartest thing you can do for your business right now is stop doing everything manually. Start with a free consultation.</p>
+      <a href="https://calendar.app.google/6D2ej4pqdFta3xtJ7" class="cta-primary" target="_blank" rel="noopener">Book a Free Consultation</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <a href="/" class="nav-logo">The Bench Club</a>
+      <ul class="footer-links">
+        <li><a href="/pages/herbench.html">HerBench</a></li>
+        <li><a href="/pages/realtorbench.html">Realtor Bench</a></li>
+        <li><a href="/pages/sportsbench.html">Sports Bench</a></li>
+        <li><a href="/pages/smbbench.html">SMB Bench</a></li>
+        <li><a href="/pages/dispatches.html">Dispatches</a></li>
+        <li><a href="/pages/contact.html">Contact</a></li>
+      </ul>
+      <div class="footer-copy">© 2026 The Bench Club · Houston, TX · <a href="mailto:christy@thebenchclub.ai" style="color:inherit">christy@thebenchclub.ai</a></div>
+    </div>
+  </footer>
+</body>
+</html>

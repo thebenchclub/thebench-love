@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dispatches — Notes from the Field | The Bench Club</title>
+  <meta name="description" content="What we're seeing, what's working, and what to do about it. Notes on AI automation, small business operations, and the people doing both.">
+  <link rel="canonical" href="https://thebench.love/pages/dispatches.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#07080f;--cream:#f5f0e8;--muted:rgba(245,240,232,0.55);--yellow:#d4f000;--border:rgba(245,240,232,0.08);--card-bg:rgba(255,255,255,0.04)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--cream);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:rgba(7,8,15,0.6);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+    .nav-logo{font-weight:500;font-size:1rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--cream);text-decoration:none}
+    .nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+    .nav-links a{font-size:0.875rem;color:var(--muted);text-decoration:none;transition:color 0.2s}
+    .nav-links a:hover{color:var(--cream)}
+    .nav-links .cta{color:var(--yellow);border:1px solid rgba(212,240,0,0.4);padding:8px 20px;border-radius:100px}
+    .nav-links .cta:hover{background:var(--yellow);color:var(--bg)}
+    .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+    .nav-hamburger span{display:block;width:24px;height:2px;background:var(--cream);border-radius:2px}
+    .page-header{padding:140px 24px 60px;border-bottom:1px solid var(--border)}
+    .container{max-width:1100px;margin:0 auto}
+    .section-label{font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+    h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,6vw,5rem);line-height:1;color:var(--cream);margin-bottom:16px}
+    .header-sub{font-size:1.0625rem;color:var(--muted);line-height:1.7}
+    .posts{padding:60px 24px 100px}
+    .post-list{display:flex;flex-direction:column;gap:0}
+    .post-item{display:flex;gap:40px;padding:36px 0;border-bottom:1px solid var(--border);text-decoration:none;transition:background 0.2s;margin:0 -24px;padding-left:24px;padding-right:24px}
+    .post-item:last-child{border-bottom:none}
+    .post-item:hover{background:rgba(255,255,255,0.025)}
+    .post-meta{width:200px;flex-shrink:0}
+    .post-tag{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--yellow);margin-bottom:8px}
+    .post-byline{font-size:0.8125rem;color:var(--muted)}
+    .post-body{flex:1}
+    .post-title{font-size:1.25rem;font-weight:500;color:var(--cream);line-height:1.3;margin-bottom:10px}
+    .post-excerpt{font-size:0.9375rem;color:var(--muted);line-height:1.65;margin-bottom:0}
+    .post-arrow{font-size:0.875rem;color:var(--muted);margin-top:12px;transition:color 0.2s,transform 0.2s;display:inline-block}
+    .post-item:hover .post-arrow{color:var(--cream);transform:translateX(4px)}
+    footer{border-top:1px solid var(--border);padding:48px 24px}
+    .footer-inner{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px}
+    .footer-links{display:flex;flex-wrap:wrap;gap:24px;list-style:none}
+    .footer-links a{font-size:0.875rem;color:var(--muted);text-decoration:none}
+    .footer-links a:hover{color:var(--cream)}
+    .footer-copy{width:100%;font-size:0.75rem;color:rgba(245,240,232,0.25);margin-top:32px}
+    @media(max-width:900px){nav{padding:16px 24px}.nav-links{display:none}.nav-links.open{display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:rgba(7,8,15,0.97);padding:32px 24px;gap:24px;border-bottom:1px solid var(--border)}.nav-hamburger{display:flex}.post-item{flex-direction:column;gap:12px}.post-meta{width:auto}}
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/" class="nav-logo">The Bench Club</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/pages/about.html">About</a></li>
+      <li><a href="/pages/results.html">Results</a></li>
+      <li><a href="/pages/dispatches.html" style="color:var(--cream)">Dispatches</a></li>
+      <li><a href="/pages/contact.html">Contact</a></li>
+      <li><a href="https://calendar.app.google/6D2ej4pqdFta3xtJ7" class="cta" target="_blank" rel="noopener">Find Your Bench</a></li>
+    </ul>
+    <div class="nav-hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')"><span></span><span></span><span></span></div>
+  </nav>
+
+  <div class="page-header">
+    <div class="container">
+      <div class="section-label">The Bench Club</div>
+      <h1>Dispatches</h1>
+      <p class="header-sub">Notes from the field. What we're seeing, what's working, and what to do about it.</p>
+    </div>
+  </div>
+
+  <div class="posts">
+    <div class="container">
+      <div class="post-list">
+        <a href="/pages/dispatch-admin-tax.html" class="post-item">
+          <div class="post-meta">
+            <div class="post-tag">SMB · Operations</div>
+            <div class="post-byline">Christy Nolan · 4 min read</div>
+          </div>
+          <div class="post-body">
+            <div class="post-title">The Admin Tax</div>
+            <div class="post-excerpt">There's a tax most small business owners never talk about, because it doesn't show up on a balance sheet. It shows up at 11pm when you're still writing follow-up emails.</div>
+            <div class="post-arrow">Read →</div>
+          </div>
+        </a>
+        <a href="/pages/dispatch-systems-costing-clients.html" class="post-item">
+          <div class="post-meta">
+            <div class="post-tag">SMB · Client Experience</div>
+            <div class="post-byline">Christy Nolan · 4 min read</div>
+          </div>
+          <div class="post-body">
+            <div class="post-title">Why Your Systems Are Costing You Clients</div>
+            <div class="post-excerpt">You probably don't think of your inbox as a client experience problem. But it is. When a lead emails you at 9pm and gets a response at noon the next day, that's an experience.</div>
+            <div class="post-arrow">Read →</div>
+          </div>
+        </a>
+        <a href="/pages/dispatch-ai-infrastructure.html" class="post-item">
+          <div class="post-meta">
+            <div class="post-tag">All Audiences · AI Basics</div>
+            <div class="post-byline">Christy Nolan · 4 min read</div>
+          </div>
+          <div class="post-body">
+            <div class="post-title">AI Isn't Magic. It's Infrastructure.</div>
+            <div class="post-excerpt">Most of what gets written about AI sounds like it was written by someone who has never actually run a business. The promises are enormous. The specifics are almost never there.</div>
+            <div class="post-arrow">Read →</div>
+          </div>
+        </a>
+        <a href="/pages/dispatch-invisible-load.html" class="post-item">
+          <div class="post-meta">
+            <div class="post-tag">HerBench · Home &amp; Work</div>
+            <div class="post-byline">Christy Nolan · 5 min read</div>
+          </div>
+          <div class="post-body">
+            <div class="post-title">The Invisible Load Has a Name Now</div>
+            <div class="post-excerpt">There's a term researchers use for it: cognitive load. The mental work of tracking, planning, anticipating, and coordinating everything that keeps a household and a life running.</div>
+            <div class="post-arrow">Read →</div>
+          </div>
+        </a>
+        <a href="/pages/dispatch-five-minute-rule.html" class="post-item">
+          <div class="post-meta">
+            <div class="post-tag">Realtor Bench · Lead Conversion</div>
+            <div class="post-byline">Christy Nolan · 4 min read</div>
+          </div>
+          <div class="post-body">
+            <div class="post-title">The 5-Minute Rule That Most Houston Agents Are Breaking</div>
+            <div class="post-excerpt">Agents who respond to a new lead within 5 minutes are 21 times more likely to convert than agents who respond within 30 minutes. Most agents aren't responding in 5 minutes.</div>
+            <div class="post-arrow">Read →</div>
+          </div>
+        </a>
+        <a href="/pages/dispatch-person-nobody-sees.html" class="post-item">
+          <div class="post-meta">
+            <div class="post-tag">Sports Bench · Operations</div>
+            <div class="post-byline">Christy Nolan · 4 min read</div>
+          </div>
+          <div class="post-body">
+            <div class="post-title">The Person Nobody Sees Running the Team</div>
+            <div class="post-excerpt">Every team has one. They're not the coach. They might not even be on the official org chart. But they're the person who holds the whole operation together.</div>
+            <div class="post-arrow">Read →</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <a href="/" class="nav-logo">The Bench Club</a>
+      <ul class="footer-links">
+        <li><a href="/pages/herbench.html">HerBench</a></li>
+        <li><a href="/pages/realtorbench.html">Realtor Bench</a></li>
+        <li><a href="/pages/sportsbench.html">Sports Bench</a></li>
+        <li><a href="/pages/smbbench.html">SMB Bench</a></li>
+        <li><a href="/pages/contact.html">Contact</a></li>
+      </ul>
+      <div class="footer-copy">© 2026 The Bench Club · Houston, TX · <a href="mailto:christy@thebenchclub.ai" style="color:inherit">christy@thebenchclub.ai</a></div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Admin Tax — Dispatches | The Bench Club</title>
+  <meta name="description" content="There's a tax most small business owners never talk about, because it doesn't show up on a balance sheet. It shows up at 11pm when you're still writing follow-up emails.">
+  <link rel="canonical" href="https://thebench.love/pages/dispatch-admin-tax.html">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"The Admin Tax","author":{"@type":"Person","name":"Christy Nolan"},"publisher":{"@type":"Organization","name":"The Bench Club","url":"https://thebench.love"},"datePublished":"2026-04-11","description":"The hidden cost of manual admin work on small business owners — and how AI systems reduce it."}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#07080f;--cream:#f5f0e8;--muted:rgba(245,240,232,0.55);--yellow:#d4f000;--border:rgba(245,240,232,0.08);--card-bg:rgba(255,255,255,0.04)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--cream);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:rgba(7,8,15,0.6);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+    .nav-logo{font-weight:500;font-size:1rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--cream);text-decoration:none}
+    .nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+    .nav-links a{font-size:0.875rem;color:var(--muted);text-decoration:none;transition:color 0.2s}
+    .nav-links a:hover{color:var(--cream)}
+    .nav-links .cta{color:var(--yellow);border:1px solid rgba(212,240,0,0.4);padding:8px 20px;border-radius:100px}
+    .nav-links .cta:hover{background:var(--yellow);color:var(--bg)}
+    .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+    .nav-hamburger span{display:block;width:24px;height:2px;background:var(--cream);border-radius:2px}
+    .article-header{padding:140px 24px 60px;border-bottom:1px solid var(--border)}
+    .container{max-width:720px;margin:0 auto}
+    .back-link{display:inline-flex;align-items:center;gap:8px;font-size:0.875rem;color:var(--muted);text-decoration:none;margin-bottom:32px;transition:color 0.2s}
+    .back-link:hover{color:var(--cream)}
+    .article-tag{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--yellow);margin-bottom:16px}
+    h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,4.5rem);line-height:1;color:var(--cream);margin-bottom:20px}
+    .article-meta{font-size:0.875rem;color:var(--muted)}
+    .article-body{padding:60px 24px 80px}
+    .prose{font-size:1.0625rem;line-height:1.8;color:rgba(245,240,232,0.85)}
+    .prose p{margin-bottom:1.5rem}
+    .prose h2{font-family:'Bebas Neue',sans-serif;font-size:1.75rem;color:var(--cream);margin:2.5rem 0 1rem;line-height:1}
+    .prose strong{color:var(--cream);font-weight:500}
+    .prose em{font-style:italic;color:var(--muted)}
+    .prose ol,.prose ul{padding-left:1.5rem;margin-bottom:1.5rem}
+    .prose li{margin-bottom:0.5rem}
+    .cta-card{background:var(--card-bg);border:1px solid rgba(212,240,0,0.2);border-radius:16px;padding:36px;margin-top:60px;text-align:center}
+    .cta-card p{font-size:1rem;color:var(--muted);line-height:1.7;margin-bottom:24px}
+    .cta-primary{display:inline-block;background:var(--yellow);color:var(--bg);font-weight:500;font-size:1rem;padding:14px 36px;border-radius:100px;text-decoration:none;transition:opacity 0.2s}
+    .cta-primary:hover{opacity:0.85}
+    footer{border-top:1px solid var(--border);padding:48px 24px}
+    .footer-inner{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px}
+    .footer-links{display:flex;flex-wrap:wrap;gap:24px;list-style:none}
+    .footer-links a{font-size:0.875rem;color:var(--muted);text-decoration:none}
+    .footer-links a:hover{color:var(--cream)}
+    .footer-copy{width:100%;font-size:0.75rem;color:rgba(245,240,232,0.25);margin-top:32px}
+    @media(max-width:900px){nav{padding:16px 24px}.nav-links{display:none}.nav-links.open{display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:rgba(7,8,15,0.97);padding:32px 24px;gap:24px;border-bottom:1px solid var(--border)}.nav-hamburger{display:flex}}
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/" class="nav-logo">The Bench Club</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/pages/about.html">About</a></li>
+      <li><a href="/pages/results.html">Results</a></li>
+      <li><a href="/pages/dispatches.html">Dispatches</a></li>
+      <li><a href="/pages/contact.html">Contact</a></li>
+      <li><a href="https://calendar.app.google/6D2ej4pqdFta3xtJ7" class="cta" target="_blank" rel="noopener">Find Your Bench</a></li>
+    </ul>
+    <div class="nav-hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')"><span></span><span></span><span></span></div>
+  </nav>
+
+  <div class="article-header">
+    <div class="container">
+      <a href="/pages/dispatches.html" class="back-link">← Dispatches</a>
+      <div class="article-tag">SMB · Operations</div>
+      <h1>The Admin Tax</h1>
+      <div class="article-meta">Christy Nolan · The Bench Club · 4 min read</div>
+    </div>
+  </div>
+
+  <div class="article-body">
+    <div class="container">
+      <div class="prose">
+        <p>There's a tax most small business owners never talk about, because it doesn't show up on a balance sheet.</p>
+        <p>It shows up at 11pm when you're still writing follow-up emails. It shows up on Sunday morning when you're updating a spreadsheet that should have updated itself. It shows up every time you do something manually that you've done manually a hundred times before — not because you have to, but because no one has ever built you a better way.</p>
+        <p>Call it the admin tax.</p>
+        <p>The average small business owner spends somewhere between 15 and 25 hours a week on tasks that have nothing to do with why they started the business. Email. Scheduling. Follow-up. Data entry. Intake forms. Client updates. The inbox that never gets to zero.</p>
+        <p>That's not just time. That's capacity — the mental bandwidth you could be using to grow, to serve, to breathe.</p>
+        <h2>AI doesn't eliminate the admin tax. But the right AI system reduces it dramatically.</h2>
+        <p>Here's how we think about it:</p>
+        <p><strong>Identify what's repetitive.</strong> If you've done it the same way more than five times, it can probably be templated or automated. Post-showing follow-up emails. New client welcome sequences. Invoice reminders. Appointment confirmations. These are not strategic decisions — they're logistics, and logistics can run on autopilot.</p>
+        <p><strong>Identify what drains you most.</strong> Not everything costs the same. For some business owners it's email. For others it's scheduling, or the constant mental load of tracking where each client is in the process. Start with whatever is draining you — that's where you'll feel the relief first.</p>
+        <p><strong>Start with one system, not ten.</strong> The mistake most people make is trying to automate everything at once. They buy five tools, connect none of them, and end up managing the tools instead of running the business. Start with one workflow. Get it working. Then build from there.</p>
+        <p><strong>Make sure it sounds like you.</strong> The biggest concern people have about AI-written communication is that it will feel robotic. It doesn't have to. When you build your automations on a foundation of your own language — your phrases, your tone, the things you actually say to clients — the output sounds like you on a really organized day. Not like a chatbot.</p>
+        <p>The goal is not to replace your judgment. It's to stop spending your judgment on things that don't need it.</p>
+        <p>At The Bench Club, we build these systems for small business owners who are ready to stop paying the admin tax. The work is real. The relief is also real.</p>
+      </div>
+
+      <div class="cta-card">
+        <p>Ready to stop paying the admin tax? Start with a free 30-minute audit. We'll map exactly where your time is going and what can be automated.</p>
+        <a href="https://calendar.app.google/6D2ej4pqdFta3xtJ7" class="cta-primary" target="_blank" rel="noopener">Book a free audit</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <a href="/" class="nav-logo">The Bench Club</a>
+      <ul class="footer-links">
+        <li><a href="/pages/herbench.html">HerBench</a></li>
+        <li><a href="/pages/realtorbench.html">Realtor Bench</a></li>
+        <li><a href="/pages/sportsbench.html">Sports Bench</a></li>
+        <li><a href="/pages/smbbench.html">SMB Bench</a></li>
+        <li><a href="/pages/dispatches.html">Dispatches</a></li>
+      </ul>
+      <div class="footer-copy">© 2026 The Bench Club · Houston, TX · <a href="mailto:christy@thebenchclub.ai" style="color:inherit">christy@thebenchclub.ai</a></div>
+    </div>
+  </footer>
+</body>
+</html>

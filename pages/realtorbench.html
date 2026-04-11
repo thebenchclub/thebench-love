@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Realtor Bench — AI Automation for Houston Real Estate Agents | The Bench Club</title>
+  <meta name="description" content="The Realtor Bench saves Houston agents 79 hours a month on admin. Post-showing follow-up in 20 minutes, 5-minute lead response, automated contract-to-close updates.">
+  <link rel="canonical" href="https://thebench.love/pages/realtorbench.html">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Realtor Bench","provider":{"@type":"Organization","name":"The Bench Club","url":"https://thebench.love"},"description":"AI automation for Houston and Pearland real estate agents. Post-showing follow-up, lead response, CRM automation, and contract-to-close updates.","areaServed":["Houston, TX","Pearland, TX"],"serviceType":"AI Automation"}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#07080f;--cream:#f5f0e8;--muted:rgba(245,240,232,0.55);--yellow:#d4f000;--border:rgba(245,240,232,0.08);--accent:rgba(200,215,235,0.9);--accent-dim:rgba(200,215,235,0.07);--card-bg:rgba(255,255,255,0.04)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--cream);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:rgba(7,8,15,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+    .nav-logo{font-weight:500;font-size:1rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--cream);text-decoration:none}
+    .nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+    .nav-links a{font-size:0.875rem;color:var(--muted);text-decoration:none;transition:color 0.2s}
+    .nav-links a:hover{color:var(--cream)}
+    .nav-links .cta{color:var(--yellow);border:1px solid rgba(212,240,0,0.4);padding:8px 20px;border-radius:100px}
+    .nav-links .cta:hover{background:var(--yellow);color:var(--bg)}
+    .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+    .nav-hamburger span{display:block;width:24px;height:2px;background:var(--cream);border-radius:2px}
+    .back-link{display:inline-flex;align-items:center;gap:8px;font-size:0.875rem;color:var(--muted);text-decoration:none;margin-bottom:32px;transition:color 0.2s}
+    .back-link:hover{color:var(--cream)}
+    .page-hero{padding:160px 24px 80px;position:relative;overflow:hidden}
+    .page-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:700px;height:500px;background:radial-gradient(circle,rgba(200,215,235,0.08) 0%,transparent 70%);pointer-events:none}
+    .hero-tag{display:inline-block;background:var(--accent-dim);color:var(--accent);border:1px solid rgba(200,215,235,0.2);border-radius:100px;padding:6px 18px;font-size:0.8125rem;font-weight:500;letter-spacing:0.04em;margin-bottom:24px}
+    h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,7vw,6rem);line-height:0.95;color:var(--cream);margin-bottom:24px}
+    .hero-sub{font-size:1.125rem;color:var(--muted);line-height:1.75;max-width:560px;margin-bottom:32px}
+    .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:40px}
+    .stat{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:20px}
+    .stat .num{font-family:'Bebas Neue',sans-serif;font-size:2.25rem;color:var(--cream);line-height:1}
+    .stat .lbl{font-size:0.8rem;color:var(--muted);margin-top:4px;line-height:1.4}
+    .cta-primary{display:inline-block;background:var(--yellow);color:var(--bg);font-weight:500;font-size:1rem;padding:16px 40px;border-radius:100px;text-decoration:none;transition:opacity 0.2s}
+    .cta-primary:hover{opacity:0.85}
+    .cta-secondary{display:inline-block;margin-left:16px;color:var(--muted);font-size:0.9375rem;text-decoration:none;border-bottom:1px solid rgba(245,240,232,0.2);padding-bottom:2px}
+    .cta-secondary:hover{color:var(--cream)}
+    section{padding:80px 24px}
+    .container{max-width:1100px;margin:0 auto}
+    .section-label{font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+    h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,4vw,3rem);line-height:1;color:var(--cream);margin-bottom:32px}
+    .feature-list{display:flex;flex-direction:column;gap:0}
+    .feature-item{display:flex;gap:24px;padding:28px 0;border-bottom:1px solid var(--border);align-items:flex-start}
+    .feature-item:last-child{border-bottom:none}
+    .feature-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:8px}
+    .feature-item h4{font-size:1rem;font-weight:500;color:var(--cream);margin-bottom:6px}
+    .feature-item p{font-size:0.9375rem;color:var(--muted);line-height:1.65}
+    .before-after{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:32px}
+    .ba-card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:28px}
+    .ba-card h4{font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:20px}
+    .ba-card.before h4{color:rgba(245,240,232,0.3)}
+    .ba-card.after h4{color:var(--accent)}
+    .ba-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border);font-size:0.875rem}
+    .ba-row:last-child{border-bottom:none}
+    .ba-row .label{color:var(--muted)}
+    .ba-row .val{color:var(--cream);font-weight:500}
+    .steps{display:flex;flex-direction:column}
+    .step{display:flex;gap:24px;padding:32px 0;border-bottom:1px solid var(--border)}
+    .step:last-child{border-bottom:none}
+    .step-num{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:rgba(200,215,235,0.2);line-height:1;flex-shrink:0;width:48px}
+    .step-body h4{font-size:1rem;font-weight:500;color:var(--cream);margin-bottom:8px}
+    .step-body p{font-size:0.9375rem;color:var(--muted);line-height:1.65}
+    .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+    .pricing-card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:28px}
+    .pricing-card .price{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--cream);margin-bottom:4px}
+    .pricing-card .price-label{font-size:0.8rem;color:var(--muted);margin-bottom:16px}
+    .pricing-card .price-name{font-size:0.875rem;font-weight:500;color:var(--cream);margin-bottom:8px}
+    .pricing-card .price-desc{font-size:0.875rem;color:var(--muted);line-height:1.55}
+    .pull-quote{background:var(--accent-dim);border:1px solid rgba(200,215,235,0.15);border-radius:16px;padding:40px;margin:48px 0;text-align:center}
+    .pull-quote p{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.5rem,3vw,2.25rem);color:var(--accent);line-height:1.2}
+    .faq{display:flex;flex-direction:column}
+    .faq-item{border-bottom:1px solid var(--border);padding:24px 0}
+    .faq-item h4{font-size:1rem;font-weight:500;color:var(--cream);margin-bottom:10px}
+    .faq-item p{font-size:0.9375rem;color:var(--muted);line-height:1.65}
+    .cta-band{text-align:center;padding:100px 24px;background:rgba(200,215,235,0.03);border-top:1px solid rgba(200,215,235,0.08)}
+    footer{border-top:1px solid var(--border);padding:48px 24px}
+    .footer-inner{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px}
+    .footer-links{display:flex;flex-wrap:wrap;gap:24px;list-style:none}
+    .footer-links a{font-size:0.875rem;color:var(--muted);text-decoration:none}
+    .footer-links a:hover{color:var(--cream)}
+    .footer-copy{width:100%;font-size:0.75rem;color:rgba(245,240,232,0.25);margin-top:32px}
+    @media(max-width:900px){nav{padding:16px 24px}.nav-links{display:none}.nav-links.open{display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:rgba(7,8,15,0.97);padding:32px 24px;gap:24px;border-bottom:1px solid var(--border)}.nav-hamburger{display:flex}.stats-row{grid-template-columns:repeat(2,1fr)}.before-after{grid-template-columns:1fr}.pricing-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/" class="nav-logo">The Bench Club</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/pages/about.html">About</a></li>
+      <li><a href="/pages/results.html">Results</a></li>
+      <li><a href="/pages/dispatches.html">Dispatches</a></li>
+      <li><a href="/pages/contact.html">Contact</a></li>
+      <li><a href="https://calendar.app.google/6D2ej4pqdFta3xtJ7" class="cta" target="_blank" rel="noopener">Find Your Bench</a></li>
+    </ul>
+    <div class="nav-hamburger" id="hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="container">
+      <a href="/" class="back-link">← The Bench Club</a>
+      <div class="hero-tag">Realtor Bench · Houston &amp; Pearland</div>
+      <h1>For the business<br>that runs on timing.</h1>
+      <p class="hero-sub">Every deal has a window. Your Bench makes sure you're always in it — with follow-up sent, leads nurtured, and clients updated automatically.</p>
+      <div class="stats-row">
+        <div class="stat"><div class="num">79</div><div class="lbl">admin hours saved per month</div></div>
+        <div class="stat"><div class="num">5 min</div><div class="lbl">average lead response time</div></div>
+        <div class="stat"><div class="num">21x</div><div class="lbl">higher conversion vs. 30-min response</div></div>
+        <div class="stat"><div class="num">5+</div><div class="lbl">automated follow-up touches per lead</div></div>
+      </div>
+      <a href="https://calendar.app.google/6D2ej4pqdFta3xtJ7" class="cta-primary" target="_blank" rel="noopener">Start With a Free Audit</a>
+      <a href="mailto:christy@thebenchclub.ai" class="cta-secondary">Ask a question first</a>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="section-label">What your Bench handles</div>
+      <h2>Five automations that change everything</h2>
+      <div class="feature-list">
+        <div class="feature-item"><div class="feature-dot"></div><div><h4>Post-showing follow-up</h4><p>Personalized email sent within 20 minutes of every showing. Automatically. Every time — whether you remember to or not.</p></div></div>
+        <div class="feature-item"><div class="feature-dot"></div><div><h4>Dead lead resurrection</h4><p>A 3-touch re-engagement sequence for leads that went quiet. Runs itself. You don't have to remember they exist.</p></div></div>
+        <div class="feature-item"><div class="feature-dot"></div><div><h4>Listing prep package</h4><p>Photographer brief, seller checklist, disclosure reminders — generated and sent automatically when a listing is signed.</p></div></div>
+        <div class="feature-item"><div class="feature-dot"></div><div><h4>Contract-to-close updates</h4><p>Milestone updates to clients sent at every key stage. No more "just checking in" emails you have to write manually.</p></div></div>
+        <div class="feature-item"><div class="feature-dot"></div><div><h4>Instant lead response</h4><p>First response to new leads within 5 minutes, 24/7. Agents who respond in 5 minutes vs. 30 minutes are 21x more likely to convert. (NAR/MIT research)</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:rgba(255,255,255,0.02);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+    <div class="container">
+      <div class="section-label">What changes</div>
+      <h2>Before and after</h2>
+      <div class="before-after">
+        <div class="ba-card before">
+          <h4>Before Realtor Bench</h4>
+          <div class="ba-row"><span class="label">Post-showing follow-up</span><span class="val">45 min, often skipped</span></div>
+          <div class="ba-row"><span class="label">Lead response time</span><span class="val">30+ min average</span></div>
+          <div class="ba-row"><span class="label">Listing prep</span><span class="val">3–4 hrs/listing</span></div>
+          <div class="ba-row"><span class="label">Monthly admin</span><span class="val">~79 hours</span></div>
+          <div class="ba-row"><span class="label">Follow-up touches</span><span class="val">1–2 average</span></div>
+        </div>
+        <div class="ba-card after">
+          <h4>With Realtor Bench</h4>
+          <div class="ba-row"><span class="label">Post-showing follow-up</span><span class="val">5 min review, automatic</span></div>
+          <div class="ba-row"><span class="label">Lead response time</span><span class="val">Under 5 min, always</span></div>
+          <div class="ba-row"><span class="label">Listing prep</span><span class="val">30 minutes</span></div>
+          <div class="ba-row"><span class="label">Monthly admin</span><span class="val">~15 hours</span></div>
+          <div class="ba-row"><span class="label">Follow-up touches</span><span class="val">5+ automated</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-label">How it works</div>
+      <h2>Three steps to your Bench</h2>
+      <div class="steps">
+        <div class="step"><div class="step-num">01</div><div class="step-body"><h4>Free 30-min audit</h4><p>We map every manual task eating your time — follow-up, prep, admin, updates. You see exactly where your hours are going.</p></div></div>
+        <div class="step"><div class="step-num">02</div><div class="step-body"><h4>Custom build</h4><p>We build the automations specific to your workflow in 2–5 days. Nothing generic. Built for how you actually work.</p></div></div>
+        <div class="step"><div class="step-num">03</div><div class="step-body"><h4>You review, it runs</h4><p>Nothing goes out without your approval first. Once you sign off, your Bench runs — follow-ups send, leads get nurtured, clients stay updated. You sell.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:rgba(255,255,255,0.02);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+    <div class="container">
+      <div class="section-label">Pricing</div>
+      <h2>What it costs</h2>
+      <div class="pricing-grid">
+        <div class="pricing-card"><div class="price">$500–$1,500</div><div class="price-label">One-time build fee</div><div class="price-desc">Based on complexity of your workflow. We build everything custom to your process.</div></div>
+        <div class="pricing-card"><div class="price">$149–$299</div><div class="price-label">Per month, ongoing</div><div class="price-desc">Running, optimization, and updates as your business evolves.</div></div>
+        <div class="pricing-card"><div class="price">Free</div><div class="price-label">First 30 days</div><div class="price-desc">No contracts to start. First month free so you can see the results before committing.</div></div>
+      </div>
+      <div class="pull-quote"><p>"For the price of one lost deal,<br>your Bench runs for a year."</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-label">Common questions</div>
+      <h2>FAQ</h2>
+      <div class="faq">
+        <div class="faq-item"><h4>What is the Realtor Bench?</h4><p>The Realtor Bench is a conversational AI system that handles your back-office automatically — follow-up, lead response, listing prep, and client updates — while you're in the car, in the showing, or on the phone.</p></div>
+        <div class="faq-item"><h4>Do I need a specific CRM?</h4><p>We work with most major CRMs including HubSpot, Follow Up Boss, Salesforce, and spreadsheets. We'll ask about your current setup in the audit.</p></div>
+        <div class="faq-item"><h4>Will the emails actually sound like me?</h4><p>Yes. We build your automations on a foundation of your own language — your phrases, your tone, how you actually talk to clients. The output sounds like you on a really organized day.</p></div>
+        <div class="faq-item"><h4>Is this available for Houston and Pearland agents specifically?</h4><p>The Realtor Bench is built specifically for Houston and Pearland agents. The automations are tuned to the Houston market and the way deals work here.</p></div>
+        <div class="faq-item"><h4>How long until it's running?</h4><p>Typically 2–5 business days from your audit to your first automation live. Most agents see results in the first week.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <div class="container">
+      <div class="section-label">Get started</div>
+      <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4rem);color:var(--cream);margin-bottom:16px">Stop losing deals to slow follow-up.</h2>
+      <p style="font-size:1.0625rem;color:var(--muted);line-height:1.75;max-width:520px;margin:0 auto 40px">Start with a free 30-minute audit. We'll map exactly where your time is going and show you what your Bench would handle.</p>
+      <a href="https://calendar.app.google/6D2ej4pqdFta3xtJ7" class="cta-primary" target="_blank" rel="noopener">Book Your Free Audit</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <a href="/" class="nav-logo">The Bench Club</a>
+      <ul class="footer-links">
+        <li><a href="/pages/herbench.html">HerBench</a></li>
+        <li><a href="/pages/realtorbench.html">Realtor Bench</a></li>
+        <li><a href="/pages/sportsbench.html">Sports Bench</a></li>
+        <li><a href="/pages/smbbench.html">SMB Bench</a></li>
+        <li><a href="/pages/dispatches.html">Dispatches</a></li>
+        <li><a href="/pages/contact.html">Contact</a></li>
+      </ul>
+      <div class="footer-copy">© 2026 The Bench Club · Houston, TX · <a href="mailto:christy@thebenchclub.ai" style="color:inherit">christy@thebenchclub.ai</a></div>
+    </div>
+  </footer>
+</body>
+</html>

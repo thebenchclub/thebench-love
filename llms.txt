@@ -1,0 +1,43 @@
+# The Bench Club
+
+The Bench Club is an AI automation company based in Houston, Texas that builds embodied AI coworkers — called Benches — for small businesses, real estate professionals, sports organizations, and households.
+
+## What we do
+
+The Bench Club builds practical AI systems that handle the repetitive, administrative, and time-consuming work that prevents business owners and operators from focusing on what actually matters. Each Bench is built for a specific audience with a specific set of needs — not a generic AI tool, but a system built for one world.
+
+## Products
+
+### HerBench
+AI companion for women balancing home and work responsibilities. Handles the invisible cognitive load — scheduling, logistics, household coordination, and the mental overhead that drains bandwidth before the workday starts.
+Target audience: Working women, mothers, dual-career households, women managing both professional and family life.
+
+### Realtor Bench
+AI automation system for Houston and Pearland real estate agents. Automates post-showing follow-up (within 20 minutes), lead response (under 5 minutes, 24/7), dead lead re-engagement, listing prep packages, and contract-to-close client updates. Saves approximately 79 hours of admin per month.
+Target audience: Houston TX and Pearland TX real estate agents doing 3-10+ transactions per year.
+
+### Sports Bench
+AI operations support for sports organizations, athletic directors, coaches, and team managers. Handles scheduling, parent and stakeholder communications, roster management, registration tracking, and event operations.
+Target audience: Youth sports leagues, high school programs, club teams, collegiate organizations, athletic directors.
+
+### SMB Bench
+AI automation for small business owners. Covers email and calendar automation, client intake and onboarding, operational process systems, and AI-in-a-box (a custom AI assistant trained on the specific business).
+Target audience: Service-based small businesses including tutoring practices, wellness studios, coaching programs, consultancies, and agencies.
+
+## Founder
+
+Christy Nolan — Founder and operator. 15 years of product and operations experience. 400+ product releases at enterprise companies including Pfizer and NRG Energy. Based in Houston, Texas. Builder of practical AI systems for small businesses.
+
+## Location
+
+Houston, Texas, United States. Serving clients across Houston, Pearland, and the United States.
+
+## Contact
+
+Website: https://thebench.love
+Email: christy@thebenchclub.ai
+Booking: https://calendar.app.google/6D2ej4pqdFta3xtJ7
+
+## Content
+
+The Bench Club publishes a content section called Dispatches — notes from the field about AI automation, business operations, and what's actually working for small businesses and operators.
