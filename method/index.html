@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Bench Method | The Bench Club</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg-rule: #1a1a1a;
+    --bg-elev: #121212;
+    --text: #f5f5f5;
+    --text-dim: #9a9a9a;
+    --text-mid: #c5c5c5;
+    --accent: #d4f000;
+    --accent-dim: rgba(212, 240, 0, 0.15);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.55;
+    overflow-x: hidden;
+    position: relative;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.4;
+  }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 2; }
+
+  .top-bar {
+    border-bottom: 1px solid var(--bg-rule);
+    padding: 20px 0;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .top-bar .brand { color: var(--text); font-weight: 700; letter-spacing: 0.15em; }
+  .top-bar .brand a { color: inherit; text-decoration: none; }
+  .top-bar nav { display: flex; gap: 24px; }
+  .top-bar nav a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+  .top-bar nav a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero { padding: 120px 0 80px; border-bottom: 1px solid var(--bg-rule); }
+  .eyebrow {
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.1s forwards;
+  }
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(56px, 11vw, 156px);
+    line-height: 0.88;
+    letter-spacing: -0.01em;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.25s forwards;
+  }
+  .hero h1 .accent { color: var(--accent); }
+  .hero .sub {
+    font-size: clamp(18px, 1.5vw, 21px);
+    line-height: 1.55;
+    color: var(--text-mid);
+    max-width: 720px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* STEP OVERVIEW */
+  .step-overview {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--bg-rule);
+  }
+  .step-overview-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    color: var(--accent);
+    letter-spacing: 0.25em;
+    margin-bottom: 32px;
+  }
+  .step-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--bg-rule);
+    border-bottom: 1px solid var(--bg-rule);
+  }
+  @media (max-width: 900px) { .step-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 500px) { .step-grid { grid-template-columns: 1fr; } }
+
+  .step-card {
+    padding: 32px 24px;
+    border-right: 1px solid var(--bg-rule);
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.2s;
+    display: block;
+  }
+  .step-card:last-child { border-right: none; }
+  .step-card:hover { background: var(--bg-elev); }
+  .step-card:hover .step-num { color: var(--accent); }
+
+  @media (max-width: 900px) {
+    .step-card { border-bottom: 1px solid var(--bg-rule); }
+    .step-card:nth-child(2n) { border-right: none; }
+  }
+  @media (max-width: 500px) {
+    .step-card { border-right: none; }
+  }
+
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    line-height: 1;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+    transition: color 0.2s;
+  }
+  .step-card .label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.04em;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .step-card .blurb {
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  /* STEP DEEP DIVE */
+  .step-deep {
+    padding: 100px 0;
+    border-bottom: 1px solid var(--bg-rule);
+    position: relative;
+  }
+  .step-deep-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  @media (max-width: 800px) { .step-deep-grid { grid-template-columns: 1fr; gap: 24px; } }
+
+  .big-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(120px, 16vw, 200px);
+    line-height: 0.85;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+  @media (max-width: 800px) { .big-num { font-size: 96px; } }
+
+  .step-head {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 0.95;
+    margin-bottom: 24px;
+  }
+  .step-body {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--text-mid);
+    margin-bottom: 40px;
+    max-width: 680px;
+  }
+
+  .io-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--bg-rule);
+  }
+  @media (max-width: 700px) { .io-grid { grid-template-columns: 1fr; } }
+
+  .io-cell {
+    padding: 24px 24px 24px 0;
+    border-right: 1px solid var(--bg-rule);
+  }
+  .io-cell:last-child { border-right: none; padding-right: 0; }
+  @media (max-width: 700px) {
+    .io-cell { border-right: none; border-bottom: 1px solid var(--bg-rule); padding: 24px 0; }
+    .io-cell:last-child { border-bottom: none; }
+  }
+  .io-cell + .io-cell { padding-left: 24px; }
+  @media (max-width: 700px) {
+    .io-cell + .io-cell { padding-left: 0; }
+  }
+
+  .io-label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+  .io-content {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--text);
+  }
+
+  /* PRINCIPLES */
+  .principles {
+    padding: 120px 0;
+    border-bottom: 1px solid var(--bg-rule);
+  }
+  .section-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    margin-bottom: 20px;
+  }
+  .section-head {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 7vw, 96px);
+    line-height: 0.95;
+    margin-bottom: 64px;
+  }
+
+  .principle-list {
+    list-style: none;
+    border-top: 1px solid var(--bg-rule);
+  }
+  .principle-list li {
+    padding: 32px 0;
+    border-bottom: 1px solid var(--bg-rule);
+    display: grid;
+    grid-template-columns: 80px 280px 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  @media (max-width: 800px) {
+    .principle-list li { grid-template-columns: 1fr; gap: 12px; }
+  }
+
+  .principle-list .pnum {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .principle-list .pname {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+  .principle-list .pdesc {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-mid);
+  }
+
+  /* CLOSING */
+  .closing {
+    padding: 140px 0;
+    text-align: center;
+    border-bottom: 1px solid var(--bg-rule);
+  }
+  .closing h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 8vw, 112px);
+    line-height: 0.95;
+    margin-bottom: 32px;
+  }
+  .closing .sub {
+    font-size: 18px;
+    color: var(--text-dim);
+    margin-bottom: 48px;
+    max-width: 600px;
+    margin-left: auto; margin-right: auto;
+  }
+
+  .cta {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 18px 28px;
+    background: var(--accent);
+    color: var(--bg);
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px var(--accent-dim); }
+  .cta .arrow { font-size: 18px; line-height: 1; }
+
+  .cta.ghost { background: transparent; color: var(--text); border: 1px solid var(--bg-rule); margin-left: 12px; }
+  .cta.ghost:hover { border-color: var(--accent); color: var(--accent); box-shadow: none; }
+
+  footer {
+    padding: 32px 0;
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  footer a { color: var(--text-dim); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+
+  /* PULL QUOTE */
+  .pullquote {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--bg-rule);
+  }
+  .pullquote p {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(32px, 5vw, 56px);
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+    max-width: 900px;
+  }
+  .pullquote p .accent { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="top-bar">
+    <div class="brand"><a href="/">THE BENCH CLUB</a></div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/real-estate-bench">Real Estate Bench</a>
+    </nav>
+  </div>
+</div>
+
+<div class="container">
+  <section class="hero">
+    <div class="eyebrow">The Bench Method · A Methodology by Christy Nolan</div>
+    <h1>
+      Most AI starts<br>
+      with <span class="accent">capability.</span><br>
+      We start with <span class="accent">voice.</span>
+    </h1>
+    <p class="sub">
+      The Bench Method is the 5-step process for designing AI coworkers — Benches — that speak in your voice, run on infrastructure you own, and sharpen through deliberate iteration. It is the methodology behind every product in The Bench Club.
+    </p>
+  </section>
+</div>
+
+<div class="container">
+  <section class="step-overview">
+    <div class="step-overview-label">THE METHOD · 5 STEPS</div>
+    <div class="step-grid">
+      <a href="#step-1" class="step-card">
+        <div class="step-num">01</div>
+        <div class="label">Voice Extraction</div>
+        <div class="blurb">Capture how you actually speak.</div>
+      </a>
+      <a href="#step-2" class="step-card">
+        <div class="step-num">02</div>
+        <div class="label">Soul File Design</div>
+        <div class="blurb">Translate voice into a runnable persona.</div>
+      </a>
+      <a href="#step-3" class="step-card">
+        <div class="step-num">03</div>
+        <div class="label">Infrastructure</div>
+        <div class="blurb">Deploy to systems you own.</div>
+      </a>
+      <a href="#step-4" class="step-card">
+        <div class="step-num">04</div>
+        <div class="label">Channel Integration</div>
+        <div class="blurb">Show up where clients already are.</div>
+      </a>
+      <a href="#step-5" class="step-card">
+        <div class="step-num">05</div>
+        <div class="label">Iteration Loop</div>
+        <div class="blurb">Sharpen the Bench every week.</div>
+      </a>
+    </div>
+  </section>
+</div>
+
+<div class="container">
+
+  <section class="step-deep" id="step-1">
+    <div class="step-deep-grid">
+      <div class="big-num">01</div>
+      <div>
+        <h2 class="step-head">Voice Extraction</h2>
+        <p class="step-body">
+          Before any code, we capture voice. Through structured working sessions, we extract the specific vocabulary, cadence, refusal patterns, and signature phrases that make you sound like you — the things you say that others don't, and the things you would never say. Most AI work skips this entirely or reduces voice to a "professional/friendly" dial. The Bench Method treats voice as the primary design constraint.
+        </p>
+        <div class="io-grid">
+          <div class="io-cell">
+            <div class="io-label">Input</div>
+            <div class="io-content">1–2 working sessions with the operator. Recorded client interactions when available.</div>
+          </div>
+          <div class="io-cell">
+            <div class="io-label">Process</div>
+            <div class="io-content">The Voice Rubric — a proprietary set of tonal probes designed to surface what is distinct, not just what is preferred.</div>
+          </div>
+          <div class="io-cell">
+            <div class="io-label">Output</div>
+            <div class="io-content">A Voice Profile: a structured, reviewable, editable document of vocabulary, cadence, and behavioral rules.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="step-deep" id="step-2">
+    <div class="step-deep-grid">
+      <div class="big-num">02</div>
+      <div>
+        <h2 class="step-head">Soul File Design</h2>
+        <p class="step-body">
+          The Voice Profile becomes a Soul File: a versioned document that drives the Bench's behavior. Not a system prompt. A character bible with operational rules — identity, beliefs, vocabulary library, escalation triggers, refusal patterns, signature phrases. The Soul File is the artifact that makes a Bench a Bench. It is the IP that survives every model upgrade.
+        </p>
+        <div class="io-grid">
+          <div class="io-cell">
+            <div class="io-label">Input</div>
+            <div class="io-content">Voice Profile + a clearly defined scope of work for the Bench.</div>
+          </div>
+          <div class="io-cell">
+            <div class="io-label">Process</div>
+            <div class="io-content">Structured authoring against the Soul File schema. Reviewed and approved by the operator before deploy.</div>
+          </div>
+          <div class="io-cell">
+            <div class="io-label">Output</div>
+            <div class="io-content">A versioned Soul File in plain text — editable forever, portable across models.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pullquote">
+    <div>
+      <p>A Bench is not a chatbot. It is a <span class="accent">coworker with a soul file</span> — and the file belongs to the operator.</p>
+    </div>
+  </section>
+
+  <section class="step-deep" id="step-3">
+    <div class="step-deep-grid">
+      <div class="big-num">03</div>
+      <div>
+        <h2 class="step-head">Infrastructure Deploy</h2>
+        <p class="step-body">
+          The Bench runs on infrastructure the operator owns. API keys in their name. Hosting on their accounts. Logging on their stack. We set it up; they hold the keys. No vendor lock-in. No black box. If they ever want to fire us, the Bench keeps working — that is the design.
+        </p>
+        <div class="io-grid">
+          <div class="io-cell">
+            <div class="io-label">Input</div>
+            <div class="io-content">Soul File + access to the operator's accounts and chosen runtime.</div>
+          </div>
+          <div class="io-cell">
+            <div class="io-label">Process</div>
+            <div class="io-content">Setup against the Infrastructure Checklist — runtime, persistence, logging, kill switches, cost guardrails.</div>
+          </div>
+          <div class="io-cell">
+            <div class="io-label">Output</div>
+            <div class="io-content">A live Bench running in the operator's name. Documented and handed over.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="step-deep" id="step-4">
+    <div class="step-deep-grid">
+      <div class="big-num">04</div>
+      <div>
+        <h2 class="step-head">Channel Integration</h2>
+        <p class="step-body">
+          A Bench shows up where clients already are — Discord, SMS, email, web, custom apps. The same Bench speaks slightly differently across channels: short and fast on SMS, structured on email, casual on Discord. Channel-aware persona is part of the design, not a feature added later.
+        </p>
+        <div class="io-grid">
+          <div class="io-cell">
+            <div class="io-label">Input</div>
+            <div class="io-content">A running Bench + the operator's channel list and audience map.</div>
+          </div>
+          <div class="io-cell">
+            <div class="io-label">Process</div>
+            <div class="io-content">Wire-up against the Channel Playbook. Per-channel tone tuning written into the Soul File.</div>
+          </div>
+          <div class="io-cell">
+            <div class="io-label">Output</div>
+            <div class="io-content">A Bench accessible from every channel that matters, sounding right in each one.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="step-deep" id="step-5">
+    <div class="step-deep-grid">
+      <div class="big-num">05</div>
+      <div>
+        <h2 class="step-head">Iteration Loop</h2>
+        <p class="step-body">
+          A Bench is never finished. Every week, real conversations surface edge cases, missed tones, and refinements worth keeping. The Soul File is edited — not retrained. That is the design discipline: persona refinement as a continuous, deliberate loop, owned by the operator. Most AI improves by being replaced. A Bench improves by being maintained.
+        </p>
+        <div class="io-grid">
+          <div class="io-cell">
+            <div class="io-label">Input</div>
+            <div class="io-content">Real conversations from the past week + operator feedback and flagged moments.</div>
+          </div>
+          <div class="io-cell">
+            <div class="io-label">Process</div>
+            <div class="io-content">Weekly review against the Iteration Checklist. Soul File edited, versioned, redeployed.</div>
+          </div>
+          <div class="io-cell">
+            <div class="io-label">Output</div>
+            <div class="io-content">A Bench that gets sharper over time. The operator's voice, captured more accurately each week.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="principles">
+    <div class="section-num">PRINCIPLES</div>
+    <h2 class="section-head">What makes<br>this different.</h2>
+    <ul class="principle-list">
+      <li>
+        <div class="pnum">01</div>
+        <div class="pname">Persona over prompts</div>
+        <div class="pdesc">The character is the product. The model is replaceable; the Soul File is not.</div>
+      </li>
+      <li>
+        <div class="pnum">02</div>
+        <div class="pname">Operators own everything</div>
+        <div class="pdesc">Keys, infrastructure, Soul File — all live with the buyer. If they ever leave us, the Bench keeps working.</div>
+      </li>
+      <li>
+        <div class="pnum">03</div>
+        <div class="pname">Voice first, always</div>
+        <div class="pdesc">Voice is the design constraint, not a setting. We extract it before we build anything.</div>
+      </li>
+      <li>
+        <div class="pnum">04</div>
+        <div class="pname">Soul files, not system prompts</div>
+        <div class="pdesc">Versioned, editable, persistent. A document that anyone on the team can read, edit, and own.</div>
+      </li>
+      <li>
+        <div class="pnum">05</div>
+        <div class="pname">Iteration as discipline</div>
+        <div class="pdesc">A Bench sharpens through structured weekly review — not by being rebuilt every six months.</div>
+      </li>
+      <li>
+        <div class="pnum">06</div>
+        <div class="pname">Productized methodology</div>
+        <div class="pdesc">Every Bench is bespoke. The Method is the same. That is what makes it teachable, sellable, and repeatable.</div>
+      </li>
+    </ul>
+  </section>
+
+  <section class="closing">
+    <h2>See it<br>deployed.</h2>
+    <p class="sub">The Real Estate Bench is The Bench Method, productized for independent agents and brokers. 4 founding spots are open now.</p>
+    <div>
+      <a class="cta" href="/real-estate-bench">View the Real Estate Bench <span class="arrow">→</span></a>
+      <a class="cta ghost" href="mailto:christy@thebenchclub.ai?subject=The%20Bench%20Method">Email Christy</a>
+    </div>
+  </section>
+
+  <footer>
+    <div>© THE BENCH CLUB · THE BENCH METHOD BY CHRISTY NOLAN</div>
+    <div><a href="/">THEBENCH.LOVE</a></div>
+  </footer>
+</div>
+
+</body>
+</html>

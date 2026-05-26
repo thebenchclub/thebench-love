@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Real Estate Bench — Founding Cohort | The Bench Club</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg-rule: #1a1a1a;
+    --text: #f5f5f5;
+    --text-dim: #9a9a9a;
+    --accent: #d4f000;
+    --accent-dim: rgba(212, 240, 0, 0.15);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.55;
+    overflow-x: hidden;
+    position: relative;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.4;
+  }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 2; }
+
+  .top-bar {
+    border-bottom: 1px solid var(--bg-rule);
+    padding: 20px 0;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .top-bar .brand { color: var(--text); font-weight: 700; letter-spacing: 0.15em; }
+  .top-bar .status { display: flex; align-items: center; gap: 8px; }
+  .pulse {
+    width: 6px; height: 6px; background: var(--accent); border-radius: 50%;
+    box-shadow: 0 0 8px var(--accent);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+  .hero { padding: 120px 0 100px; border-bottom: 1px solid var(--bg-rule); }
+  .eyebrow {
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.1s forwards;
+  }
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(56px, 11vw, 156px);
+    line-height: 0.88;
+    letter-spacing: -0.01em;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.25s forwards;
+  }
+  .hero h1 .accent { color: var(--accent); }
+  .hero h1 .strike { text-decoration: line-through; text-decoration-color: var(--text-dim); }
+  .hero .sub {
+    font-size: clamp(18px, 1.6vw, 22px);
+    line-height: 1.45;
+    color: var(--text-dim);
+    max-width: 640px;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+  .cta-row {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.55s forwards;
+  }
+  .cta {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 18px 28px;
+    background: var(--accent);
+    color: var(--bg);
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px var(--accent-dim); }
+  .cta.ghost { background: transparent; color: var(--text); border: 1px solid var(--bg-rule); }
+  .cta.ghost:hover { border-color: var(--accent); color: var(--accent); box-shadow: none; }
+  .cta .arrow { font-size: 18px; line-height: 1; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  section { padding: 100px 0; border-bottom: 1px solid var(--bg-rule); }
+  .section-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    margin-bottom: 20px;
+  }
+  .section-head {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 6vw, 88px);
+    line-height: 0.95;
+    margin-bottom: 48px;
+  }
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; gap: 40px; } }
+  .lead-p { font-size: 20px; line-height: 1.55; color: var(--text); }
+  .lead-p + p { margin-top: 20px; color: var(--text-dim); font-size: 17px; }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    border-top: 1px solid var(--bg-rule);
+    border-bottom: 1px solid var(--bg-rule);
+    padding: 48px 0;
+  }
+  @media (max-width: 600px) { .stats { grid-template-columns: 1fr; gap: 24px; } }
+  .stat .num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    line-height: 1;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .stat .label {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .included-list { list-style: none; }
+  .included-list li {
+    padding: 24px 0;
+    border-top: 1px solid var(--bg-rule);
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+  .included-list li:last-child { border-bottom: 1px solid var(--bg-rule); }
+  .included-list .ix {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .included-list .title { font-weight: 700; font-size: 18px; margin-bottom: 4px; }
+  .included-list .desc { font-size: 15px; color: var(--text-dim); line-height: 1.5; }
+
+  .for-not {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+  @media (max-width: 700px) { .for-not { grid-template-columns: 1fr; gap: 32px; } }
+  .for-not h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.05em;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--bg-rule);
+  }
+  .for-not .yes { color: var(--accent); }
+  .for-not .no { color: var(--text-dim); }
+  .for-not ul { list-style: none; }
+  .for-not li {
+    padding: 12px 0;
+    font-size: 16px;
+    line-height: 1.45;
+    display: flex;
+    gap: 12px;
+  }
+  .for-not li::before { content: '→'; color: var(--accent); flex-shrink: 0; }
+  .for-not .not-for li::before { content: '×'; color: var(--text-dim); }
+
+  .offer-block {
+    background: linear-gradient(135deg, rgba(212, 240, 0, 0.05) 0%, transparent 60%);
+    border: 1px solid var(--bg-rule);
+    padding: 64px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  @media (max-width: 600px) { .offer-block { padding: 40px 24px; } }
+  .offer-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--accent);
+  }
+  .offer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  @media (max-width: 700px) { .offer-grid { grid-template-columns: 1fr; gap: 32px; } }
+
+  .price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 9vw, 128px);
+    line-height: 1;
+    color: var(--text);
+  }
+  .price-old {
+    font-size: 24px;
+    color: var(--text-dim);
+    text-decoration: line-through;
+    margin-bottom: 8px;
+  }
+  .price-note { font-size: 14px; color: var(--text-dim); margin-top: 16px; line-height: 1.5; }
+  .scarcity-line {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+  }
+  .scarcity-dots { display: flex; gap: 10px; margin-bottom: 24px; }
+  .scarcity-dots .dot {
+    width: 32px; height: 32px;
+    border: 1px solid var(--bg-rule);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    color: var(--text-dim);
+  }
+  .scarcity-dots .dot.open { border-color: var(--accent); color: var(--accent); }
+
+  .closing-cta { padding: 120px 0; text-align: center; border-bottom: none; }
+  .closing-cta h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 8vw, 104px);
+    line-height: 0.95;
+    margin-bottom: 32px;
+  }
+  .closing-cta .sub {
+    font-size: 18px;
+    color: var(--text-dim);
+    margin-bottom: 48px;
+    max-width: 540px;
+    margin-left: auto; margin-right: auto;
+  }
+  .closing-cta .cta-row { justify-content: center; }
+
+  footer {
+    padding: 32px 0;
+    border-top: 1px solid var(--bg-rule);
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  footer a { color: var(--text-dim); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+
+  .marquee {
+    border-top: 1px solid var(--bg-rule);
+    border-bottom: 1px solid var(--bg-rule);
+    overflow: hidden;
+    padding: 20px 0;
+    white-space: nowrap;
+  }
+  .marquee-inner { display: inline-block; animation: marquee 40s linear infinite; }
+  .marquee span {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    letter-spacing: 0.05em;
+    color: var(--text-dim);
+    padding: 0 32px;
+  }
+  .marquee span.bullet { color: var(--accent); }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .quote-block {
+    border-left: 2px solid var(--accent);
+    padding-left: 24px;
+  }
+  .quote-mark {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    line-height: 1;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="top-bar">
+    <div class="brand">THE BENCH CLUB</div>
+    <div class="status"><span class="pulse"></span> 4 founding spots open</div>
+  </div>
+</div>
+
+<div class="container">
+  <section class="hero">
+    <div class="eyebrow">Founding Cohort · Real Estate Bench Template</div>
+    <h1>
+      Your <span class="accent">AI coworker</span>,<br>
+      not another <span class="strike">CRM</span>.
+    </h1>
+    <p class="sub">
+      The same AI build approach powering a Houston real estate operator's daily work — now packaged so you can deploy your own Bench in 14 days.
+    </p>
+    <div class="cta-row">
+      <a class="cta" href="https://calendar.app.google/6D2ej4pqdFta3xtJ7" target="_blank">Book a 15-min call <span class="arrow">→</span></a>
+      <a class="cta ghost" href="mailto:christy@thebenchclub.ai?subject=Real%20Estate%20Bench%20%E2%80%94%20Founding%20Spot">Email Christy</a>
+    </div>
+  </section>
+</div>
+
+<div class="marquee">
+  <div class="marquee-inner">
+    <span>BUILT FOR REAL ESTATE OPERATORS</span><span class="bullet">●</span>
+    <span>VOICE-FIRST AI</span><span class="bullet">●</span>
+    <span>DEPLOY IN 14 DAYS</span><span class="bullet">●</span>
+    <span>OWN YOUR STACK</span><span class="bullet">●</span>
+    <span>BUILT FOR REAL ESTATE OPERATORS</span><span class="bullet">●</span>
+    <span>VOICE-FIRST AI</span><span class="bullet">●</span>
+    <span>DEPLOY IN 14 DAYS</span><span class="bullet">●</span>
+    <span>OWN YOUR STACK</span><span class="bullet">●</span>
+  </div>
+</div>
+
+<div class="container">
+  <section>
+    <div class="section-num">01 / WHY THIS EXISTS</div>
+    <h2 class="section-head">Most "AI for realtors"<br>is a chatbot in a wig.</h2>
+    <div class="two-col">
+      <div>
+        <p class="lead-p">A Real Estate Bench is an AI coworker with a voice, a job, and a soul file — running on infrastructure you own, handling the parts of your business that don't scale with sleep.</p>
+        <p>Lead intake. First-touch follow-up. The 6pm "did you see this listing" reply. Your CRM doesn't do this. Your assistant costs $4K a month. Your Bench costs less, works at 3am, and sounds like you.</p>
+      </div>
+      <div>
+        <div class="stats">
+          <div class="stat">
+            <div class="num">14</div>
+            <div class="label">Days to deploy</div>
+          </div>
+          <div class="stat">
+            <div class="num">24/7</div>
+            <div class="label">Always on</div>
+          </div>
+          <div class="stat">
+            <div class="num">100%</div>
+            <div class="label">You own it</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-num">02 / PROOF</div>
+    <h2 class="section-head">Built first for<br>a Houston brokerage.</h2>
+    <div class="two-col">
+      <div>
+        <p class="lead-p">The Real Estate Bench was developed alongside a Houston-based real estate operator running a multi-agent business. The system runs four distinct AI coworkers — a coach, a marketer, a client-facing voice, and a CTO — each with a defined personality and a clear scope of work.</p>
+        <p>What was a months-long custom build for them is now a deployable template. You're not paying for R&amp;D. You're paying for the version that already works.</p>
+      </div>
+      <div>
+        <div class="quote-block">
+          <div class="quote-mark">"</div>
+          <p style="font-size: 19px; line-height: 1.5; color: var(--text);">Reference case available on the call. Full case study being published — link will live here.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-num">03 / WHAT YOU GET</div>
+    <h2 class="section-head">Everything you need.<br>Nothing you don't.</h2>
+    <ul class="included-list">
+      <li>
+        <div class="ix">01</div>
+        <div>
+          <div class="title">Custom soul file</div>
+          <div class="desc">Your Bench's voice, tone, and personality — tuned to your business and how you actually talk to clients.</div>
+        </div>
+      </li>
+      <li>
+        <div class="ix">02</div>
+        <div>
+          <div class="title">Full infrastructure setup</div>
+          <div class="desc">Deployed to accounts you own. API keys, integrations, hosting — all in your name, on your stack.</div>
+        </div>
+      </li>
+      <li>
+        <div class="ix">03</div>
+        <div>
+          <div class="title">Channel integrations</div>
+          <div class="desc">Discord, SMS, email, web — wired in so your Bench shows up wherever your clients already are.</div>
+        </div>
+      </li>
+      <li>
+        <div class="ix">04</div>
+        <div>
+          <div class="title">Voice-design rubric</div>
+          <div class="desc">The framework I use to extract a Bench's voice. Reusable when you add Benches #2, #3, #4.</div>
+        </div>
+      </li>
+      <li>
+        <div class="ix">05</div>
+        <div>
+          <div class="title">Template updates for 12 months</div>
+          <div class="desc">As the template improves, you get the upgrades — included.</div>
+        </div>
+      </li>
+      <li>
+        <div class="ix">06</div>
+        <div>
+          <div class="title">Direct access to Christy</div>
+          <div class="desc">Founding cohort means I'm in the build with you — Slack/Discord access during the 14-day deploy.</div>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="section-num">04 / FIT</div>
+    <h2 class="section-head">Who this is — and isn't — for.</h2>
+    <div class="for-not">
+      <div>
+        <h3 class="yes">Right fit</h3>
+        <ul>
+          <li>Independent agents, brokers, or small teams (1–15 agents)</li>
+          <li>You already do real volume — leads are slipping through</li>
+          <li>You'd rather own your AI stack than rent another SaaS</li>
+          <li>You want a voice in your business that isn't a chatbot</li>
+          <li>You're comfortable with 2–3 working sessions during the deploy</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="no">Not right fit</h3>
+        <ul class="not-for">
+          <li>You want a fully-managed "set it and forget it" service</li>
+          <li>You're hoping AI replaces having to actually talk to clients</li>
+          <li>You haven't closed your first deal yet</li>
+          <li>You want the cheapest possible chatbot — this isn't that</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-num">05 / FOUNDING OFFER</div>
+    <h2 class="section-head">4 spots. Founding pricing.<br>Then it doubles.</h2>
+    <div class="offer-block">
+      <div class="offer-grid">
+        <div>
+          <div class="scarcity-line">FOUNDING COHORT · 04 SPOTS</div>
+          <div class="scarcity-dots">
+            <div class="dot open">01</div>
+            <div class="dot open">02</div>
+            <div class="dot open">03</div>
+            <div class="dot open">04</div>
+          </div>
+          <p style="color: var(--text-dim); font-size: 15px; line-height: 1.5;">
+            Founding members get direct access during the 14-day build, lifetime template updates, and locked-in pricing on future Benches (HerBench, Sports Bench, SMB Bench).
+          </p>
+        </div>
+        <div>
+          <div class="price-old">Public price: $2,500</div>
+          <div class="price">$1,000</div>
+          <div class="price-note">One-time. Founding cohort only. Closes when 4 spots are filled or in 30 days — whichever comes first.</div>
+          <div style="margin-top: 32px;">
+            <a class="cta" href="https://calendar.app.google/6D2ej4pqdFta3xtJ7" target="_blank">Claim a founding spot <span class="arrow">→</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing-cta">
+    <h2>The next AI hire<br>on your team.</h2>
+    <p class="sub">15-minute call. No deck. Just a conversation about what would actually move your business if it ran on its own at 3am.</p>
+    <div class="cta-row">
+      <a class="cta" href="https://calendar.app.google/6D2ej4pqdFta3xtJ7" target="_blank">Book the call <span class="arrow">→</span></a>
+      <a class="cta ghost" href="mailto:christy@thebenchclub.ai?subject=Real%20Estate%20Bench%20%E2%80%94%20Founding%20Spot">christy@thebenchclub.ai</a>
+    </div>
+  </section>
+
+  <footer>
+    <div>© THE BENCH CLUB · THEBENCH.LOVE</div>
+    <div><a href="mailto:christy@thebenchclub.ai">CHRISTY@THEBENCHCLUB.AI</a></div>
+  </footer>
+</div>
+
+</body>
+</html>
