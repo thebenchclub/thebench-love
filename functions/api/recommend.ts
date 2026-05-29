@@ -11,13 +11,23 @@ const SYSTEM_PROMPT = `You are The Bench Club advisor. The user will describe wh
 
 Reply in 2-3 sentences max. First sentence: acknowledge their specific situation. Second sentence: name the recommended Bench and why it fits. Keep the tone warm, direct, and confident. Do not use bullet points or lists.`;
 
+const CORS_HEADERS = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type",
+};
+
+export const onRequestOptions: PagesFunction = async () => {
+  return new Response(null, { status: 204, headers: CORS_HEADERS });
+};
+
 export const onRequestPost: PagesFunction<Env> = async (context) => {
   const { prompt } = await context.request.json<{ prompt: string }>();
 
   if (!prompt || prompt.trim().length === 0) {
     return new Response(
       JSON.stringify({ error: "Prompt is required" }),
-      { status: 400, headers: { "Content-Type": "application/json" } }
+      { status: 400, headers: { "Content-Type": "application/json", ...CORS_HEADERS } }
     );
   }
 
@@ -42,7 +52,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     if (!response.ok) {
       return new Response(
         JSON.stringify({ error: "Something went wrong. Please try again." }),
-        { status: 502, headers: { "Content-Type": "application/json" } }
+        { status: 502, headers: { "Content-Type": "application/json", ...CORS_HEADERS } }
       );
     }
 
@@ -52,12 +62,12 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       "Something went wrong. Please try again.";
 
     return new Response(JSON.stringify({ recommendation: text }), {
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", ...CORS_HEADERS },
     });
   } catch {
     return new Response(
       JSON.stringify({ error: "Something went wrong. Please try again." }),
-      { status: 502, headers: { "Content-Type": "application/json" } }
+      { status: 502, headers: { "Content-Type": "application/json", ...CORS_HEADERS } }
     );
   }
 };
