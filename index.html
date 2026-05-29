@@ -11,7 +11,7 @@
   <meta property="og:description" content="Not just one assistant. A Bench behind you.">
   <meta property="og:url" content="https://thebench.love">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://thebench.love/images/hero-homepage.png">
+  <meta property="og:image" content="https://thebench.love/images/bench-hero.png">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -146,8 +146,8 @@
       inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: center top;
+      object-fit: contain;
+      object-position: center 40%;
       z-index: 0;
     }
     .hero-overlay {
@@ -155,9 +155,11 @@
       inset: 0;
       background: linear-gradient(
         to bottom,
-        rgba(7,8,15,0.35) 0%,
-        rgba(7,8,15,0.15) 40%,
-        rgba(7,8,15,0.6) 75%,
+        rgba(7,8,15,0.6) 0%,
+        rgba(7,8,15,0.1) 25%,
+        rgba(7,8,15,0.0) 40%,
+        rgba(7,8,15,0.3) 65%,
+        rgba(7,8,15,0.85) 85%,
         rgba(7,8,15,1) 100%
       );
       z-index: 1;
@@ -272,16 +274,28 @@
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 28px 24px;
+      padding: 0;
       cursor: pointer;
       text-decoration: none;
-      display: block;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
       transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
     }
     .bench-card:hover {
       transform: translateY(-6px);
+    }
+    .bench-card-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .bench-card-body {
+      padding: 20px 24px 24px;
     }
     .bench-card.her { border-color: rgba(232,200,122,0.25); }
     .bench-card.her:hover { background: var(--her-dim); border-color: rgba(232,200,122,0.5); }
@@ -574,7 +588,7 @@
 
   <!-- HERO -->
   <section class="hero">
-    <img src="/images/hero-homepage.png" alt="The Bench Club — four AI benches for every world" class="hero-image">
+    <img src="/images/bench-hero.png" alt="The Bench Club — curved dark leather bench with glass panels and gold backlighting" class="hero-image">
     <div class="hero-overlay"></div>
 
     <div class="hero-content">
@@ -599,24 +613,36 @@
     <!-- BENCH CARDS -->
     <div class="bench-row" id="benches">
       <a href="/pages/herbench.html" class="bench-card her fade-up">
-        <div class="bench-card-name">HerBench</div>
-        <div class="bench-card-line">For the weight<br>no one sees.</div>
-        <span class="bench-card-arrow">Learn more →</span>
+        <img src="/images/herbench.png" alt="HerBench — AI support for home and work" class="bench-card-img">
+        <div class="bench-card-body">
+          <div class="bench-card-name">HerBench</div>
+          <div class="bench-card-line">For the weight<br>no one sees.</div>
+          <span class="bench-card-arrow">Learn more →</span>
+        </div>
       </a>
       <a href="/pages/realtorbench.html" class="bench-card realtor fade-up">
-        <div class="bench-card-name">Realtor Bench</div>
-        <div class="bench-card-line">For the business<br>that runs on timing.</div>
-        <span class="bench-card-arrow">Learn more →</span>
+        <img src="/images/realtorbench.png" alt="Realtor Bench — AI for real estate professionals" class="bench-card-img">
+        <div class="bench-card-body">
+          <div class="bench-card-name">Realtor Bench</div>
+          <div class="bench-card-line">For the business<br>that runs on timing.</div>
+          <span class="bench-card-arrow">Learn more →</span>
+        </div>
       </a>
       <a href="/pages/sportsbench.html" class="bench-card sports fade-up">
-        <div class="bench-card-name">Sports Bench</div>
-        <div class="bench-card-line">For the people holding<br>the whole team up.</div>
-        <span class="bench-card-arrow">Learn more →</span>
+        <img src="/images/sportsbench.png" alt="Sports Bench — AI for sports organizations" class="bench-card-img">
+        <div class="bench-card-body">
+          <div class="bench-card-name">Sports Bench</div>
+          <div class="bench-card-line">For the people holding<br>the whole team up.</div>
+          <span class="bench-card-arrow">Learn more →</span>
+        </div>
       </a>
       <a href="/pages/smbbench.html" class="bench-card smb fade-up">
-        <div class="bench-card-name">SMB Bench</div>
-        <div class="bench-card-line">For the business that<br>needs a real right hand.</div>
-        <span class="bench-card-arrow">Learn more →</span>
+        <img src="/images/smbbench.png" alt="SMB Bench — AI right hand for small business" class="bench-card-img">
+        <div class="bench-card-body">
+          <div class="bench-card-name">SMB Bench</div>
+          <div class="bench-card-line">For the business that<br>needs a real right hand.</div>
+          <span class="bench-card-arrow">Learn more →</span>
+        </div>
       </a>
     </div>
   </section>
