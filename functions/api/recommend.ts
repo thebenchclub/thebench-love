@@ -32,6 +32,14 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   }
 
   const userInput = prompt.trim().slice(0, 500);
+  const apiKey = context.env.ANTHROPIC_API_KEY;
+
+  if (!apiKey) {
+    return new Response(
+      JSON.stringify({ error: "API key not configured.", type: typeof apiKey, val: String(apiKey).slice(0,8), len: String(apiKey).length }),
+      { status: 500, headers: { "Content-Type": "application/json", ...CORS_HEADERS } }
+    );
+  }
 
   try {
     const response = await fetch("https://api.anthropic.com/v1/messages", {
@@ -50,8 +58,9 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     });
 
     if (!response.ok) {
+      const errBody = await response.text();
       return new Response(
-        JSON.stringify({ error: "Something went wrong. Please try again." }),
+        JSON.stringify({ error: "Something went wrong. Please try again.", debug: errBody, status: response.status }),
         { status: 502, headers: { "Content-Type": "application/json", ...CORS_HEADERS } }
       );
     }
