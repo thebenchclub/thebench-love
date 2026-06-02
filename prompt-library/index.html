@@ -1,0 +1,2319 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Free Prompt Library | The Bench Club</title>
+    <meta
+      name="description"
+      content="A free Bench prompt library for small business owners, realtors, and operators who want practical AI workflows."
+    />
+    <link rel="canonical" href="https://thebench.love/prompt-library/" />
+    <link rel="icon" href="data:," />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: dark;
+        --background: #0a0a0f;
+        --foreground: #f5f3ed;
+        --muted: rgba(245, 243, 237, 0.62);
+        --muted-strong: rgba(245, 243, 237, 0.78);
+        --panel: rgba(20, 20, 30, 0.72);
+        --panel-strong: rgba(30, 30, 45, 0.72);
+        --line: rgba(245, 243, 237, 0.12);
+        --line-strong: rgba(245, 243, 237, 0.2);
+        --yellow: #f4d03f;
+        --yellow-soft: rgba(244, 208, 63, 0.16);
+        --her: #f4a259;
+        --realtor: #4a9eff;
+        --sports: #6bc9a3;
+        --smb: #a78bfa;
+        --life: #e3d46b;
+        --shadow: 0 20px 50px rgba(0, 0, 0, 0.36);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        overflow-x: hidden;
+        background:
+          radial-gradient(circle at 18% 4%, rgba(244, 208, 63, 0.13), transparent 30rem),
+          radial-gradient(circle at 86% 20%, rgba(167, 139, 250, 0.16), transparent 34rem),
+          linear-gradient(180deg, #0a0a0f 0%, #10101a 52%, #0a0a0f 100%);
+        color: var(--foreground);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      button,
+      input,
+      select {
+        font: inherit;
+      }
+
+      button,
+      .download-link {
+        display: inline-flex;
+        min-height: 42px;
+        align-items: center;
+        justify-content: center;
+        border: 0;
+        border-radius: 999px;
+        background: rgba(244, 208, 63, 0.95);
+        color: #0a0a0f;
+        cursor: pointer;
+        font-weight: 700;
+        padding: 0 18px;
+        text-decoration: none;
+        box-shadow: 0 10px 30px rgba(244, 208, 63, 0.18);
+        transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+      }
+
+      button:hover,
+      .download-link:hover {
+        background: #f8dd62;
+        transform: translateY(-1px);
+      }
+
+      button.secondary {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--line);
+        color: var(--foreground);
+        box-shadow: none;
+      }
+
+      button.secondary:hover {
+        background: rgba(255, 255, 255, 0.07);
+      }
+
+      button.small {
+        min-height: 34px;
+        padding: 0 10px;
+        font-size: 13px;
+      }
+
+      input,
+      select {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: rgba(245, 243, 237, 0.06);
+        color: var(--foreground);
+        padding: 11px 12px;
+        outline-color: rgba(244, 208, 63, 0.5);
+      }
+
+      input::placeholder {
+        color: rgba(245, 243, 237, 0.48);
+      }
+
+      .shell {
+        min-height: 100vh;
+      }
+
+      .topbar {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        align-items: center;
+        gap: clamp(14px, 3vw, 28px);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid var(--line);
+        background: rgba(10, 10, 15, 0.4);
+        backdrop-filter: blur(24px);
+        padding: 20px clamp(16px, 4vw, 52px);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        color: var(--foreground);
+        font-size: 20px;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      .brand-logo {
+        display: grid;
+        width: 42px;
+        height: 42px;
+        place-items: center;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: rgba(245, 243, 237, 0.05);
+        box-shadow: 0 0 24px rgba(244, 208, 63, 0.12);
+        object-fit: cover;
+      }
+
+      .site-nav,
+      .site-actions {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: clamp(18px, 2.5vw, 34px);
+      }
+
+      .site-nav a,
+      .site-actions a {
+        color: var(--muted-strong);
+        font-size: 15px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.2s ease, background 0.2s ease;
+      }
+
+      .site-nav a:hover,
+      .site-actions a:hover {
+        color: var(--foreground);
+      }
+
+      .site-actions .primary-link {
+        min-width: 164px;
+        border-radius: 999px;
+        background: rgba(244, 208, 63, 0.18);
+        color: var(--yellow);
+        padding: 12px 24px;
+        text-align: center;
+      }
+
+      .site-actions .primary-link:hover {
+        background: rgba(244, 208, 63, 0.24);
+      }
+
+      .pill,
+      .risk {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--muted-strong);
+        font-size: 12px;
+        font-weight: 600;
+        padding: 6px 10px;
+      }
+
+      .risk.medium {
+        color: var(--yellow);
+        background: var(--yellow-soft);
+      }
+
+      .hero {
+        display: block;
+        padding: clamp(22px, 5vw, 58px) clamp(16px, 4vw, 44px) 22px;
+      }
+
+      .hero-copy {
+        display: grid;
+        align-content: center;
+        min-height: 300px;
+      }
+
+      .eyebrow {
+        color: var(--clay);
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        max-width: 800px;
+        margin-top: 10px;
+        font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+        font-size: clamp(48px, 8vw, 108px);
+        font-weight: 600;
+        letter-spacing: -0.045em;
+        line-height: 0.9;
+      }
+
+      .lede {
+        max-width: 700px;
+        margin-top: 18px;
+        color: var(--muted);
+        font-size: clamp(17px, 2vw, 22px);
+        line-height: 1.35;
+      }
+
+      .action-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      .action-button {
+        display: inline-flex;
+        min-height: 42px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(245, 243, 237, 0.06);
+        color: var(--foreground);
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 800;
+        padding: 0 18px;
+        text-decoration: none;
+        transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+      }
+
+      .action-button:hover {
+        transform: translateY(-1px);
+      }
+
+      .action-button.primary {
+        border-color: rgba(244, 208, 63, 0.56);
+        background: var(--yellow);
+        color: #0a0a0f;
+        box-shadow: 0 12px 34px rgba(244, 208, 63, 0.18);
+      }
+
+      .action-button.secondary {
+        border-color: rgba(245, 243, 237, 0.18);
+        background: rgba(245, 243, 237, 0.06);
+        color: var(--foreground);
+      }
+
+      .readiness-band {
+        display: grid;
+        grid-template-columns: auto minmax(280px, 520px);
+        gap: 12px;
+        align-items: stretch;
+        margin-top: 24px;
+      }
+
+      .stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-content: start;
+      }
+
+      .stat {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(245, 243, 237, 0.05);
+        padding: 10px 12px;
+        backdrop-filter: blur(8px);
+      }
+
+      .stat strong {
+        display: block;
+        font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+        font-size: 25px;
+        line-height: 1;
+      }
+
+      .stat span {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .readiness-card {
+        display: grid;
+        grid-template-columns: 42px minmax(0, 1fr);
+        gap: 12px;
+        border: 1px solid rgba(244, 208, 63, 0.22);
+        border-radius: 18px;
+        background:
+          radial-gradient(circle at 86% 18%, rgba(244, 208, 63, 0.14), transparent 48%),
+          rgba(245, 243, 237, 0.05);
+        padding: 13px;
+        backdrop-filter: blur(8px);
+      }
+
+      .readiness-icon {
+        display: grid;
+        width: 38px;
+        height: 38px;
+        place-items: center;
+        border: 1px solid rgba(244, 208, 63, 0.34);
+        border-radius: 14px;
+        background: rgba(244, 208, 63, 0.1);
+        color: var(--yellow);
+      }
+
+      .readiness-icon svg {
+        width: 20px;
+        height: 20px;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+      }
+
+      .readiness-card strong {
+        display: block;
+        color: var(--foreground);
+        font-size: 14px;
+        line-height: 1.2;
+      }
+
+      .readiness-card p {
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.35;
+      }
+
+      .visual-strip {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        padding: 0 clamp(16px, 4vw, 44px) 22px;
+      }
+
+      .bench-note {
+        display: grid;
+        grid-template-rows: auto 1fr;
+        gap: 14px;
+        min-height: 260px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: rgba(20, 20, 30, 0.66);
+        padding: 22px;
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(18px);
+        position: relative;
+      }
+
+      .bench-note::before {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        pointer-events: none;
+        opacity: 0.72;
+        background:
+          radial-gradient(circle at 78% 16%, var(--lane-glow, rgba(244, 208, 63, 0.16)), transparent 44%),
+          linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 42%);
+      }
+
+      .bench-note::after {
+        content: "";
+        position: absolute;
+        inset: 12px;
+        pointer-events: none;
+        border: 1px solid rgba(245, 243, 237, 0.08);
+        border-radius: 18px;
+      }
+
+      .bench-note.realtor {
+        --lane-glow: rgba(74, 158, 255, 0.2);
+        --lane-color: var(--realtor);
+        border-color: rgba(74, 158, 255, 0.32);
+      }
+
+      .bench-note.general {
+        --lane-glow: rgba(244, 208, 63, 0.18);
+        --lane-color: var(--yellow);
+        border-color: rgba(244, 208, 63, 0.32);
+      }
+
+      .bench-note.smb {
+        --lane-glow: rgba(167, 139, 250, 0.2);
+        --lane-color: var(--smb);
+        border-color: rgba(167, 139, 250, 0.32);
+      }
+
+      .bench-note.her {
+        --lane-glow: rgba(244, 162, 89, 0.2);
+        --lane-color: var(--her);
+        border-color: rgba(244, 162, 89, 0.32);
+      }
+
+      .bench-note.life {
+        --lane-glow: rgba(244, 208, 63, 0.19);
+        --lane-color: var(--life);
+        border-color: rgba(227, 212, 107, 0.32);
+      }
+
+      .bench-note.sports {
+        --lane-glow: rgba(107, 201, 163, 0.2);
+        --lane-color: var(--sports);
+        border-color: rgba(107, 201, 163, 0.32);
+      }
+
+      .bench-note > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .bench-note-content {
+        display: grid;
+        align-content: end;
+        gap: 12px;
+      }
+
+      .bench-graphic {
+        display: grid;
+        min-height: 82px;
+        grid-template-columns: 58px minmax(0, 1fr);
+        gap: 14px;
+        align-items: center;
+      }
+
+      .realtor-system {
+        display: grid;
+        align-content: center;
+        gap: 14px;
+        min-height: 100%;
+        border: 1px solid rgba(74, 158, 255, 0.22);
+        border-radius: 18px;
+        background: rgba(10, 10, 15, 0.35);
+        padding: 18px;
+      }
+
+      .realtor-system-top {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--realtor);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .realtor-flow {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .flow-node {
+        display: grid;
+        gap: 7px;
+        min-height: 88px;
+        border: 1px solid rgba(245, 243, 237, 0.12);
+        border-radius: 16px;
+        background: rgba(245, 243, 237, 0.045);
+        padding: 12px;
+      }
+
+      .flow-node svg {
+        width: 22px;
+        height: 22px;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+      }
+
+      .flow-node strong {
+        font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+        font-size: 12px;
+        letter-spacing: 0;
+        line-height: 1.15;
+      }
+
+      .flow-node span {
+        margin: 0;
+        font-size: 11px;
+        line-height: 1.25;
+      }
+
+      .key-items {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+
+      .key-items span {
+        margin: 0;
+        border: 1px solid color-mix(in srgb, var(--lane-color, var(--yellow)) 34%, transparent);
+        border-radius: 999px;
+        background: color-mix(in srgb, var(--lane-color, var(--yellow)) 10%, transparent);
+        color: rgba(245, 243, 237, 0.8);
+        font-size: 11px;
+        font-weight: 700;
+        padding: 5px 8px;
+      }
+
+      .bench-note-icon {
+        display: grid;
+        width: 58px;
+        height: 58px;
+        place-items: center;
+        border: 1px solid rgba(244, 208, 63, 0.36);
+        border-radius: 18px;
+        background: rgba(244, 208, 63, 0.1);
+        color: var(--yellow);
+        font-size: 26px;
+        font-weight: 700;
+        box-shadow: 0 0 32px var(--lane-glow, rgba(244, 208, 63, 0.18));
+      }
+
+      .bench-note-icon svg {
+        width: 28px;
+        height: 28px;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+      }
+
+      .bench-note.realtor .bench-note-icon {
+        border-color: rgba(74, 158, 255, 0.42);
+        background: rgba(74, 158, 255, 0.12);
+        color: var(--realtor);
+      }
+
+      .bench-note.general .bench-note-icon,
+      .bench-note.life .bench-note-icon {
+        border-color: color-mix(in srgb, var(--lane-color, var(--yellow)) 42%, transparent);
+        background: color-mix(in srgb, var(--lane-color, var(--yellow)) 12%, transparent);
+        color: var(--lane-color, var(--yellow));
+      }
+
+      .bench-note.smb .bench-note-icon {
+        border-color: rgba(167, 139, 250, 0.42);
+        background: rgba(167, 139, 250, 0.12);
+        color: var(--smb);
+      }
+
+      .bench-note.her .bench-note-icon {
+        border-color: rgba(244, 162, 89, 0.42);
+        background: rgba(244, 162, 89, 0.12);
+        color: var(--her);
+      }
+
+      .bench-note.sports .bench-note-icon {
+        border-color: rgba(107, 201, 163, 0.42);
+        background: rgba(107, 201, 163, 0.12);
+        color: var(--sports);
+      }
+
+      .bench-diagram {
+        display: grid;
+        gap: 8px;
+      }
+
+      .diagram-row {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+      }
+
+      .diagram-dot,
+      .diagram-line {
+        display: block;
+        border: 1px solid rgba(245, 243, 237, 0.15);
+        background: rgba(245, 243, 237, 0.08);
+      }
+
+      .diagram-dot {
+        width: 22px;
+        height: 22px;
+        border-radius: 999px;
+      }
+
+      .diagram-line {
+        width: min(86px, 48%);
+        height: 8px;
+        border-radius: 999px;
+      }
+
+      .diagram-line.short {
+        width: min(52px, 30%);
+      }
+
+      .diagram-line.gold {
+        border-color: rgba(244, 208, 63, 0.36);
+        background: rgba(244, 208, 63, 0.16);
+      }
+
+      .bench-note strong {
+        display: block;
+        color: var(--foreground);
+        font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+        font-size: 28px;
+        font-weight: 600;
+        letter-spacing: -0.03em;
+        line-height: 1.2;
+      }
+
+      .bench-note span {
+        display: block;
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.35;
+      }
+
+      .bench-note .eyebrow {
+        color: var(--lane-color, var(--yellow));
+      }
+
+      .app {
+        display: grid;
+        grid-template-columns: minmax(300px, 0.42fr) minmax(0, 1fr);
+        align-items: stretch;
+        gap: 14px;
+        padding: 0 clamp(16px, 4vw, 44px) 44px;
+      }
+
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: var(--panel);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(24px);
+        overflow: hidden;
+      }
+
+      .app > .panel {
+        height: 100%;
+      }
+
+      .workspace-panel {
+        border-color: rgba(245, 243, 237, 0.72);
+        background: #f7f4ec;
+        color: #111116;
+        box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34), 0 0 0 1px rgba(244, 208, 63, 0.1);
+        backdrop-filter: none;
+      }
+
+      .workspace-panel .panel-head {
+        border-bottom-color: rgba(17, 17, 22, 0.12);
+        background:
+          linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(247, 244, 236, 0.92)),
+          radial-gradient(circle at 86% 18%, rgba(244, 208, 63, 0.2), transparent 30%);
+      }
+
+      .workspace-panel .eyebrow {
+        color: rgba(17, 17, 22, 0.72);
+      }
+
+      .workspace-panel .panel-head h2,
+      .workspace-panel .overview-card strong,
+      .workspace-panel .sample-title h3 {
+        color: #111116;
+      }
+
+      .workspace-panel .panel-head p,
+      .workspace-panel .tab-intro,
+      .workspace-panel .overview-card span,
+      .workspace-panel .pack-card span,
+      .workspace-panel .prompt-card span,
+      .workspace-panel .download-box p,
+      .workspace-panel .status,
+      .workspace-panel .consent-copy {
+        color: rgba(17, 17, 22, 0.64);
+      }
+
+      .workspace-panel .workspace-tabs {
+        border-bottom-color: rgba(17, 17, 22, 0.12);
+        background: rgba(255, 255, 255, 0.42);
+      }
+
+      .workspace-panel .tab-button {
+        border-color: rgba(17, 17, 22, 0.16);
+        background: rgba(17, 17, 22, 0.045);
+        color: rgba(17, 17, 22, 0.7);
+      }
+
+      .workspace-panel .tab-button[data-active="true"] {
+        border-color: rgba(17, 17, 22, 0.86);
+        background: #111116;
+        color: #f7f4ec;
+      }
+
+      .workspace-panel .pill,
+      .workspace-panel .risk {
+        border-color: rgba(17, 17, 22, 0.14);
+        color: rgba(17, 17, 22, 0.74);
+        background: rgba(255, 255, 255, 0.56);
+      }
+
+      .workspace-panel .risk.medium {
+        color: #6c5200;
+        background: rgba(244, 208, 63, 0.24);
+      }
+
+      .workspace-panel .overview-card,
+      .workspace-panel .prompt-card,
+      .workspace-panel .download-box {
+        border-color: rgba(17, 17, 22, 0.14);
+        background: rgba(255, 255, 255, 0.68);
+        color: #111116;
+        box-shadow: 0 12px 34px rgba(17, 17, 22, 0.06);
+      }
+
+      .workspace-panel .prompt-card:hover,
+      .workspace-panel .prompt-card[data-active="true"] {
+        border-color: rgba(17, 17, 22, 0.74);
+        background: #ffffff;
+      }
+
+      .workspace-panel .prompt-card strong,
+      .workspace-panel .download-box strong,
+      .workspace-panel .consent-row label {
+        color: #111116;
+      }
+
+      .workspace-panel .prompt-body {
+        border-color: rgba(17, 17, 22, 0.14);
+        background: #ffffff;
+        color: #22222a;
+      }
+
+      .workspace-panel .action-row {
+        margin-top: 14px;
+      }
+
+      .workspace-panel .action-button {
+        border-color: rgba(17, 17, 22, 0.16);
+        background: rgba(17, 17, 22, 0.06);
+        color: #111116;
+      }
+
+      .workspace-panel .action-button.primary {
+        border-color: #111116;
+        background: #111116;
+        color: #f7f4ec;
+        box-shadow: none;
+      }
+
+      .workspace-panel .action-button.gold {
+        border-color: rgba(151, 112, 0, 0.28);
+        background: var(--yellow);
+        color: #111116;
+      }
+
+      .next-step {
+        display: grid;
+        gap: 10px;
+        border: 1px solid rgba(17, 17, 22, 0.12);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.56);
+        padding: 14px;
+      }
+
+      .next-step strong {
+        color: #111116;
+        font-size: 14px;
+      }
+
+      .next-step span {
+        color: rgba(17, 17, 22, 0.62);
+        font-size: 13px;
+        line-height: 1.35;
+      }
+
+      .download-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+        border-top: 1px solid rgba(17, 17, 22, 0.12);
+        padding-top: 12px;
+      }
+
+      .modal-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 30;
+        display: none;
+        place-items: center;
+        background: rgba(10, 10, 15, 0.72);
+        padding: 18px;
+      }
+
+      .modal-backdrop[data-open="true"] {
+        display: grid;
+      }
+
+      .lead-modal {
+        width: min(560px, 100%);
+        border: 1px solid rgba(245, 243, 237, 0.22);
+        border-radius: 24px;
+        background: #f7f4ec;
+        color: #111116;
+        box-shadow: 0 30px 90px rgba(0, 0, 0, 0.42);
+        overflow: hidden;
+      }
+
+      .lead-modal-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        border-bottom: 1px solid rgba(17, 17, 22, 0.12);
+        padding: 18px;
+      }
+
+      .lead-modal h2 {
+        font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+        font-size: 34px;
+        font-weight: 600;
+        letter-spacing: -0.03em;
+        line-height: 1;
+      }
+
+      .lead-modal p,
+      .lead-status {
+        color: rgba(17, 17, 22, 0.66);
+        font-size: 14px;
+        line-height: 1.4;
+      }
+
+      .lead-form {
+        display: grid;
+        gap: 12px;
+        padding: 18px;
+      }
+
+      .lead-field {
+        display: grid;
+        gap: 6px;
+      }
+
+      .lead-field label {
+        color: #111116;
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .lead-field input {
+        border-color: rgba(17, 17, 22, 0.18);
+        background: #fff;
+        color: #111116;
+      }
+
+      .lead-field input::placeholder {
+        color: rgba(17, 17, 22, 0.38);
+      }
+
+      .lead-form-actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 4px;
+      }
+
+      .modal-close {
+        width: 38px;
+        min-height: 38px;
+        padding: 0;
+        border-radius: 999px;
+        background: rgba(17, 17, 22, 0.06);
+        color: #111116;
+        box-shadow: none;
+      }
+
+      .panel-head {
+        display: grid;
+        align-content: start;
+        min-height: 128px;
+        border-bottom: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.02);
+        padding: 18px;
+      }
+
+      .panel-head h2 {
+        font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+        font-size: 30px;
+        font-weight: 600;
+        letter-spacing: -0.03em;
+        line-height: 1;
+      }
+
+      .panel-head p {
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.35;
+      }
+
+      .panel-body {
+        padding: 16px;
+      }
+
+      .workspace-body {
+        padding: 0;
+      }
+
+      .workspace-tabs {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        border-bottom: 1px solid var(--line);
+        padding: 12px 16px;
+      }
+
+      .tab-button {
+        min-height: 34px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(245, 243, 237, 0.05);
+        color: var(--muted-strong);
+        font-size: 12px;
+        font-weight: 800;
+        padding: 0 12px;
+        box-shadow: none;
+        white-space: nowrap;
+      }
+
+      .tab-button[data-active="true"] {
+        border-color: rgba(244, 208, 63, 0.42);
+        background: rgba(244, 208, 63, 0.16);
+        color: var(--foreground);
+      }
+
+      .tab-panels {
+        padding: 16px;
+      }
+
+      .tab-panel {
+        display: none;
+      }
+
+      .tab-panel[data-active="true"] {
+        display: grid;
+        gap: 14px;
+      }
+
+      .overview-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .overview-card {
+        min-height: 118px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(245, 243, 237, 0.045);
+        padding: 14px;
+      }
+
+      .overview-card strong {
+        display: block;
+        color: var(--foreground);
+        font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+        font-size: 24px;
+        font-weight: 600;
+        letter-spacing: -0.03em;
+        line-height: 1.05;
+      }
+
+      .overview-card span {
+        display: block;
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.35;
+      }
+
+      .tab-intro {
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .filters {
+        display: grid;
+        gap: 8px;
+      }
+
+      .segment-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 8px;
+      }
+
+      .segment {
+        min-height: 30px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(245, 243, 237, 0.06);
+        color: var(--muted-strong);
+        font-size: 12px;
+        padding: 0 9px;
+        box-shadow: none;
+      }
+
+      .segment[data-active="true"] {
+        background: var(--yellow);
+        color: #0a0a0f;
+      }
+
+      .pack-list,
+      .prompt-list {
+        display: grid;
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .pack-card,
+      .prompt-card {
+        width: 100%;
+        min-height: unset;
+        display: grid;
+        grid-template-columns: 42px minmax(0, 1fr);
+        align-items: start;
+        gap: 12px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(245, 243, 237, 0.045);
+        color: var(--foreground);
+        padding: 16px;
+        text-align: left;
+        box-shadow: none;
+      }
+
+      .card-icon {
+        display: grid;
+        width: 38px;
+        height: 38px;
+        place-items: center;
+        border: 1px solid var(--line-strong);
+        border-radius: 999px;
+        background: rgba(245, 243, 237, 0.06);
+        color: var(--yellow);
+        font-size: 15px;
+        font-weight: 800;
+        line-height: 1;
+      }
+
+      .card-icon svg {
+        width: 19px;
+        height: 19px;
+        display: block;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+      }
+
+      .card-icon.realtor {
+        border-color: rgba(74, 158, 255, 0.38);
+        color: var(--realtor);
+        background: rgba(74, 158, 255, 0.12);
+      }
+
+      .card-icon.small-business {
+        border-color: rgba(167, 139, 250, 0.38);
+        color: var(--smb);
+        background: rgba(167, 139, 250, 0.12);
+      }
+
+      .card-icon.herbench {
+        border-color: rgba(244, 162, 89, 0.38);
+        color: var(--her);
+        background: rgba(244, 162, 89, 0.12);
+      }
+
+      .card-icon.bench-operator {
+        border-color: rgba(244, 208, 63, 0.38);
+        color: var(--yellow);
+        background: rgba(244, 208, 63, 0.12);
+      }
+
+      .card-icon.universal {
+        border-color: rgba(107, 201, 163, 0.38);
+        color: var(--sports);
+        background: rgba(107, 201, 163, 0.12);
+      }
+
+      .card-copy {
+        display: grid;
+        min-width: 0;
+        gap: 7px;
+        justify-items: start;
+        text-align: left;
+      }
+
+      .pack-card:hover,
+      .pack-card[data-active="true"],
+      .prompt-card:hover,
+      .prompt-card[data-active="true"] {
+        border-color: rgba(244, 208, 63, 0.34);
+        background: rgba(244, 208, 63, 0.1);
+        transform: translateY(-1px);
+      }
+
+      .pack-card strong,
+      .prompt-card strong {
+        display: block;
+        font-size: 15px;
+        line-height: 1.2;
+      }
+
+      .pack-card span,
+      .prompt-card span {
+        display: block;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1.35;
+      }
+
+      .detail-top {
+        display: grid;
+        gap: 10px;
+      }
+
+      .detail-top h2 {
+        font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+        font-size: clamp(30px, 4vw, 46px);
+        font-weight: 600;
+        letter-spacing: -0.04em;
+        line-height: 0.98;
+      }
+
+      .detail-top p {
+        color: var(--muted);
+        line-height: 1.4;
+      }
+
+      .meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .download-box {
+        display: grid;
+        gap: 9px;
+        margin-top: 16px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(244, 208, 63, 0.1);
+        padding: 12px;
+      }
+
+      .download-box p,
+      .status,
+      .consent-copy {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.35;
+      }
+
+      .download-actions {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 8px;
+      }
+
+      .consent-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 9px;
+        max-width: 760px;
+      }
+
+      .consent-row input {
+        width: 16px;
+        height: 16px;
+        margin-top: 2px;
+        accent-color: var(--gold);
+        flex: 0 0 auto;
+      }
+
+      .consent-row label {
+        color: var(--text);
+        font-size: 13px;
+        line-height: 1.35;
+      }
+
+      .consent-copy {
+        display: block;
+        margin-top: 2px;
+      }
+
+      .sample {
+        display: grid;
+        gap: 12px;
+      }
+
+      .sample-title {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .sample-title h3 {
+        font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+        font-size: 24px;
+        font-weight: 600;
+        letter-spacing: -0.03em;
+        line-height: 1;
+      }
+
+      .prompt-body {
+        max-height: 560px;
+        overflow: auto;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(10, 10, 15, 0.62);
+        color: rgba(245, 243, 237, 0.86);
+        white-space: pre-wrap;
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+        font-size: 12px;
+        line-height: 1.48;
+        padding: 12px;
+      }
+
+      .empty,
+      .file-note {
+        border: 1px dashed var(--line-strong);
+        border-radius: 18px;
+        color: var(--muted);
+        padding: 14px;
+        text-align: center;
+      }
+
+      .file-note {
+        display: none;
+        margin: 0 clamp(16px, 4vw, 44px) 18px;
+        background: rgba(244, 208, 63, 0.1);
+        text-align: left;
+      }
+
+      .file-note[data-visible="true"] {
+        display: block;
+      }
+
+      .site-footer {
+        border-top: 1px solid var(--line);
+        background: rgba(10, 10, 15, 0.78);
+        padding: 44px clamp(16px, 4vw, 44px);
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: minmax(240px, 1.1fr) repeat(3, minmax(160px, 0.6fr));
+        gap: 24px;
+        max-width: 1440px;
+        margin: 0 auto;
+      }
+
+      .footer-brand {
+        display: grid;
+        gap: 14px;
+        align-content: start;
+      }
+
+      .footer-logo-row {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .footer-logo-row img {
+        width: 54px;
+        height: 54px;
+        border: 1px solid var(--line-strong);
+        border-radius: 16px;
+        object-fit: cover;
+      }
+
+      .footer-brand p,
+      .footer-col a,
+      .footer-bottom {
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .footer-col {
+        display: grid;
+        gap: 10px;
+        align-content: start;
+      }
+
+      .footer-col h3 {
+        color: var(--foreground);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .footer-col a {
+        text-decoration: none;
+      }
+
+      .footer-col a:hover {
+        color: var(--foreground);
+      }
+
+      .footer-bottom {
+        max-width: 1440px;
+        margin: 28px auto 0;
+        border-top: 1px solid var(--line);
+        padding-top: 18px;
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      @media (max-width: 1120px) {
+        .app {
+          grid-template-columns: minmax(280px, 0.44fr) minmax(0, 1fr);
+        }
+
+        .visual-strip {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .bench-note.realtor.featured {
+          grid-column: span 2;
+          grid-template-columns: 1fr;
+        }
+
+        .hero-copy {
+          min-height: 280px;
+        }
+
+        .footer-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 760px) {
+        .topbar {
+          grid-template-columns: 1fr;
+          align-items: start;
+          padding-top: 14px;
+          padding-bottom: 14px;
+        }
+
+        .site-nav,
+        .site-actions {
+          justify-content: flex-start;
+        }
+
+        .readiness-band {
+          grid-template-columns: 1fr;
+        }
+
+        .app,
+        .overview-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 620px) {
+        h1 {
+          font-size: clamp(44px, 16vw, 66px);
+        }
+
+        .visual-strip {
+          grid-template-columns: 1fr;
+        }
+
+        .bench-note.realtor.featured {
+          grid-column: auto;
+        }
+
+        .realtor-flow {
+          grid-template-columns: 1fr;
+        }
+
+        .download-actions {
+          grid-template-columns: 1fr;
+        }
+
+        button,
+        .download-link {
+          width: 100%;
+        }
+
+        button.small {
+          width: auto;
+        }
+
+        .tab-button {
+          width: auto;
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-bottom {
+          display: grid;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <div class="topbar">
+        <a class="brand" href="/" aria-label="The Bench Club home">
+          <img class="brand-logo" src="assets/logo-sunbeams-v2.png" alt="The Bench Club logo" />
+          <span>The Bench Club</span>
+        </a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="/pages/about.html">About</a>
+          <a href="/pages/results.html">Results</a>
+          <a href="/pages/contact.html">Contact</a>
+        </nav>
+        <div class="site-actions">
+          <button class="primary-link" type="button" data-open-lead>Find Your Bench</button>
+        </div>
+      </div>
+
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <div class="eyebrow">Free Prompt Library</div>
+          <h1 id="page-title">The Bench Built for Your Prompt.</h1>
+          <p class="lede">
+            Five free packs. Twenty-three copy-ready prompts. Pick a pack, preview the prompt, and download the files that fit your world.
+          </p>
+          <div class="action-row">
+            <a class="action-button primary" href="#app">Browse free packs</a>
+            <button class="action-button secondary" type="button" data-open-lead>Get help choosing</button>
+          </div>
+          <div class="readiness-band">
+            <div class="stats" aria-label="Catalog stats">
+              <div class="stat"><strong id="packCount">5</strong><span>free packs</span></div>
+              <div class="stat"><strong id="promptCount">23</strong><span>prompt files</span></div>
+              <div class="stat"><strong>0</strong><span>guesswork</span></div>
+            </div>
+            <div class="readiness-card">
+              <div class="readiness-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15Z"/></svg>
+              </div>
+              <div>
+                <strong>AI readiness built in</strong>
+                <p>Each prompt gives ChatGPT the role, context, workflow, output format, and review checks it needs before the work starts.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="visual-strip" aria-label="The Bench prompt library offers">
+        <div class="bench-note general">
+          <div class="bench-note-content">
+            <div class="bench-graphic">
+              <div class="bench-note-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15Z"/></svg>
+              </div>
+              <div class="bench-diagram" aria-hidden="true">
+                <div class="diagram-row"><span class="diagram-line gold"></span><span class="diagram-dot"></span></div>
+                <div class="diagram-row"><span class="diagram-dot"></span><span class="diagram-line"></span><span class="diagram-line short gold"></span></div>
+                <div class="diagram-row"><span class="diagram-line short"></span><span class="diagram-dot"></span></div>
+              </div>
+            </div>
+            <div>
+              <div class="eyebrow">AI Quick Start</div>
+              <strong>Start smarter with AI.</strong>
+              <span>Simple prompts for anyone opening ChatGPT and needing a clean brainstorm, draft, or research path.</span>
+            </div>
+            <div class="key-items" aria-label="General AI prompt key items">
+              <span>Brainstorming</span>
+              <span>Drafting</span>
+              <span>Research</span>
+              <span>Prompt setup</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bench-note realtor">
+          <div class="bench-note-content">
+            <div class="bench-graphic">
+              <div class="bench-note-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V21h13V9.5"/><path d="M9.5 21v-6h5v6"/></svg>
+              </div>
+              <div class="bench-diagram" aria-hidden="true">
+                <div class="diagram-row"><span class="diagram-dot"></span><span class="diagram-line gold"></span><span class="diagram-dot"></span></div>
+                <div class="diagram-row"><span class="diagram-line"></span><span class="diagram-line short"></span></div>
+                <div class="diagram-row"><span class="diagram-dot"></span><span class="diagram-line short gold"></span></div>
+              </div>
+            </div>
+            <div>
+              <div class="eyebrow">Realtor AI Prompts</div>
+              <strong>Automate your real estate AI.</strong>
+              <span>Launch listings, follow up faster, and keep client conversations moving with copy-ready prompts built for realtor workflows.</span>
+            </div>
+            <div class="key-items" aria-label="Realtor prompt key items">
+              <span>Listing copy</span>
+              <span>Open house follow-up</span>
+              <span>Social captions</span>
+              <span>Price reductions</span>
+              <span>Past client check-ins</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bench-note smb">
+          <div class="bench-graphic">
+            <div class="bench-note-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5"/><path d="M4 19h16"/><path d="M8 16v-5"/><path d="M12 16V8"/><path d="M16 16v-3"/><path d="M20 16V6"/></svg>
+            </div>
+            <div class="bench-diagram" aria-hidden="true">
+              <div class="diagram-row"><span class="diagram-line gold"></span><span class="diagram-dot"></span></div>
+              <div class="diagram-row"><span class="diagram-dot"></span><span class="diagram-line"></span><span class="diagram-dot"></span></div>
+              <div class="diagram-row"><span class="diagram-line short"></span><span class="diagram-line short gold"></span></div>
+            </div>
+          </div>
+          <div>
+            <div class="eyebrow">SMB Bench</div>
+            <strong>Run the business with less drag.</strong>
+            <span>Prompts for owners who need posts, replies, offers, follow-up, and next steps without starting from scratch.</span>
+          </div>
+          <div class="key-items" aria-label="SMB prompt key items">
+            <span>Customer replies</span>
+            <span>Offers</span>
+            <span>Local marketing</span>
+            <span>Lead follow-up</span>
+          </div>
+        </div>
+
+        <div class="bench-note her">
+          <div class="bench-graphic">
+            <div class="bench-note-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-4.4 7-11a4 4 0 0 0-7-2.6A4 4 0 0 0 5 10c0 6.6 7 11 7 11Z"/></svg>
+            </div>
+            <div class="bench-diagram" aria-hidden="true">
+              <div class="diagram-row"><span class="diagram-dot"></span><span class="diagram-dot"></span><span class="diagram-line gold"></span></div>
+              <div class="diagram-row"><span class="diagram-line"></span><span class="diagram-line short"></span></div>
+              <div class="diagram-row"><span class="diagram-line short gold"></span><span class="diagram-dot"></span></div>
+            </div>
+          </div>
+          <div>
+            <div class="eyebrow">HerBench</div>
+            <strong>Find the words with confidence.</strong>
+            <span>Prompts for women building, asking, responding, pricing, pitching, and communicating clearly.</span>
+          </div>
+          <div class="key-items" aria-label="HerBench prompt key items">
+            <span>Voice</span>
+            <span>Pricing</span>
+            <span>Proposals</span>
+            <span>Hard emails</span>
+          </div>
+        </div>
+
+        <div class="bench-note life">
+          <div class="bench-graphic">
+            <div class="bench-note-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11h16"/><path d="M5 11l2-6h10l2 6"/><path d="M7 11v8"/><path d="M17 11v8"/><path d="M9 19h6"/></svg>
+            </div>
+            <div class="bench-diagram" aria-hidden="true">
+              <div class="diagram-row"><span class="diagram-line"></span><span class="diagram-dot"></span><span class="diagram-line short gold"></span></div>
+              <div class="diagram-row"><span class="diagram-dot"></span><span class="diagram-line gold"></span></div>
+              <div class="diagram-row"><span class="diagram-line short"></span><span class="diagram-dot"></span><span class="diagram-dot"></span></div>
+            </div>
+          </div>
+          <div>
+            <div class="eyebrow">Home & Life Ops</div>
+            <strong>Turn daily chaos into a plan.</strong>
+            <span>Prompts for home operations, schedules, decisions, family logistics, and the invisible work of life.</span>
+          </div>
+          <div class="key-items" aria-label="Home and life prompt key items">
+            <span>Schedules</span>
+            <span>Meal plans</span>
+            <span>Home admin</span>
+            <span>Decision help</span>
+          </div>
+        </div>
+
+        <div class="bench-note sports">
+          <div class="bench-graphic">
+            <div class="bench-note-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4v16"/><path d="M5 6h11l-1 4 1 4H5"/><path d="M12 6v8"/></svg>
+            </div>
+            <div class="bench-diagram" aria-hidden="true">
+              <div class="diagram-row"><span class="diagram-dot"></span><span class="diagram-line gold"></span><span class="diagram-dot"></span></div>
+              <div class="diagram-row"><span class="diagram-line"></span><span class="diagram-dot"></span><span class="diagram-line short"></span></div>
+              <div class="diagram-row"><span class="diagram-line short gold"></span><span class="diagram-line short"></span></div>
+            </div>
+          </div>
+          <div>
+            <div class="eyebrow">Sports Bench</div>
+            <strong>Run the whole team rhythm.</strong>
+            <span>Prompts for coaches, parents, boosters, and operators managing communication, schedules, and game-day details.</span>
+          </div>
+          <div class="key-items" aria-label="Sports prompt key items">
+            <span>Team updates</span>
+            <span>Practice plans</span>
+            <span>Parent comms</span>
+            <span>Game-day ops</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="file-note" id="fileNote">
+        The prompt library is available here on thebench.love. If the catalog does not load, refresh the page or contact
+        <a href="mailto:christy@thebenchclub.ai">christy@thebenchclub.ai</a>.
+      </div>
+
+      <main class="app" id="app">
+        <aside class="panel" aria-label="Prompt packs">
+          <div class="panel-head">
+            <div class="eyebrow">Choose a pack</div>
+            <h2>Free Packs</h2>
+            <p>Start with the Bench that matches the job.</p>
+          </div>
+          <div class="panel-body">
+            <div class="filters">
+              <input id="query" placeholder="Search listing, social, research, email..." />
+              <div class="segment-row" id="segmentRow"></div>
+            </div>
+            <div class="pack-list" id="packList"></div>
+          </div>
+        </aside>
+
+        <section class="panel workspace-panel" aria-label="Selected pack details">
+          <div class="panel-head">
+            <div class="eyebrow">Selected pack</div>
+            <h2 id="packName">List It & Launch It</h2>
+            <p id="packDescription">5 prompts for realtors to launch listings, follow up with buyers, and keep past clients warm.</p>
+            <div class="action-row">
+              <button class="action-button primary" type="button" data-action-tab="prompts">View prompts</button>
+              <button class="action-button gold" type="button" data-action-tab="download">Download free pack</button>
+            </div>
+          </div>
+          <div class="panel-body workspace-body">
+            <div class="workspace-tabs" id="workspaceTabs" aria-label="Pack workspace tabs">
+              <button class="tab-button" type="button" data-tab="overview">Overview</button>
+              <button class="tab-button" type="button" data-tab="prompts">Prompts</button>
+              <button class="tab-button" type="button" data-tab="preview">Preview</button>
+              <button class="tab-button" type="button" data-tab="download">Download</button>
+            </div>
+            <div class="tab-panels">
+              <section class="tab-panel" data-panel="overview" aria-label="Pack overview">
+                <div class="meta-row" id="packMeta"></div>
+                <div class="overview-grid">
+                  <div class="overview-card">
+                    <strong>Pick the job.</strong>
+                    <span>Start with the pack that matches the work you need done today.</span>
+                  </div>
+                  <div class="overview-card">
+                    <strong>Choose a prompt.</strong>
+                    <span>Every prompt is built around a clear use case, output type, and review path.</span>
+                  </div>
+                  <div class="overview-card">
+                    <strong>Copy or download.</strong>
+                    <span>Preview one prompt or unlock the full Markdown pack with your email.</span>
+                  </div>
+                </div>
+                <div class="next-step">
+                  <strong>Best next move: preview what is inside.</strong>
+                  <span>Start with the prompt list, choose the one closest to your job, then download the full pack when it fits.</span>
+                  <div class="action-row">
+                    <button class="action-button primary" type="button" data-action-tab="prompts">See prompts in this pack</button>
+                    <button class="action-button" type="button" data-action-tab="download">Skip to download</button>
+                  </div>
+                </div>
+              </section>
+
+              <section class="tab-panel" data-panel="prompts" aria-label="Pack prompts">
+                <div class="download-footer">
+                  <p class="tab-intro">Choose one prompt to preview before you download the full pack.</p>
+                  <button class="action-button gold" type="button" data-action-tab="download">Download this pack</button>
+                </div>
+                <div class="prompt-list" id="promptList"></div>
+              </section>
+
+              <section class="tab-panel" data-panel="preview" aria-label="Sample prompt">
+                <div class="sample" id="sample">
+                  <div class="empty">Loading the Bench prompt catalog...</div>
+                </div>
+                <div class="next-step">
+                  <strong>Ready to use the whole pack?</strong>
+                  <span>Download the Markdown files, then drop the best prompt into ChatGPT with your details.</span>
+                  <div class="action-row">
+                    <button class="action-button gold" type="button" data-action-tab="download">Download free pack</button>
+                    <button class="action-button" type="button" data-action-tab="prompts">Back to prompt list</button>
+                  </div>
+                </div>
+              </section>
+
+              <section class="tab-panel" data-panel="download" aria-label="Download pack">
+                <div class="download-box">
+                  <div>
+                    <strong>Download this free pack</strong>
+                    <p>Email is required to unlock the free Markdown files. Marketing updates are optional.</p>
+                  </div>
+                  <div class="download-actions">
+                    <input id="email" type="email" placeholder="you@example.com" />
+                    <button id="downloadPack" type="button">Download ZIP</button>
+                  </div>
+                  <div class="consent-row">
+                    <input id="marketingConsent" type="checkbox" />
+                    <label for="marketingConsent">
+                      Send me Bench updates, prompt drops, and launch notes.
+                      <span class="consent-copy">I can unsubscribe anytime. If unchecked, use this email only to unlock this free pack.</span>
+                    </label>
+                  </div>
+                  <div class="consent-row">
+                    <input id="auditRequest" type="checkbox" />
+                    <label for="auditRequest">
+                      Schedule your free business audit with Christy.
+                      <span class="consent-copy">Check this if you want The Bench to follow up about where AI could save time or create momentum in your business.</span>
+                    </label>
+                  </div>
+                  <div class="status" id="downloadStatus"></div>
+                  <div class="download-footer">
+                    <span class="consent-copy">Want this customized for your business or team?</span>
+                    <button class="action-button" type="button" data-open-lead>Find Your Bench</button>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <div class="modal-backdrop" id="leadModal" data-open="false" aria-hidden="true">
+        <section class="lead-modal" role="dialog" aria-modal="true" aria-labelledby="leadModalTitle">
+          <div class="lead-modal-head">
+            <div>
+              <div class="eyebrow">Free business audit</div>
+              <h2 id="leadModalTitle">Find Your Bench</h2>
+              <p>Share the best way to reach you and Christy will follow up about where AI can save time or create momentum.</p>
+            </div>
+            <button class="modal-close" type="button" id="leadModalClose" aria-label="Close lead form">×</button>
+          </div>
+          <form class="lead-form" id="leadForm">
+            <div class="lead-field">
+              <label for="leadName">Name</label>
+              <input id="leadName" name="name" autocomplete="name" placeholder="Your name" required />
+            </div>
+            <div class="lead-field">
+              <label for="leadEmail">Email</label>
+              <input id="leadEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
+            </div>
+            <div class="lead-field">
+              <label for="leadPhone">Phone</label>
+              <input id="leadPhone" name="phone" type="tel" autocomplete="tel" placeholder="(555) 555-5555" required />
+            </div>
+            <div class="lead-form-actions">
+              <button class="action-button primary" type="submit">Send audit request</button>
+              <button class="action-button" type="button" id="leadModalCancel">Cancel</button>
+            </div>
+            <div class="lead-status" id="leadStatus"></div>
+          </form>
+        </section>
+      </div>
+
+      <footer class="site-footer">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="footer-logo-row">
+              <img src="assets/logo-sunbeams-v2.png" alt="The Bench Club logo" />
+              <div>
+                <strong>The Bench Club</strong>
+                <div class="eyebrow">AI coworkers for your world</div>
+              </div>
+            </div>
+            <p>
+              The Bench Club builds AI-powered coworkers for small businesses, real estate professionals, sports organizations,
+              and busy households.
+            </p>
+          </div>
+          <div class="footer-col">
+            <h3>Benches</h3>
+            <a href="/pages/herbench.html">HerBench</a>
+            <a href="/pages/realtorbench.html">Realtor Bench</a>
+            <a href="/pages/sportsbench.html">Sports Bench</a>
+            <a href="/pages/smbbench.html">SMB Bench</a>
+          </div>
+          <div class="footer-col">
+            <h3>Library</h3>
+            <a href="#app">Free prompt packs</a>
+            <a href="#app">Realtor prompts</a>
+            <a href="#app">Small business prompts</a>
+            <a href="#app">Bench operator prompts</a>
+          </div>
+          <div class="footer-col">
+            <h3>Contact</h3>
+            <a href="mailto:christy@thebenchclub.ai">christy@thebenchclub.ai</a>
+            <a href="/pages/contact.html">Work with The Bench</a>
+            <a href="/">thebench.love</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 The Bench Club. All rights reserved.</span>
+          <span>Houston, TX · Built for practical AI work.</span>
+        </div>
+      </footer>
+    </div>
+
+    <script type="module">
+      const apiBase = "";
+      const state = {
+        catalog: window.openai?.toolOutput?.catalog || null,
+        selectedPackId: "list-it-launch-it",
+        selectedPromptId: "bench-realtor-listing-description-v1",
+        selectedSegment: "all",
+        activeTab: "overview",
+        samplePrompt: null,
+      };
+
+      const el = {
+        fileNote: document.querySelector("#fileNote"),
+        packCount: document.querySelector("#packCount"),
+        promptCount: document.querySelector("#promptCount"),
+        query: document.querySelector("#query"),
+        segmentRow: document.querySelector("#segmentRow"),
+        packList: document.querySelector("#packList"),
+        packName: document.querySelector("#packName"),
+        packDescription: document.querySelector("#packDescription"),
+        packMeta: document.querySelector("#packMeta"),
+        workspaceTabs: document.querySelector("#workspaceTabs"),
+        promptList: document.querySelector("#promptList"),
+        sample: document.querySelector("#sample"),
+        email: document.querySelector("#email"),
+        marketingConsent: document.querySelector("#marketingConsent"),
+        auditRequest: document.querySelector("#auditRequest"),
+        downloadPack: document.querySelector("#downloadPack"),
+        downloadStatus: document.querySelector("#downloadStatus"),
+        leadModal: document.querySelector("#leadModal"),
+        leadModalClose: document.querySelector("#leadModalClose"),
+        leadModalCancel: document.querySelector("#leadModalCancel"),
+        leadForm: document.querySelector("#leadForm"),
+        leadName: document.querySelector("#leadName"),
+        leadEmail: document.querySelector("#leadEmail"),
+        leadPhone: document.querySelector("#leadPhone"),
+        leadStatus: document.querySelector("#leadStatus"),
+      };
+
+      function fallbackCatalog() {
+        return {
+          total_prompts: 1,
+          packs: [
+            {
+              id: "list-it-launch-it",
+              name: "List It & Launch It",
+              segment: "realtor",
+              description: "5 prompts for realtors to launch listings, follow up with buyers, and keep past clients warm.",
+              prompt_count: 5,
+              prompts: ["bench-realtor-listing-description-v1"],
+              prompt_items: [
+                {
+                  id: "bench-realtor-listing-description-v1",
+                  title: "Realtor Listing Description Generator",
+                  segment: "realtor",
+                  pack: "list-it-launch-it",
+                  job: "Create polished, MLS-ready listing copy from property facts",
+                  risk_level: "medium",
+                  review_required: true,
+                  outputs: ["MLS description", "social teaser", "email subject lines"],
+                },
+              ],
+            },
+          ],
+          prompts: [],
+        };
+      }
+
+      async function loadCatalog() {
+        if (state.catalog) return;
+        try {
+          const response = await fetch("catalog.json", { cache: "no-store" });
+          if (!response.ok) throw new Error("Catalog unavailable");
+          state.catalog = await response.json();
+          el.fileNote.dataset.visible = "false";
+        } catch {
+          state.catalog = fallbackCatalog();
+          el.fileNote.dataset.visible = "true";
+        }
+      }
+
+      function selectedPack() {
+        return state.catalog.packs.find((pack) => pack.id === state.selectedPackId) || state.catalog.packs[0];
+      }
+
+      function selectedPrompt() {
+        const pack = selectedPack();
+        return (pack.prompt_items || []).find((prompt) => prompt.id === state.selectedPromptId) || pack.prompt_items?.[0];
+      }
+
+      function segments() {
+        return ["all", ...new Set(state.catalog.packs.map((pack) => pack.segment))];
+      }
+
+      function filteredPacks() {
+        const query = el.query.value.toLowerCase().trim();
+        return state.catalog.packs.filter((pack) => {
+          const segmentMatch = state.selectedSegment === "all" || pack.segment === state.selectedSegment;
+          const haystack = [
+            pack.name,
+            pack.description,
+            pack.segment,
+            ...(pack.prompt_items || []).map((prompt) => `${prompt.title} ${prompt.job}`),
+          ]
+            .join(" ")
+            .toLowerCase();
+          return segmentMatch && (!query || haystack.includes(query));
+        });
+      }
+
+      async function loadSamplePrompt() {
+        const prompt = selectedPrompt();
+        if (!prompt) {
+          state.samplePrompt = null;
+          return;
+        }
+        try {
+          const response = await fetch(prompt.file);
+          if (!response.ok) throw new Error("Prompt unavailable");
+          state.samplePrompt = {
+            ...prompt,
+            content: await response.text(),
+          };
+        } catch {
+          state.samplePrompt = {
+            ...prompt,
+            content:
+              "This prompt preview could not be loaded. You can still download the pack or contact christy@thebenchclub.ai for help.",
+          };
+        }
+      }
+
+      function renderSegments() {
+        el.segmentRow.innerHTML = segments()
+          .map((segment) => `<button class="segment" type="button" data-segment="${segment}" data-active="${segment === state.selectedSegment}">${label(segment)}</button>`)
+          .join("");
+      }
+
+      function renderPacks() {
+        const packs = filteredPacks();
+        el.packList.innerHTML = packs.length
+          ? packs
+              .map(
+                (pack) => `
+                  <button class="pack-card" type="button" data-pack="${pack.id}" data-active="${pack.id === state.selectedPackId}">
+                    <span class="card-icon ${pack.segment}" aria-hidden="true">${packIcon(pack.segment)}</span>
+                    <span class="card-copy">
+                      <strong>${pack.name}</strong>
+                      <span>${label(pack.segment)} · ${pack.prompt_count || pack.prompt_items?.length || 0} prompts · free</span>
+                    </span>
+                  </button>
+                `
+              )
+              .join("")
+          : '<div class="empty">No matching packs yet.</div>';
+      }
+
+      function renderTabs() {
+        document.querySelectorAll("[data-tab]").forEach((button) => {
+          button.dataset.active = String(button.dataset.tab === state.activeTab);
+        });
+        document.querySelectorAll("[data-panel]").forEach((panel) => {
+          panel.dataset.active = String(panel.dataset.panel === state.activeTab);
+        });
+      }
+
+      function activateTab(tabName, shouldScroll = false) {
+        state.activeTab = tabName;
+        renderTabs();
+        if (shouldScroll) {
+          document.querySelector(".workspace-panel")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }
+
+      function openLeadModal() {
+        el.leadModal.dataset.open = "true";
+        el.leadModal.setAttribute("aria-hidden", "false");
+        if (el.email.value && !el.leadEmail.value) el.leadEmail.value = el.email.value;
+        el.leadStatus.textContent = "";
+        setTimeout(() => el.leadName.focus(), 0);
+      }
+
+      function closeLeadModal() {
+        el.leadModal.dataset.open = "false";
+        el.leadModal.setAttribute("aria-hidden", "true");
+      }
+
+      function renderPackDetail() {
+        const pack = selectedPack();
+        if (!pack) return;
+        el.packName.textContent = pack.name;
+        el.packDescription.textContent = pack.description;
+        el.packMeta.innerHTML = `
+          <span class="pill">${label(pack.segment)}</span>
+          <span class="pill">${pack.prompt_count || pack.prompt_items?.length || 0} prompts</span>
+          <span class="pill">${pack.price || "free"}</span>
+        `;
+        el.promptList.innerHTML = (pack.prompt_items || [])
+          .map(
+            (prompt) => `
+              <button class="prompt-card" type="button" data-prompt="${prompt.id}" data-active="${prompt.id === state.selectedPromptId}">
+                <span class="card-icon ${prompt.segment}" aria-hidden="true">${promptIcon(prompt)}</span>
+                <span class="card-copy">
+                  <strong>${prompt.title}</strong>
+                  <span>${prompt.job}</span>
+                  <span>${(prompt.outputs || []).join(" · ")}</span>
+                </span>
+              </button>
+            `
+          )
+          .join("");
+      }
+
+      function renderSample() {
+        if (!state.samplePrompt) {
+          el.sample.innerHTML = '<div class="empty">Choose a prompt to preview.</div>';
+          return;
+        }
+        const prompt = state.samplePrompt;
+        el.sample.innerHTML = `
+          <div class="sample-title">
+            <div>
+              <h3>${prompt.title}</h3>
+              <div class="meta-row" style="margin-top: 8px;">
+                <span class="pill">${label(prompt.segment)}</span>
+                <span class="risk ${prompt.risk_level}">${prompt.risk_level || "low"} risk</span>
+                <span class="pill">${prompt.review_required ? "review required" : "ready to adapt"}</span>
+              </div>
+            </div>
+            <button class="small secondary" type="button" id="copyPrompt">Copy</button>
+          </div>
+          <div class="prompt-body">${escapeHtml(prompt.content || "")}</div>
+        `;
+      }
+
+      async function renderAll() {
+        el.packCount.textContent = state.catalog.packs.length;
+        el.promptCount.textContent = state.catalog.total_prompts || state.catalog.prompts?.length || 0;
+        renderSegments();
+        renderPacks();
+        renderTabs();
+        renderPackDetail();
+        await loadSamplePrompt();
+        renderSample();
+      }
+
+      function label(value = "") {
+        const labels = {
+          all: "All",
+          realtor: "Realtor Bench",
+          "small-business": "SMB Bench",
+          herbench: "HerBench",
+          "bench-operator": "Bench Operator",
+          universal: "Universal",
+        };
+        return labels[value] || value;
+      }
+
+      function packIcon(segment = "") {
+        const icons = {
+          realtor: "R",
+          "small-business": "S",
+          herbench: "H",
+          "bench-operator": "B",
+          universal: "U",
+        };
+        return icons[segment] || "B";
+      }
+
+      function promptIcon(prompt = {}) {
+        const text = `${prompt.title || ""} ${prompt.job || ""}`.toLowerCase();
+        if (text.includes("open house")) return iconSvg("calendar");
+        if (text.includes("listing")) return iconSvg("home");
+        if (text.includes("social") || text.includes("post")) return iconSvg("share");
+        if (text.includes("price") || text.includes("offer")) return iconSvg("tag");
+        if (text.includes("email") || text.includes("follow") || text.includes("message") || text.includes("response")) return iconSvg("mail");
+        if (text.includes("research")) return iconSvg("search");
+        if (text.includes("meeting") || text.includes("action") || text.includes("triage") || text.includes("closeout")) return iconSvg("checklist");
+        if (text.includes("voice") || text.includes("brand")) return iconSvg("spark");
+        if (text.includes("prompt")) return iconSvg("wand");
+        if (text.includes("brainstorm")) return iconSvg("bulb");
+        return iconSvg("bench");
+      }
+
+      function iconSvg(name) {
+        const icons = {
+          home: '<svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V21h13V9.5"/><path d="M9.5 21v-6h5v6"/></svg>',
+          calendar: '<svg viewBox="0 0 24 24"><path d="M7 3v4"/><path d="M17 3v4"/><path d="M4.5 8h15"/><path d="M6 5h12a2 2 0 0 1 2 2v13H4V7a2 2 0 0 1 2-2Z"/><path d="m8 14 2.2 2.2L15.5 11"/></svg>',
+          share: '<svg viewBox="0 0 24 24"><path d="M8 12h8"/><path d="m13 7 5 5-5 5"/><path d="M5 5v14"/></svg>',
+          tag: '<svg viewBox="0 0 24 24"><path d="M4 12V5h7l9 9-7 7-9-9Z"/><path d="M8.5 8.5h.01"/></svg>',
+          mail: '<svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg>',
+          search: '<svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg>',
+          checklist: '<svg viewBox="0 0 24 24"><path d="M9 6h11"/><path d="M9 12h11"/><path d="M9 18h11"/><path d="m3.5 6 1 1 2-2"/><path d="m3.5 12 1 1 2-2"/><path d="m3.5 18 1 1 2-2"/></svg>',
+          spark: '<svg viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15Z"/></svg>',
+          wand: '<svg viewBox="0 0 24 24"><path d="m4 20 12-12"/><path d="m14 6 2 2"/><path d="M6 4v3"/><path d="M4.5 5.5h3"/><path d="M19 13v3"/><path d="M17.5 14.5h3"/></svg>',
+          bulb: '<svg viewBox="0 0 24 24"><path d="M8 14a7 7 0 1 1 8 0c-1 1-1.5 2-1.5 3h-5c0-1-.5-2-1.5-3Z"/><path d="M9.5 21h5"/><path d="M10 17h4"/></svg>',
+          bench: '<svg viewBox="0 0 24 24"><path d="M5 9h14"/><path d="M6 12h12"/><path d="M7 15h10"/><path d="M8 15v5"/><path d="M16 15v5"/></svg>',
+        };
+        return icons[name] || icons.bench;
+      }
+
+      function escapeHtml(value) {
+        return String(value)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;");
+      }
+
+      function validEmail(value) {
+        return /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(value);
+      }
+
+      el.segmentRow.addEventListener("click", async (event) => {
+        const button = event.target.closest("[data-segment]");
+        if (!button) return;
+        state.selectedSegment = button.dataset.segment;
+        renderSegments();
+        renderPacks();
+      });
+
+      el.packList.addEventListener("click", async (event) => {
+        const button = event.target.closest("[data-pack]");
+        if (!button) return;
+        state.selectedPackId = button.dataset.pack;
+        const pack = selectedPack();
+        state.selectedPromptId = pack.prompt_items?.[0]?.id || pack.prompts?.[0];
+        state.activeTab = "overview";
+        state.samplePrompt = null;
+        await renderAll();
+      });
+
+      el.promptList.addEventListener("click", async (event) => {
+        const button = event.target.closest("[data-prompt]");
+        if (!button) return;
+        state.selectedPromptId = button.dataset.prompt;
+        activateTab("preview", true);
+        renderPackDetail();
+        await loadSamplePrompt();
+        renderSample();
+      });
+
+      el.workspaceTabs.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-tab]");
+        if (!button) return;
+        activateTab(button.dataset.tab);
+      });
+
+      document.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-action-tab]");
+        if (!button) return;
+        activateTab(button.dataset.actionTab, true);
+      });
+
+      document.addEventListener("click", (event) => {
+        if (!event.target.closest("[data-open-lead]")) return;
+        openLeadModal();
+      });
+
+      el.leadModalClose.addEventListener("click", closeLeadModal);
+      el.leadModalCancel.addEventListener("click", closeLeadModal);
+      el.leadModal.addEventListener("click", (event) => {
+        if (event.target === el.leadModal) closeLeadModal();
+      });
+
+      el.leadForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const pack = selectedPack();
+        const payload = {
+          name: el.leadName.value.trim(),
+          email: el.leadEmail.value.trim(),
+          phone: el.leadPhone.value.trim(),
+          pack_id: pack.id,
+          pack_name: pack.name,
+          source: "find-your-bench-download-tab",
+        };
+        if (!payload.name || !validEmail(payload.email) || payload.phone.length < 7) {
+          el.leadStatus.textContent = "Enter your name, a valid email, and a phone number.";
+          return;
+        }
+        el.leadStatus.textContent = "Sending your audit request...";
+        try {
+          const response = await fetch(`${apiBase}/api/prompt-library/lead`, {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+          const result = await response.json();
+          if (!response.ok) throw new Error(result.error || "Lead request failed");
+          if (result.mailto) window.location.href = result.mailto;
+          if (result.sms) window.open(result.sms, "_blank");
+          el.leadStatus.textContent = result.sms_configured
+            ? "Lead saved. Email and SMS routing links are ready."
+            : "Lead saved and email draft opened. Add BENCH_SMS_PHONE to enable SMS routing.";
+        } catch (error) {
+          el.leadStatus.textContent = error.message || "Could not send the audit request.";
+        }
+      });
+
+      el.query.addEventListener("input", renderPacks);
+
+      el.sample.addEventListener("click", async (event) => {
+        if (!event.target.closest("#copyPrompt") || !state.samplePrompt?.content) return;
+        await navigator.clipboard.writeText(state.samplePrompt.content);
+      });
+
+      el.downloadPack.addEventListener("click", () => {
+        const email = el.email.value.trim();
+        if (!validEmail(email)) {
+          el.downloadStatus.textContent = "Enter a valid email to unlock the free pack.";
+          return;
+        }
+        const pack = selectedPack();
+        const marketingConsent = el.marketingConsent.checked;
+        const auditRequest = el.auditRequest.checked;
+        el.downloadStatus.textContent = "Preparing your download...";
+        fetch(`${apiBase}/api/prompt-library/lead`, {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({
+            email,
+            pack_id: pack.id,
+            pack_name: pack.name,
+            marketing_consent: marketingConsent,
+            audit_requested: auditRequest,
+            source: "prompt-library-download",
+          }),
+        }).catch(() => {});
+        el.downloadStatus.textContent = "Download starting. Check your downloads folder for the ZIP file.";
+        window.location.href = pack.download_file || `downloads/${pack.id}.zip`;
+      });
+
+      window.addEventListener(
+        "openai:set_globals",
+        async (event) => {
+          const catalog = event.detail?.globals?.toolOutput?.catalog;
+          if (!catalog) return;
+          state.catalog = catalog;
+          await renderAll();
+        },
+        { passive: true }
+      );
+
+      await loadCatalog();
+      const initialPack = selectedPack();
+      state.selectedPromptId = initialPack.prompt_items?.[0]?.id || initialPack.prompts?.[0] || state.selectedPromptId;
+      await renderAll();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,939 @@
+{
+  "catalog_version": "1.0.0",
+  "last_updated": "2026-06-01",
+  "total_prompts": 23,
+  "prompts": [
+    {
+      "id": "bench-realtor-listing-description-v1",
+      "title": "Realtor Listing Description Generator",
+      "segment": "realtor",
+      "pack": "list-it-launch-it",
+      "job": "Create polished, MLS-ready listing copy from property facts",
+      "user_level": "beginner",
+      "risk_level": "medium",
+      "review_required": true,
+      "outputs": [
+        "MLS description",
+        "social teaser",
+        "email subject lines"
+      ],
+      "file": "prompts/realtor/bench-realtor-listing-description-v1.md",
+      "version": "1.0.0",
+      "last_tested": "2026-06-01"
+    },
+    {
+      "id": "bench-realtor-open-house-followup-v1",
+      "title": "Open House Follow-Up Sequence",
+      "segment": "realtor",
+      "pack": "list-it-launch-it",
+      "job": "Convert open house visitors into active conversations using a 3-touch follow-up sequence",
+      "user_level": "beginner",
+      "risk_level": "low",
+      "review_required": true,
+      "outputs": [
+        "Email 1: same-day",
+        "Email 2: day 2",
+        "Email 3: day 5"
+      ],
+      "file": "prompts/realtor/bench-realtor-open-house-followup-v1.md",
+      "version": "1.0.0",
+      "last_tested": "2026-06-01"
+    },
+    {
+      "id": "bench-realtor-listing-social-caption-v1",
+      "title": "Listing Social Caption Generator",
+      "segment": "realtor",
+      "pack": "list-it-launch-it",
+      "job": "Create ready-to-post social captions for a new listing across Instagram, Facebook, and LinkedIn",
+      "user_level": "beginner",
+      "risk_level": "low",
+      "review_required": false,
+      "outputs": [
+        "Instagram caption",
+        "Facebook caption",
+        "LinkedIn caption"
+      ],
+      "file": "prompts/realtor/bench-realtor-listing-social-caption-v1.md",
+      "version": "1.0.0",
+      "last_tested": "2026-06-01"
+    },
+    {
+      "id": "bench-realtor-price-reduction-message-v1",
+      "title": "Price Reduction Message Kit",
+      "segment": "realtor",
+      "pack": "list-it-launch-it",
+      "job": "Communicate a price reduction professionally to buyers, visitors, and social media",
+      "user_level": "beginner",
+      "risk_level": "medium",
+      "review_required": true,
+      "outputs": [
+        "Buyer database email",
+        "open house visitor re-engagement email",
+        "social post"
+      ],
+      "file": "prompts/realtor/bench-realtor-price-reduction-message-v1.md",
+      "version": "1.0.0",
+      "last_tested": "2026-06-01"
+    },
+    {
+      "id": "bench-realtor-past-client-checkin-v1",
+      "title": "Past Client Check-In Message",
+      "segment": "realtor",
+      "pack": "list-it-launch-it",
+      "job": "Re-engage a past client with a genuine, non-salesy check-in",
+      "user_level": "beginner",
+      "risk_level": "low",
+      "review_required": false,
+      "outputs": [
+        "Email",
+        "text/DM version",
+        "handwritten note prompt"
+      ],
+      "file": "prompts/realtor/bench-realtor-past-client-checkin-v1.md",
+      "version": "1.0.0",
+      "last_tested": "2026-06-01"
+    },
+    {
+      "id": "bench-smb-weekly-social-planner-v1",
+      "title": "Small Business Weekly Social Planner",
+      "segment": "small-business",
+      "pack": "open-for-business",
+      "job": "Generate a practical 5-post weekly content plan tailored to a local small business",
+      "user_level": "beginner",
+      "risk_level": "low",
+      "review_required": false,
+      "outputs": [
+        "5-post content calendar",
+        "posting schedule",
+        "reel/video hook idea"
+      ],
+      "file": "prompts/small-business/bench-smb-weekly-social-planner-v1.md",
+      "version": "1.0.0",
+      "last_tested": "2026-06-01"
+    },
+    {
+      "id": "bench-smb-google-business-post-v1",
+      "title": "Google Business Profile Post Writer",
+      "segment": "small-business",
+      "pack": "open-for-business",
+      "job": "Write weekly Google Business Profile posts that improve local search visibility",
+      "user_level": "beginner",
+      "risk_level": "low",
+      "review_required": false,
+      "outputs": [
+        "3 GBP posts",
+        "post type labels",
+        "posting tip"
+      ],
+      "file": "prompts/small-business/bench-smb-google-business-post-v1.md",
+      "version": "1.0.0",
+      "last_tested": "2026-06-01"
+    },
+    {
+      "id": "bench-smb-review-response-v1",
+      "title": "Review Response Assistant",
+      "segment": "small-business",
+      "pack": "open-for-business",
+      "job": "Write professional, brand-appropriate responses to Google and Yelp reviews",
+      "user_level": "beginner",
+      "risk_level": "medium",
+      "review_required": true,
+      "outputs": [
+        "Draft response",
+        "strategy note"
+      ],
+      "file": "prompts/small-business/bench-smb-review-response-v1.md",
+      "version": "1.0.0",
+      "last_tested": "2026-06-01"
+    },
+    {
+      "id": "bench-smb-lead-followup-email-v1",
+      "title": "Lead Follow-Up Email Sequence",
+      "segment": "small-business",
+      "pack": "open-for-business",
+      "job": "Convert a new inquiry or lead into a booked appointment or sale with a 3-email sequence",
+      "user_level": "beginner",
+      "risk_level": "low",
+      "review_required": false,
+      "outputs": [
+        "Email 1: immediate",
+        "Email 2: day 2",
+        "Email 3: day 5"
+      ],
+      "file": "prompts/small-business/bench-smb-lead-followup-email-v1.md",
+      "version": "1.0.0",
+      "last_tested": "2026-06-01"
+    },
+    {
+      "id": "bench-smb-weekly-triage-v1",
+      "title": "Weekly Business Triage",
+      "segment": "small-business",
+      "pack": "open-for-business",
+      "job": "Turn a brain dump of business to-dos into a prioritized weekly action plan",
+      "user_level": "beginner",
+      "risk_level": "low",
+      "review_required": false,
+      "outputs": [
+        "Top 3 priorities",
+        "one thing to delegate/drop",
+        "AI task to offload",
+        "Monday starter"
+      ],
+      "file": "prompts/small-business/bench-smb-weekly-triage-v1.md",
+      "version": "1.0.0",
+      "last_tested": "2026-06-01"
+    },
+    {
+      "id": "bench-her-brand-voice-builder-v1",
+      "title": "Brand Voice Builder",
+      "segment": "herbench",
+      "pack": "ceo-of-me",
+      "job": "Define a clear, ownable brand voice and generate an AI system prompt to encode it",
+      "user_level": "beginner",
+      "risk_level": "low",
+      "review_required": false,
+      "outputs": [
+        "Brand voice profile",
+        "words to use/avoid",
+        "sample sentences",
+        "AI system prompt"
+      ],
+      "file": "prompts/herbench/bench-her-brand-voice-builder-v1.md",
+      "version": "1.0.0",
+      "last_tested": "2026-06-01"
+    },
+    {
+      "id": "bench-her-offer-description-v1",
+      "title": "Offer Description Writer",
+      "segment": "herbench",
+      "pack": "ceo-of-me",
+      "job": "Write a clear, compelling description of what you sell that converts browsers into buyers",
+      "user_level": "beginner",
+      "risk_level": "low",
+      "review_required": false,
+      "outputs": [
+        "Sales page paragraph",
+        "short pitch",
+        "bullet breakdown",
+        "one-line hook"
+      ],
+      "file": "prompts/herbench/bench-her-offer-description-v1.md",
+      "version": "1.0.0",
+      "last_tested": "2026-06-01"
+    },
+    {
+      "id": "bench-her-response-helper-v1",
+      "title": "How Do I Say This? Response Helper",
+      "segment": "herbench",
+      "pack": "ceo-of-me",
+      "job": "Draft a confident response to tricky business situations — pushback, pricing, boundaries",
+      "user_level": "beginner",
+      "risk_level": "medium",
+      "review_required": true,
+      "outputs": [
+        "Primary draft response",
+        "alternative version",
+        "strategy note"
+      ],
+      "file": "prompts/herbench/bench-her-response-helper-v1.md",
+      "version": "1.0.0",
+      "last_tested": "2026-06-01"
+    },
+    {
+      "id": "bench-her-proposal-framer-v1",
+      "title": "Client Proposal Framer",
+      "segment": "herbench",
+      "pack": "ceo-of-me",
+      "job": "Turn a sales conversation or project scope into a confident, clear client proposal",
+      "user_level": "beginner",
+      "risk_level": "medium",
+      "review_required": true,
+      "outputs": [
+        "Full proposal",
+        "subject line",
+        "3-day follow-up message"
+      ],
+      "file": "prompts/herbench/bench-her-proposal-framer-v1.md",
+      "version": "1.0.0",
+      "last_tested": "2026-06-01"
+    },
+    {
+      "id": "bench-her-confidence-email-v1",
+      "title": "Confidence Email Drafter",
+      "segment": "herbench",
+      "pack": "ceo-of-me",
+      "job": "Write the email you've been putting off — pitch, ask, follow-up, price increase",
+      "user_level": "beginner",
+      "risk_level": "low",
+      "review_required": true,
+      "outputs": [
+        "Email draft",
+        "subject line",
+        "one sentence pep talk"
+      ],
+      "file": "prompts/herbench/bench-her-confidence-email-v1.md",
+      "version": "1.0.0",
+      "last_tested": "2026-06-01"
+    },
+    {
+      "id": "bench-op-research-planning-brief-v1",
+      "title": "Research Planning Brief",
+      "segment": "bench-operator",
+      "pack": "first-week-with-ai",
+      "job": "Plan a research task before handing it to an AI agent",
+      "user_level": "intermediate",
+      "risk_level": "low",
+      "review_required": false,
+      "outputs": [
+        "Research brief",
+        "source priority list",
+        "output format spec",
+        "quality checklist"
+      ],
+      "file": "prompts/bench-operator/bench-op-research-planning-brief-v1.md",
+      "version": "1.0.0",
+      "last_tested": "2026-06-01"
+    },
+    {
+      "id": "bench-op-meeting-to-action-v1",
+      "title": "Meeting Notes to Action Plan Converter",
+      "segment": "bench-operator",
+      "pack": "first-week-with-ai",
+      "job": "Turn raw meeting notes into a clean action plan with owners, deadlines, and decisions logged",
+      "user_level": "beginner",
+      "risk_level": "low",
+      "review_required": true,
+      "outputs": [
+        "Meeting summary",
+        "action items table",
+        "decisions log",
+        "open questions",
+        "follow-up email"
+      ],
+      "file": "prompts/bench-operator/bench-op-meeting-to-action-v1.md",
+      "version": "1.0.0",
+      "last_tested": "2026-06-01"
+    },
+    {
+      "id": "bench-op-agent-task-brief-v1",
+      "title": "Agent Task Brief",
+      "segment": "bench-operator",
+      "pack": "first-week-with-ai",
+      "job": "Write a precise task brief that tells an AI agent exactly what to do and where to stop",
+      "user_level": "intermediate",
+      "risk_level": "medium",
+      "review_required": false,
+      "outputs": [
+        "Agent task brief",
+        "acceptance criteria checklist",
+        "stop conditions"
+      ],
+      "file": "prompts/bench-operator/bench-op-agent-task-brief-v1.md",
+      "version": "1.0.0",
+      "last_tested": "2026-06-01"
+    },
+    {
+      "id": "bench-op-daily-closeout-v1",
+      "title": "Daily AI Closeout",
+      "segment": "bench-operator",
+      "pack": "first-week-with-ai",
+      "job": "End the workday with a structured AI-assisted closeout that captures what happened and sets up tomorrow",
+      "user_level": "beginner",
+      "risk_level": "low",
+      "review_required": false,
+      "outputs": [
+        "Daily summary",
+        "open loops list",
+        "tomorrow's top 3",
+        "one thing to let go of"
+      ],
+      "file": "prompts/bench-operator/bench-op-daily-closeout-v1.md",
+      "version": "1.0.0",
+      "last_tested": "2026-06-01"
+    },
+    {
+      "id": "bench-op-prompt-improvement-v1",
+      "title": "Prompt Improvement Loop",
+      "segment": "bench-operator",
+      "pack": "first-week-with-ai",
+      "job": "Diagnose why a prompt isn't working and return an improved version with explanation",
+      "user_level": "intermediate",
+      "risk_level": "low",
+      "review_required": false,
+      "outputs": [
+        "Diagnosis",
+        "improved prompt",
+        "explanation of changes",
+        "test inputs"
+      ],
+      "file": "prompts/bench-operator/bench-op-prompt-improvement-v1.md",
+      "version": "1.0.0",
+      "last_tested": "2026-06-01"
+    },
+    {
+      "id": "bench-universal-brainstorm-v1",
+      "title": "Brainstorm Assistant",
+      "segment": "universal",
+      "pack": "chatgpt-quick-start",
+      "job": "Generate a structured set of ideas on any topic",
+      "user_level": "beginner",
+      "risk_level": "low",
+      "review_required": false,
+      "outputs": [
+        "Organized idea list",
+        "top 3 recommendations",
+        "wild card idea"
+      ],
+      "file": "prompts/universal/bench-universal-brainstorm-v1.md",
+      "version": "1.0.0",
+      "last_tested": "2026-06-01"
+    },
+    {
+      "id": "bench-universal-professional-draft-v1",
+      "title": "Professional Draft Writer",
+      "segment": "universal",
+      "pack": "chatgpt-quick-start",
+      "job": "Turn rough notes or a messy first draft into polished, professional writing",
+      "user_level": "beginner",
+      "risk_level": "low",
+      "review_required": true,
+      "outputs": [
+        "Polished draft",
+        "main editorial decision"
+      ],
+      "file": "prompts/universal/bench-universal-professional-draft-v1.md",
+      "version": "1.0.0",
+      "last_tested": "2026-06-01"
+    },
+    {
+      "id": "bench-universal-research-v1",
+      "title": "Quick Research Assistant",
+      "segment": "universal",
+      "pack": "chatgpt-quick-start",
+      "job": "Get a structured, useful answer to any research question with sources and confidence levels",
+      "user_level": "beginner",
+      "risk_level": "medium",
+      "review_required": true,
+      "outputs": [
+        "Bottom line",
+        "supporting context",
+        "source confidence",
+        "verify before acting"
+      ],
+      "file": "prompts/universal/bench-universal-research-v1.md",
+      "version": "1.0.0",
+      "last_tested": "2026-06-01"
+    }
+  ],
+  "packs": [
+    {
+      "id": "list-it-launch-it",
+      "name": "List It & Launch It",
+      "segment": "realtor",
+      "description": "5 prompts for realtors to launch listings, follow up with buyers, and keep past clients warm",
+      "prompt_count": 5,
+      "price": "free",
+      "prompts": [
+        "bench-realtor-listing-description-v1",
+        "bench-realtor-open-house-followup-v1",
+        "bench-realtor-listing-social-caption-v1",
+        "bench-realtor-price-reduction-message-v1",
+        "bench-realtor-past-client-checkin-v1"
+      ],
+      "prompt_items": [
+        {
+          "id": "bench-realtor-listing-description-v1",
+          "title": "Realtor Listing Description Generator",
+          "segment": "realtor",
+          "pack": "list-it-launch-it",
+          "job": "Create polished, MLS-ready listing copy from property facts",
+          "user_level": "beginner",
+          "risk_level": "medium",
+          "review_required": true,
+          "outputs": [
+            "MLS description",
+            "social teaser",
+            "email subject lines"
+          ],
+          "file": "prompts/realtor/bench-realtor-listing-description-v1.md",
+          "version": "1.0.0",
+          "last_tested": "2026-06-01"
+        },
+        {
+          "id": "bench-realtor-open-house-followup-v1",
+          "title": "Open House Follow-Up Sequence",
+          "segment": "realtor",
+          "pack": "list-it-launch-it",
+          "job": "Convert open house visitors into active conversations using a 3-touch follow-up sequence",
+          "user_level": "beginner",
+          "risk_level": "low",
+          "review_required": true,
+          "outputs": [
+            "Email 1: same-day",
+            "Email 2: day 2",
+            "Email 3: day 5"
+          ],
+          "file": "prompts/realtor/bench-realtor-open-house-followup-v1.md",
+          "version": "1.0.0",
+          "last_tested": "2026-06-01"
+        },
+        {
+          "id": "bench-realtor-listing-social-caption-v1",
+          "title": "Listing Social Caption Generator",
+          "segment": "realtor",
+          "pack": "list-it-launch-it",
+          "job": "Create ready-to-post social captions for a new listing across Instagram, Facebook, and LinkedIn",
+          "user_level": "beginner",
+          "risk_level": "low",
+          "review_required": false,
+          "outputs": [
+            "Instagram caption",
+            "Facebook caption",
+            "LinkedIn caption"
+          ],
+          "file": "prompts/realtor/bench-realtor-listing-social-caption-v1.md",
+          "version": "1.0.0",
+          "last_tested": "2026-06-01"
+        },
+        {
+          "id": "bench-realtor-price-reduction-message-v1",
+          "title": "Price Reduction Message Kit",
+          "segment": "realtor",
+          "pack": "list-it-launch-it",
+          "job": "Communicate a price reduction professionally to buyers, visitors, and social media",
+          "user_level": "beginner",
+          "risk_level": "medium",
+          "review_required": true,
+          "outputs": [
+            "Buyer database email",
+            "open house visitor re-engagement email",
+            "social post"
+          ],
+          "file": "prompts/realtor/bench-realtor-price-reduction-message-v1.md",
+          "version": "1.0.0",
+          "last_tested": "2026-06-01"
+        },
+        {
+          "id": "bench-realtor-past-client-checkin-v1",
+          "title": "Past Client Check-In Message",
+          "segment": "realtor",
+          "pack": "list-it-launch-it",
+          "job": "Re-engage a past client with a genuine, non-salesy check-in",
+          "user_level": "beginner",
+          "risk_level": "low",
+          "review_required": false,
+          "outputs": [
+            "Email",
+            "text/DM version",
+            "handwritten note prompt"
+          ],
+          "file": "prompts/realtor/bench-realtor-past-client-checkin-v1.md",
+          "version": "1.0.0",
+          "last_tested": "2026-06-01"
+        }
+      ],
+      "download_file": "downloads/list-it-launch-it.zip"
+    },
+    {
+      "id": "open-for-business",
+      "name": "Open for Business",
+      "segment": "small-business",
+      "description": "5 prompts for small business owners to show up online, respond to customers, and stay focused",
+      "prompt_count": 5,
+      "price": "free",
+      "prompts": [
+        "bench-smb-weekly-social-planner-v1",
+        "bench-smb-google-business-post-v1",
+        "bench-smb-review-response-v1",
+        "bench-smb-lead-followup-email-v1",
+        "bench-smb-weekly-triage-v1"
+      ],
+      "prompt_items": [
+        {
+          "id": "bench-smb-weekly-social-planner-v1",
+          "title": "Small Business Weekly Social Planner",
+          "segment": "small-business",
+          "pack": "open-for-business",
+          "job": "Generate a practical 5-post weekly content plan tailored to a local small business",
+          "user_level": "beginner",
+          "risk_level": "low",
+          "review_required": false,
+          "outputs": [
+            "5-post content calendar",
+            "posting schedule",
+            "reel/video hook idea"
+          ],
+          "file": "prompts/small-business/bench-smb-weekly-social-planner-v1.md",
+          "version": "1.0.0",
+          "last_tested": "2026-06-01"
+        },
+        {
+          "id": "bench-smb-google-business-post-v1",
+          "title": "Google Business Profile Post Writer",
+          "segment": "small-business",
+          "pack": "open-for-business",
+          "job": "Write weekly Google Business Profile posts that improve local search visibility",
+          "user_level": "beginner",
+          "risk_level": "low",
+          "review_required": false,
+          "outputs": [
+            "3 GBP posts",
+            "post type labels",
+            "posting tip"
+          ],
+          "file": "prompts/small-business/bench-smb-google-business-post-v1.md",
+          "version": "1.0.0",
+          "last_tested": "2026-06-01"
+        },
+        {
+          "id": "bench-smb-review-response-v1",
+          "title": "Review Response Assistant",
+          "segment": "small-business",
+          "pack": "open-for-business",
+          "job": "Write professional, brand-appropriate responses to Google and Yelp reviews",
+          "user_level": "beginner",
+          "risk_level": "medium",
+          "review_required": true,
+          "outputs": [
+            "Draft response",
+            "strategy note"
+          ],
+          "file": "prompts/small-business/bench-smb-review-response-v1.md",
+          "version": "1.0.0",
+          "last_tested": "2026-06-01"
+        },
+        {
+          "id": "bench-smb-lead-followup-email-v1",
+          "title": "Lead Follow-Up Email Sequence",
+          "segment": "small-business",
+          "pack": "open-for-business",
+          "job": "Convert a new inquiry or lead into a booked appointment or sale with a 3-email sequence",
+          "user_level": "beginner",
+          "risk_level": "low",
+          "review_required": false,
+          "outputs": [
+            "Email 1: immediate",
+            "Email 2: day 2",
+            "Email 3: day 5"
+          ],
+          "file": "prompts/small-business/bench-smb-lead-followup-email-v1.md",
+          "version": "1.0.0",
+          "last_tested": "2026-06-01"
+        },
+        {
+          "id": "bench-smb-weekly-triage-v1",
+          "title": "Weekly Business Triage",
+          "segment": "small-business",
+          "pack": "open-for-business",
+          "job": "Turn a brain dump of business to-dos into a prioritized weekly action plan",
+          "user_level": "beginner",
+          "risk_level": "low",
+          "review_required": false,
+          "outputs": [
+            "Top 3 priorities",
+            "one thing to delegate/drop",
+            "AI task to offload",
+            "Monday starter"
+          ],
+          "file": "prompts/small-business/bench-smb-weekly-triage-v1.md",
+          "version": "1.0.0",
+          "last_tested": "2026-06-01"
+        }
+      ],
+      "download_file": "downloads/open-for-business.zip"
+    },
+    {
+      "id": "ceo-of-me",
+      "name": "CEO of Me",
+      "segment": "herbench",
+      "description": "5 prompts for women entrepreneurs to own their voice, price with confidence, and communicate clearly",
+      "prompt_count": 5,
+      "price": "free",
+      "prompts": [
+        "bench-her-brand-voice-builder-v1",
+        "bench-her-offer-description-v1",
+        "bench-her-response-helper-v1",
+        "bench-her-proposal-framer-v1",
+        "bench-her-confidence-email-v1"
+      ],
+      "prompt_items": [
+        {
+          "id": "bench-her-brand-voice-builder-v1",
+          "title": "Brand Voice Builder",
+          "segment": "herbench",
+          "pack": "ceo-of-me",
+          "job": "Define a clear, ownable brand voice and generate an AI system prompt to encode it",
+          "user_level": "beginner",
+          "risk_level": "low",
+          "review_required": false,
+          "outputs": [
+            "Brand voice profile",
+            "words to use/avoid",
+            "sample sentences",
+            "AI system prompt"
+          ],
+          "file": "prompts/herbench/bench-her-brand-voice-builder-v1.md",
+          "version": "1.0.0",
+          "last_tested": "2026-06-01"
+        },
+        {
+          "id": "bench-her-offer-description-v1",
+          "title": "Offer Description Writer",
+          "segment": "herbench",
+          "pack": "ceo-of-me",
+          "job": "Write a clear, compelling description of what you sell that converts browsers into buyers",
+          "user_level": "beginner",
+          "risk_level": "low",
+          "review_required": false,
+          "outputs": [
+            "Sales page paragraph",
+            "short pitch",
+            "bullet breakdown",
+            "one-line hook"
+          ],
+          "file": "prompts/herbench/bench-her-offer-description-v1.md",
+          "version": "1.0.0",
+          "last_tested": "2026-06-01"
+        },
+        {
+          "id": "bench-her-response-helper-v1",
+          "title": "How Do I Say This? Response Helper",
+          "segment": "herbench",
+          "pack": "ceo-of-me",
+          "job": "Draft a confident response to tricky business situations — pushback, pricing, boundaries",
+          "user_level": "beginner",
+          "risk_level": "medium",
+          "review_required": true,
+          "outputs": [
+            "Primary draft response",
+            "alternative version",
+            "strategy note"
+          ],
+          "file": "prompts/herbench/bench-her-response-helper-v1.md",
+          "version": "1.0.0",
+          "last_tested": "2026-06-01"
+        },
+        {
+          "id": "bench-her-proposal-framer-v1",
+          "title": "Client Proposal Framer",
+          "segment": "herbench",
+          "pack": "ceo-of-me",
+          "job": "Turn a sales conversation or project scope into a confident, clear client proposal",
+          "user_level": "beginner",
+          "risk_level": "medium",
+          "review_required": true,
+          "outputs": [
+            "Full proposal",
+            "subject line",
+            "3-day follow-up message"
+          ],
+          "file": "prompts/herbench/bench-her-proposal-framer-v1.md",
+          "version": "1.0.0",
+          "last_tested": "2026-06-01"
+        },
+        {
+          "id": "bench-her-confidence-email-v1",
+          "title": "Confidence Email Drafter",
+          "segment": "herbench",
+          "pack": "ceo-of-me",
+          "job": "Write the email you've been putting off — pitch, ask, follow-up, price increase",
+          "user_level": "beginner",
+          "risk_level": "low",
+          "review_required": true,
+          "outputs": [
+            "Email draft",
+            "subject line",
+            "one sentence pep talk"
+          ],
+          "file": "prompts/herbench/bench-her-confidence-email-v1.md",
+          "version": "1.0.0",
+          "last_tested": "2026-06-01"
+        }
+      ],
+      "download_file": "downloads/ceo-of-me.zip"
+    },
+    {
+      "id": "first-week-with-ai",
+      "name": "First Week with AI",
+      "segment": "bench-operator",
+      "description": "5 prompts for Bench operators and power users to plan research, run meetings, brief agents, and close the day",
+      "prompt_count": 5,
+      "price": "free",
+      "prompts": [
+        "bench-op-research-planning-brief-v1",
+        "bench-op-meeting-to-action-v1",
+        "bench-op-agent-task-brief-v1",
+        "bench-op-daily-closeout-v1",
+        "bench-op-prompt-improvement-v1"
+      ],
+      "prompt_items": [
+        {
+          "id": "bench-op-research-planning-brief-v1",
+          "title": "Research Planning Brief",
+          "segment": "bench-operator",
+          "pack": "first-week-with-ai",
+          "job": "Plan a research task before handing it to an AI agent",
+          "user_level": "intermediate",
+          "risk_level": "low",
+          "review_required": false,
+          "outputs": [
+            "Research brief",
+            "source priority list",
+            "output format spec",
+            "quality checklist"
+          ],
+          "file": "prompts/bench-operator/bench-op-research-planning-brief-v1.md",
+          "version": "1.0.0",
+          "last_tested": "2026-06-01"
+        },
+        {
+          "id": "bench-op-meeting-to-action-v1",
+          "title": "Meeting Notes to Action Plan Converter",
+          "segment": "bench-operator",
+          "pack": "first-week-with-ai",
+          "job": "Turn raw meeting notes into a clean action plan with owners, deadlines, and decisions logged",
+          "user_level": "beginner",
+          "risk_level": "low",
+          "review_required": true,
+          "outputs": [
+            "Meeting summary",
+            "action items table",
+            "decisions log",
+            "open questions",
+            "follow-up email"
+          ],
+          "file": "prompts/bench-operator/bench-op-meeting-to-action-v1.md",
+          "version": "1.0.0",
+          "last_tested": "2026-06-01"
+        },
+        {
+          "id": "bench-op-agent-task-brief-v1",
+          "title": "Agent Task Brief",
+          "segment": "bench-operator",
+          "pack": "first-week-with-ai",
+          "job": "Write a precise task brief that tells an AI agent exactly what to do and where to stop",
+          "user_level": "intermediate",
+          "risk_level": "medium",
+          "review_required": false,
+          "outputs": [
+            "Agent task brief",
+            "acceptance criteria checklist",
+            "stop conditions"
+          ],
+          "file": "prompts/bench-operator/bench-op-agent-task-brief-v1.md",
+          "version": "1.0.0",
+          "last_tested": "2026-06-01"
+        },
+        {
+          "id": "bench-op-daily-closeout-v1",
+          "title": "Daily AI Closeout",
+          "segment": "bench-operator",
+          "pack": "first-week-with-ai",
+          "job": "End the workday with a structured AI-assisted closeout that captures what happened and sets up tomorrow",
+          "user_level": "beginner",
+          "risk_level": "low",
+          "review_required": false,
+          "outputs": [
+            "Daily summary",
+            "open loops list",
+            "tomorrow's top 3",
+            "one thing to let go of"
+          ],
+          "file": "prompts/bench-operator/bench-op-daily-closeout-v1.md",
+          "version": "1.0.0",
+          "last_tested": "2026-06-01"
+        },
+        {
+          "id": "bench-op-prompt-improvement-v1",
+          "title": "Prompt Improvement Loop",
+          "segment": "bench-operator",
+          "pack": "first-week-with-ai",
+          "job": "Diagnose why a prompt isn't working and return an improved version with explanation",
+          "user_level": "intermediate",
+          "risk_level": "low",
+          "review_required": false,
+          "outputs": [
+            "Diagnosis",
+            "improved prompt",
+            "explanation of changes",
+            "test inputs"
+          ],
+          "file": "prompts/bench-operator/bench-op-prompt-improvement-v1.md",
+          "version": "1.0.0",
+          "last_tested": "2026-06-01"
+        }
+      ],
+      "download_file": "downloads/first-week-with-ai.zip"
+    },
+    {
+      "id": "chatgpt-quick-start",
+      "name": "ChatGPT Quick Start",
+      "segment": "universal",
+      "description": "3 prompts for anyone new to ChatGPT — brainstorm, draft, and research, done right",
+      "prompt_count": 3,
+      "price": "free",
+      "prompts": [
+        "bench-universal-brainstorm-v1",
+        "bench-universal-professional-draft-v1",
+        "bench-universal-research-v1"
+      ],
+      "prompt_items": [
+        {
+          "id": "bench-universal-brainstorm-v1",
+          "title": "Brainstorm Assistant",
+          "segment": "universal",
+          "pack": "chatgpt-quick-start",
+          "job": "Generate a structured set of ideas on any topic",
+          "user_level": "beginner",
+          "risk_level": "low",
+          "review_required": false,
+          "outputs": [
+            "Organized idea list",
+            "top 3 recommendations",
+            "wild card idea"
+          ],
+          "file": "prompts/universal/bench-universal-brainstorm-v1.md",
+          "version": "1.0.0",
+          "last_tested": "2026-06-01"
+        },
+        {
+          "id": "bench-universal-professional-draft-v1",
+          "title": "Professional Draft Writer",
+          "segment": "universal",
+          "pack": "chatgpt-quick-start",
+          "job": "Turn rough notes or a messy first draft into polished, professional writing",
+          "user_level": "beginner",
+          "risk_level": "low",
+          "review_required": true,
+          "outputs": [
+            "Polished draft",
+            "main editorial decision"
+          ],
+          "file": "prompts/universal/bench-universal-professional-draft-v1.md",
+          "version": "1.0.0",
+          "last_tested": "2026-06-01"
+        },
+        {
+          "id": "bench-universal-research-v1",
+          "title": "Quick Research Assistant",
+          "segment": "universal",
+          "pack": "chatgpt-quick-start",
+          "job": "Get a structured, useful answer to any research question with sources and confidence levels",
+          "user_level": "beginner",
+          "risk_level": "medium",
+          "review_required": true,
+          "outputs": [
+            "Bottom line",
+            "supporting context",
+            "source confidence",
+            "verify before acting"
+          ],
+          "file": "prompts/universal/bench-universal-research-v1.md",
+          "version": "1.0.0",
+          "last_tested": "2026-06-01"
+        }
+      ],
+      "download_file": "downloads/chatgpt-quick-start.zip"
+    }
+  ]
+}
