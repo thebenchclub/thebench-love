@@ -1869,6 +1869,8 @@
 
     <script type="module">
       const apiBase = "";
+      const christyEmail = "christy@thebenchclub.ai";
+      const christySmsPhone = "";
       const state = {
         catalog: window.openai?.toolOutput?.catalog || null,
         selectedPackId: "list-it-launch-it",
@@ -2052,6 +2054,51 @@
       function closeLeadModal() {
         el.leadModal.dataset.open = "false";
         el.leadModal.setAttribute("aria-hidden", "true");
+      }
+
+      function leadRouteLinks(payload) {
+        const subject = payload.name
+          ? `Free business audit request: ${payload.name}`
+          : `Prompt library download: ${payload.pack_name || payload.pack_id || "Bench prompt pack"}`;
+        const body = [
+          payload.name ? "New Find Your Bench audit request" : "New prompt library download",
+          "",
+          `Name: ${payload.name || "not provided"}`,
+          `Email: ${payload.email}`,
+          `Phone: ${payload.phone || "not provided"}`,
+          `Prompt pack: ${payload.pack_name || payload.pack_id || "not selected"}`,
+          `Marketing consent: ${payload.marketing_consent ? "yes" : "no"}`,
+          `Audit requested: ${payload.audit_requested ? "yes" : "no"}`,
+          `Source: ${payload.source || "prompt-library"}`,
+          "",
+          "Requested from The Bench Prompt Library.",
+        ].join("\n");
+        return {
+          mailto: `mailto:${christyEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,
+          sms: christySmsPhone
+            ? `sms:${encodeURIComponent(christySmsPhone)}?&body=${encodeURIComponent(`${payload.name || payload.email} requested The Bench. Email: ${payload.email}. Phone: ${payload.phone || "not provided"}. Pack: ${payload.pack_name || payload.pack_id || "not selected"}.`)}`
+            : "",
+        };
+      }
+
+      async function submitLead(payload) {
+        try {
+          const response = await fetch(`${apiBase}/api/prompt-library/lead`, {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+          if (!response.ok) throw new Error("Lead endpoint unavailable");
+          return await response.json();
+        } catch {
+          return {
+            ok: true,
+            route_email: christyEmail,
+            sms_configured: Boolean(christySmsPhone),
+            webhook_delivered: false,
+            ...leadRouteLinks(payload),
+          };
+        }
       }
 
       function renderPackDetail() {
@@ -2249,18 +2296,12 @@
         }
         el.leadStatus.textContent = "Sending your audit request...";
         try {
-          const response = await fetch(`${apiBase}/api/prompt-library/lead`, {
-            method: "POST",
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify(payload),
-          });
-          const result = await response.json();
-          if (!response.ok) throw new Error(result.error || "Lead request failed");
+          const result = await submitLead(payload);
           if (result.mailto) window.location.href = result.mailto;
           if (result.sms) window.open(result.sms, "_blank");
-          el.leadStatus.textContent = result.sms_configured
-            ? "Lead saved. Email and SMS routing links are ready."
-            : "Lead saved and email draft opened. Add BENCH_SMS_PHONE to enable SMS routing.";
+          el.leadStatus.textContent = result.webhook_delivered
+            ? "Request sent. Christy will follow up."
+            : "Email draft opened for Christy. Send it to finish the request.";
         } catch (error) {
           el.leadStatus.textContent = error.message || "Could not send the audit request.";
         }
@@ -2283,20 +2324,23 @@
         const marketingConsent = el.marketingConsent.checked;
         const auditRequest = el.auditRequest.checked;
         el.downloadStatus.textContent = "Preparing your download...";
-        fetch(`${apiBase}/api/prompt-library/lead`, {
-          method: "POST",
-          headers: { "content-type": "application/json" },
-          body: JSON.stringify({
-            email,
-            pack_id: pack.id,
-            pack_name: pack.name,
-            marketing_consent: marketingConsent,
-            audit_requested: auditRequest,
-            source: "prompt-library-download",
-          }),
+        submitLead({
+          email,
+          pack_id: pack.id,
+          pack_name: pack.name,
+          marketing_consent: marketingConsent,
+          audit_requested: auditRequest,
+          source: "prompt-library-download",
         }).catch(() => {});
         el.downloadStatus.textContent = "Download starting. Check your downloads folder for the ZIP file.";
         window.location.href = pack.download_file || `downloads/${pack.id}.zip`;
+        if (auditRequest) {
+          setTimeout(() => {
+            el.leadEmail.value = email;
+            openLeadModal();
+            el.leadStatus.textContent = "Add your name and phone so Christy can schedule your free business audit.";
+          }, 700);
+        }
       });
 
       window.addEventListener(
