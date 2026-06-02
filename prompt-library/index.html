@@ -2268,9 +2268,8 @@
         activateTab(button.dataset.actionTab, true);
       });
 
-      document.addEventListener("click", (event) => {
-        if (!event.target.closest("[data-open-lead]")) return;
-        openLeadModal();
+      document.querySelectorAll("[data-open-lead]").forEach((button) => {
+        button.addEventListener("click", openLeadModal);
       });
 
       el.leadModalClose.addEventListener("click", closeLeadModal);
