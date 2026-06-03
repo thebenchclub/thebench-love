@@ -4,6 +4,7 @@ interface Env {
 }
 
 const CHRISTY_EMAIL = "christy@thebenchclub.ai";
+const CHRISTY_SMS_PHONE = "7136282949";
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
@@ -21,11 +22,15 @@ type LeadPayload = {
   audit_requested?: boolean;
 };
 
-export const onRequestOptions: PagesFunction = async () => {
-  return new Response(null, { status: 204, headers: CORS_HEADERS });
-};
+export const onRequest: PagesFunction<Env> = async (context) => {
+  if (context.request.method === "OPTIONS") {
+    return new Response(null, { status: 204, headers: CORS_HEADERS });
+  }
 
-export const onRequestPost: PagesFunction<Env> = async (context) => {
+  if (context.request.method !== "POST") {
+    return json({ error: "Method not allowed." }, 405);
+  }
+
   let payload: LeadPayload;
 
   try {
@@ -45,7 +50,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     return json({ error: "Name, email, and phone are required for audit requests." }, 400);
   }
 
-  const route = buildRoutingLinks(lead, context.env.CHRISTY_SMS_PHONE || "");
+  const route = buildRoutingLinks(lead, context.env.CHRISTY_SMS_PHONE || CHRISTY_SMS_PHONE);
   let webhook_delivered = false;
 
   if (context.env.BENCH_LEAD_WEBHOOK_URL) {
@@ -60,7 +65,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   return json({
     ok: true,
     route_email: CHRISTY_EMAIL,
-    sms_configured: Boolean(context.env.CHRISTY_SMS_PHONE),
+    sms_configured: Boolean(context.env.CHRISTY_SMS_PHONE || CHRISTY_SMS_PHONE),
     webhook_delivered,
     ...route,
   });
@@ -88,11 +93,18 @@ function digitsOnly(value: string) {
 }
 
 function buildRoutingLinks(lead: ReturnType<typeof normalizeLead>, smsPhone: string) {
-  const subject = lead.name
-    ? `Free business audit request: ${lead.name}`
-    : `Prompt library download: ${lead.pack_name || lead.pack_id || "Bench prompt pack"}`;
+  const isWebsiteBenchLead = lead.source.includes("website-bench-agent") || lead.pack_id === "website-bench-agent-999";
+  const subject = isWebsiteBenchLead
+    ? `Website Bench Agent request: ${lead.name || lead.email}`
+    : lead.name
+      ? `Free business audit request: ${lead.name}`
+      : `Prompt library download: ${lead.pack_name || lead.pack_id || "Bench prompt pack"}`;
   const body = [
-    lead.name ? "New Find Your Bench audit request" : "New prompt library download",
+    isWebsiteBenchLead
+      ? "New Website Bench Agent request"
+      : lead.name
+        ? "New Find Your Bench audit request"
+        : "New prompt library download",
     "",
     `Name: ${lead.name || "not provided"}`,
     `Email: ${lead.email}`,
@@ -102,11 +114,13 @@ function buildRoutingLinks(lead: ReturnType<typeof normalizeLead>, smsPhone: str
     `Audit requested: ${lead.audit_requested ? "yes" : "no"}`,
     `Source: ${lead.source}`,
     "",
-    "Requested from The Bench Prompt Library.",
+    isWebsiteBenchLead
+      ? "Requested from the SMB Bench Website Bench Agent page."
+      : "Requested from The Bench Prompt Library.",
   ].join("\n");
   const mailto = `mailto:${CHRISTY_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   const sms = smsPhone
-    ? `sms:${encodeURIComponent(smsPhone)}?&body=${encodeURIComponent(`${lead.name || lead.email} requested The Bench. Email: ${lead.email}. Phone: ${lead.phone || "not provided"}. Pack: ${lead.pack_name || lead.pack_id || "not selected"}.`)}`
+    ? `sms:${encodeURIComponent(smsPhone)}?&body=${encodeURIComponent(`${lead.name || lead.email} requested ${isWebsiteBenchLead ? "Website Bench Agent" : "The Bench"}. Email: ${lead.email}. Phone: ${lead.phone || "not provided"}. Pack: ${lead.pack_name || lead.pack_id || "not selected"}.`)}`
     : "";
 
   return { mailto, sms };

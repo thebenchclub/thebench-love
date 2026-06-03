@@ -317,7 +317,7 @@
         `Prompt pack: ${payload.pack_name}`,
         `Source: ${payload.source}`,
         "",
-        "Requested from The Bench SMB Bench page.",
+        "Requested from The Bench WebBench page.",
       ].join("\n");
       return {
         mailto: `mailto:${christyEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,
@@ -365,7 +365,7 @@
         phone: leadPhone.value.trim(),
         pack_id: "website-bench-agent-999",
         pack_name: "Website Bench Agent - $999",
-        source: "website-bench-agent-smb-page",
+        source: "website-bench-agent-webbench-page",
         audit_requested: true,
       };
       if (!payload.name || !validEmail(payload.email) || payload.phone.replace(/\D/g, "").length < 7) {

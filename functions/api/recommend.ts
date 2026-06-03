@@ -1,5 +1,5 @@
 interface Env {
-  ANTHROPIC_API_KEY: string;
+  ANTHROPIC_API_KEY?: string;
 }
 
 const SYSTEM_PROMPT = `You are The Bench Club advisor. The user will describe what they need help with. Based on their input, recommend exactly ONE of these four products:
@@ -22,23 +22,25 @@ export const onRequestOptions: PagesFunction = async () => {
 };
 
 export const onRequestPost: PagesFunction<Env> = async (context) => {
-  const { prompt } = await context.request.json<{ prompt: string }>();
+  let body: { prompt?: string };
+
+  try {
+    body = await context.request.json<{ prompt?: string }>();
+  } catch {
+    return json({ error: "Invalid JSON body." }, 400);
+  }
+
+  const prompt = body.prompt;
 
   if (!prompt || prompt.trim().length === 0) {
-    return new Response(
-      JSON.stringify({ error: "Prompt is required" }),
-      { status: 400, headers: { "Content-Type": "application/json", ...CORS_HEADERS } }
-    );
+    return json({ error: "Prompt is required" }, 400);
   }
 
   const userInput = prompt.trim().slice(0, 500);
   const apiKey = context.env.ANTHROPIC_API_KEY;
 
   if (!apiKey) {
-    return new Response(
-      JSON.stringify({ error: "API key not configured.", type: typeof apiKey, val: String(apiKey).slice(0,8), len: String(apiKey).length }),
-      { status: 500, headers: { "Content-Type": "application/json", ...CORS_HEADERS } }
-    );
+    return json({ recommendation: fallbackRecommendation(userInput), source: "curated" });
   }
 
   try {
@@ -46,7 +48,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": context.env.ANTHROPIC_API_KEY,
+        "x-api-key": apiKey,
         "anthropic-version": "2023-06-01",
       },
       body: JSON.stringify({
@@ -58,11 +60,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     });
 
     if (!response.ok) {
-      const errBody = await response.text();
-      return new Response(
-        JSON.stringify({ error: "Something went wrong. Please try again.", debug: errBody, status: response.status }),
-        { status: 502, headers: { "Content-Type": "application/json", ...CORS_HEADERS } }
-      );
+      return json({ recommendation: fallbackRecommendation(userInput), source: "curated" });
     }
 
     const data: any = await response.json();
@@ -70,13 +68,33 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       data.content?.[0]?.text ??
       "Something went wrong. Please try again.";
 
-    return new Response(JSON.stringify({ recommendation: text }), {
-      headers: { "Content-Type": "application/json", ...CORS_HEADERS },
-    });
+    return json({ recommendation: text, source: "anthropic" });
   } catch {
-    return new Response(
-      JSON.stringify({ error: "Something went wrong. Please try again." }),
-      { status: 502, headers: { "Content-Type": "application/json", ...CORS_HEADERS } }
-    );
+    return json({ recommendation: fallbackRecommendation(userInput), source: "curated" });
   }
 };
+
+function fallbackRecommendation(input: string) {
+  const text = input.toLowerCase();
+
+  if (/(realtor|real estate|listing|buyer|seller|lead|closing|open house|client)/.test(text)) {
+    return "You are carrying timing, follow-up, and client trust all at once. Realtor Bench fits best because it is built for leads, listings, closings, and the communication that keeps deals moving.";
+  }
+
+  if (/(team|coach|sport|league|athlete|parent|schedule|roster|tournament)/.test(text)) {
+    return "You need a steadier way to keep people, schedules, and details moving together. Sports Bench fits best because it is built for the operational load behind teams and programs.";
+  }
+
+  if (/(home|kids|family|house|work and home|overwhelmed|mental load|woman|women|mom)/.test(text)) {
+    return "You are holding the invisible work that sits between life, family, and business. HerBench fits best because it is designed for warm, practical support when home and work keep bleeding together.";
+  }
+
+  return "You need a real right hand, not another tool to babysit. SMB Bench fits best because it is built for small business owners who need practical support with decisions, admin, follow-up, and momentum.";
+}
+
+function json(data: Record<string, unknown>, status = 200) {
+  return new Response(JSON.stringify(data), {
+    status,
+    headers: { "Content-Type": "application/json", ...CORS_HEADERS },
+  });
+}
