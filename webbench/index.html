@@ -19,7 +19,7 @@
     html{scroll-behavior:smooth}
     body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--cream);overflow-x:hidden;-webkit-font-smoothing:antialiased}
     nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:rgba(7,8,15,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
-    .nav-logo{font-weight:500;font-size:1rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--cream);text-decoration:none}
+    .nav-logo{display:inline-flex;align-items:center;gap:10px;font-weight:500;font-size:1rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--cream);text-decoration:none}.brand-mark{width:30px;height:30px;border:1px solid rgba(245,240,232,0.14);border-radius:50%;background:url(/prompt-library/assets/logo-sunbeams-v2.png) center/cover no-repeat;box-shadow:0 0 24px rgba(212,240,0,0.12);flex:0 0 auto}
     .nav-links{display:flex;align-items:center;gap:32px;list-style:none}
     .nav-links a{font-size:0.875rem;color:var(--muted);text-decoration:none;transition:color 0.2s}
     .nav-links a:hover{color:var(--cream)}
@@ -108,13 +108,13 @@
 </head>
 <body>
   <nav>
-    <a href="/" class="nav-logo">The Bench Club</a>
+    <a href="/" class="nav-logo"><span class="brand-mark" aria-hidden="true"></span><span>The Bench Club</span></a>
     <ul class="nav-links" id="nav-links">
       <li><a href="/pages/about.html">About</a></li>
       <li><a href="/pages/results.html">Results</a></li>
       <li><a href="/pages/dispatches.html">Dispatches</a></li>
       <li><a href="/pages/contact.html">Contact</a></li>
-      <li><a href="https://calendar.app.google/6D2ej4pqdFta3xtJ7" class="cta" target="_blank" rel="noopener">Find Your Bench</a></li>
+      <li><a href="/webbench/" class="cta">SMB Bench</a></li>
     </ul>
     <div class="nav-hamburger" id="hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')">
       <span></span><span></span><span></span>
@@ -267,7 +267,7 @@
 
   <footer>
     <div class="footer-inner">
-      <a href="/" class="nav-logo">The Bench Club</a>
+      <a href="/" class="nav-logo"><span class="brand-mark" aria-hidden="true"></span><span>The Bench Club</span></a>
       <ul class="footer-links">
         <li><a href="/pages/herbench.html">HerBench</a></li>
         <li><a href="/pages/realtorbench.html">Realtor Bench</a></li>

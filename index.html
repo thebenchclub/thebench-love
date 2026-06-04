@@ -1,195 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Bench Club — AI Automation for Small Business | Houston, TX</title>
-    <meta name="description" content="The Bench Club builds AI coworkers — called Benches — for Houston realtors, small business owners, sports organizations, and busy households. Find the Bench built for your world." />
-    <meta name="keywords" content="AI automation Houston, realtor AI, small business AI, AI coworker, The Bench Club, HerBench, Realtor Bench, Sports Bench, SMB Bench" />
-    <link rel="canonical" href="https://thebench.love" />
-    <meta property="og:title" content="The Bench Club — AI Automation for Small Business" />
-    <meta property="og:description" content="Not just AI. Not just Chat. A bench of AI workers behind you." />
-    <meta property="og:url" content="https://thebench.love" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://thebench.love/assets/bench-hero-BqmlHF6W.png" />
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": ["Organization", "LocalBusiness"],
-      "name": "The Bench Club",
-      "url": "https://thebench.love",
-      "description": "The Bench Club builds AI-powered coworkers called Benches for small businesses, real estate professionals, sports organizations, and households.",
-      "founder": {
-        "@type": "Person",
-        "name": "Christy Nolan",
-        "jobTitle": "Founder",
-        "description": "15-year product and operations leader. 400+ product releases at Pfizer and NRG Energy."
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Houston",
-        "addressRegion": "TX",
-        "addressCountry": "US"
-      },
-      "areaServed": ["Houston, TX", "Pearland, TX", "United States"],
-      "email": "christy@thebenchclub.ai"
-    }
-    </script>
-    <style>
-      :root {
-        --bench-promo-height: 58px;
-      }
-
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-      }
-
-      body {
-        padding-top: var(--bench-promo-height);
-      }
-
-      #root {
-        height: calc(100% - var(--bench-promo-height));
-      }
-
-      .bench-home-promo {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-        min-height: var(--bench-promo-height);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 10px 24px;
-        border-bottom: 1px solid rgba(245, 243, 237, 0.14);
-        background:
-          radial-gradient(circle at 18% 0%, rgba(244, 208, 63, 0.18), transparent 36rem),
-          linear-gradient(90deg, #0a0a0f 0%, #16151e 52%, #0a0a0f 100%);
-        color: #f5f3ed;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
-        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      }
-
-      .bench-home-promo__inner {
-        width: min(1180px, 100%);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 18px;
-      }
-
-      .bench-home-promo__copy {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        min-width: 0;
-      }
-
-      .bench-home-promo__eyebrow {
-        flex: 0 0 auto;
-        border: 1px solid rgba(244, 208, 63, 0.32);
-        border-radius: 999px;
-        background: rgba(244, 208, 63, 0.12);
-        color: #f4d03f;
-        font-size: 12px;
-        font-weight: 800;
-        letter-spacing: 0.08em;
-        padding: 6px 10px;
-        text-transform: uppercase;
-      }
-
-      .bench-home-promo__text {
-        color: rgba(245, 243, 237, 0.82);
-        font-size: 14px;
-        line-height: 1.35;
-      }
-
-      .bench-home-promo__text strong {
-        color: #ffffff;
-        font-weight: 700;
-      }
-
-      .bench-home-promo__cta {
-        flex: 0 0 auto;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 38px;
-        border-radius: 999px;
-        background: #f4d03f;
-        color: #0a0a0f;
-        font-size: 14px;
-        font-weight: 800;
-        padding: 0 18px;
-        text-decoration: none;
-        transition: transform 0.2s ease, background 0.2s ease;
-      }
-
-      .bench-home-promo__cta:hover {
-        background: #f8dd62;
-        transform: translateY(-1px);
-      }
-
-      .bench-home-promo ~ #root .fixed.top-0 {
-        top: var(--bench-promo-height) !important;
-      }
-
-      @media (max-width: 760px) {
-        :root {
-          --bench-promo-height: 96px;
-        }
-
-        .bench-home-promo {
-          padding: 12px 16px;
-        }
-
-        .bench-home-promo__inner,
-        .bench-home-promo__copy {
-          align-items: flex-start;
-        }
-
-        .bench-home-promo__inner {
-          flex-direction: column;
-          gap: 10px;
-        }
-
-        .bench-home-promo__copy {
-          gap: 8px;
-        }
-
-        .bench-home-promo__eyebrow {
-          font-size: 10px;
-          padding: 5px 8px;
-        }
-
-        .bench-home-promo__text {
-          font-size: 13px;
-        }
-
-        .bench-home-promo__cta {
-          width: 100%;
-        }
-      }
-    </style>
-    <script type="module" crossorigin src="/assets/index-Ow4WbTtN.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DrCT4_eU.css" />
-  </head>
-  <body>
-    <aside class="bench-home-promo" aria-label="Free Prompt Library announcement">
-      <div class="bench-home-promo__inner">
-        <div class="bench-home-promo__copy">
-          <span class="bench-home-promo__eyebrow">Free Prompt Library</span>
-          <span class="bench-home-promo__text">
-            <strong>23 free AI prompts</strong> for realtors, SMBs, HerBench, life, and sports.
-          </span>
-        </div>
-        <a class="bench-home-promo__cta" href="/prompt-library/">Open Library</a>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Bench Club - AI Automation for Small Business | Houston, TX</title>
+  <meta name="description" content="The Bench Club builds AI coworkers called Benches for realtors, small business owners, sports organizations, and busy households. Find the Bench built for your world.">
+  <meta name="keywords" content="AI automation Houston, realtor AI, small business AI, AI coworker, The Bench Club, HerBench, Realtor Bench, Sports Bench, WebBench">
+  <link rel="canonical" href="https://thebench.love/">
+  <meta property="og:title" content="The Bench Club - AI Automation for Small Business">
+  <meta property="og:description" content="Not just AI. Not just chat. A bench of AI workers behind you.">
+  <meta property="og:url" content="https://thebench.love/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://thebench.love/images/bench-hero.png">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":["Organization","LocalBusiness"],"name":"The Bench Club","url":"https://thebench.love","description":"The Bench Club builds AI-powered coworkers called Benches for small businesses, real estate professionals, sports organizations, and households.","founder":{"@type":"Person","name":"Christy Nolan","jobTitle":"Founder"},"address":{"@type":"PostalAddress","addressLocality":"Houston","addressRegion":"TX","addressCountry":"US"},"areaServed":["Houston, TX","Pearland, TX","United States"],"email":"christy@thebenchclub.ai"}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#07080f;--cream:#f5f0e8;--muted:rgba(245,240,232,0.55);--yellow:#d4f000;--border:rgba(245,240,232,0.08);--card-bg:rgba(255,255,255,0.04);--teal:rgba(88,214,198,0.92);--gold:#e8c87a;--blue:rgba(200,215,235,0.92);--green:rgba(160,195,215,0.92);--promo-height:58px}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--cream);overflow-x:hidden;-webkit-font-smoothing:antialiased;padding-top:var(--promo-height)}
+    body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(circle at 50% 0%,rgba(212,240,0,0.08),transparent 34rem),linear-gradient(180deg,#07080f 0%,#090912 50%,#07080f 100%)}
+    .promo{position:fixed;top:0;left:0;right:0;z-index:120;min-height:var(--promo-height);display:flex;align-items:center;justify-content:center;padding:10px 24px;border-bottom:1px solid rgba(245,240,232,0.14);background:linear-gradient(90deg,#0a0a0f 0%,#16151e 52%,#0a0a0f 100%)}
+    .promo-inner{width:min(1180px,100%);display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .promo-copy{display:flex;align-items:center;gap:12px;min-width:0;color:rgba(245,240,232,0.82);font-size:0.9rem;line-height:1.35}
+    .promo-badge{flex:0 0 auto;border:1px solid rgba(212,240,0,0.32);border-radius:999px;background:rgba(212,240,0,0.12);color:var(--yellow);font-size:0.72rem;font-weight:700;letter-spacing:0.08em;padding:6px 10px;text-transform:uppercase}
+    .promo-copy strong{color:var(--cream);font-weight:700}
+    .promo-cta{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;min-height:38px;border-radius:999px;background:var(--yellow);color:var(--bg);font-size:0.9rem;font-weight:700;padding:0 18px;text-decoration:none}
+    nav{position:fixed;top:var(--promo-height);left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:rgba(7,8,15,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+    .nav-logo{display:inline-flex;align-items:center;gap:10px;font-weight:500;font-size:1rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--cream);text-decoration:none}
+    .brand-mark{width:30px;height:30px;border:1px solid rgba(245,240,232,0.14);border-radius:50%;background:url('/prompt-library/assets/logo-sunbeams-v2.png') center/cover no-repeat;box-shadow:0 0 24px rgba(212,240,0,0.12);flex:0 0 auto}
+    .nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+    .nav-links a{font-size:0.875rem;color:var(--muted);text-decoration:none;transition:color 0.2s}
+    .nav-links a:hover{color:var(--cream)}
+    .nav-links .cta{color:var(--yellow);border:1px solid rgba(212,240,0,0.4);padding:8px 20px;border-radius:100px}
+    .nav-links .cta:hover{background:var(--yellow);color:var(--bg)}
+    .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+    .nav-hamburger span{display:block;width:24px;height:2px;background:var(--cream);border-radius:2px}
+    .container{max-width:1100px;margin:0 auto}
+    .hero{min-height:calc(100vh - var(--promo-height));padding:150px 24px 72px;position:relative;display:flex;align-items:center;overflow:hidden;border-bottom:1px solid var(--border)}
+    .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,8,15,0.98) 0%,rgba(7,8,15,0.88) 42%,rgba(7,8,15,0.46) 100%),url('/images/bench-hero.png') center right/cover no-repeat;opacity:0.96}
+    .hero .container{position:relative;z-index:1;width:100%}
+    .hero-tag{display:inline-block;background:rgba(212,240,0,0.08);color:var(--yellow);border:1px solid rgba(212,240,0,0.2);border-radius:100px;padding:6px 18px;font-size:0.8125rem;font-weight:500;letter-spacing:0.04em;margin-bottom:24px}
+    h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,8vw,7rem);line-height:0.92;color:var(--cream);letter-spacing:0;max-width:780px;margin-bottom:24px}
+    .hero-sub{font-size:1.16rem;color:var(--muted);line-height:1.75;max-width:620px;margin-bottom:36px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+    .cta-primary,.cta-secondary{display:inline-flex;align-items:center;justify-content:center;min-height:50px;border-radius:100px;text-decoration:none;font-weight:700;font-size:0.98rem;padding:0 28px}
+    .cta-primary{background:var(--yellow);color:var(--bg)}
+    .cta-secondary{color:var(--cream);border:1px solid var(--border);background:rgba(255,255,255,0.03)}
+    section{padding:86px 24px}
+    .section-label{font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+    h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.6rem,5vw,4.4rem);line-height:0.96;color:var(--cream);letter-spacing:0;margin-bottom:20px}
+    .section-copy{font-size:1.0625rem;color:var(--muted);line-height:1.75;max-width:680px;margin-bottom:34px}
+    .bench-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .bench-card{display:flex;min-height:420px;flex-direction:column;overflow:hidden;border:1px solid var(--border);border-radius:16px;background:var(--card-bg);text-decoration:none;color:var(--cream);transition:transform 0.2s,border-color 0.2s,background 0.2s}
+    .bench-card:hover{transform:translateY(-4px);border-color:rgba(212,240,0,0.25);background:rgba(255,255,255,0.06)}
+    .bench-card img{width:100%;height:180px;object-fit:cover;object-position:center}
+    .bench-body{display:flex;flex:1;flex-direction:column;padding:24px}
+    .bench-name{display:inline-flex;width:max-content;border-radius:999px;padding:6px 12px;font-size:0.78rem;font-weight:700;letter-spacing:0.04em;margin-bottom:16px}
+    .bench-card h3{font-size:1.05rem;font-weight:500;color:var(--cream);line-height:1.35;margin-bottom:10px}
+    .bench-card p{font-size:0.94rem;color:var(--muted);line-height:1.62}
+    .bench-card .bench-action{margin-top:auto;color:var(--yellow);font-size:0.9rem;font-weight:700;padding-top:22px}
+    .her .bench-name{background:rgba(232,200,122,0.12);color:var(--gold)}
+    .realtor .bench-name{background:rgba(200,215,235,0.1);color:var(--blue)}
+    .sports .bench-name{background:rgba(160,195,215,0.1);color:var(--green)}
+    .web .bench-name{background:rgba(88,214,198,0.1);color:var(--teal)}
+    .band{background:rgba(255,255,255,0.02);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .proof-card{border:1px solid var(--border);border-radius:16px;background:var(--card-bg);padding:28px}
+    .proof-card h3{font-size:1rem;font-weight:500;color:var(--cream);margin-bottom:8px}
+    .proof-card p{font-size:0.94rem;color:var(--muted);line-height:1.65}
+    .cta-band{text-align:center;padding:96px 24px;background:rgba(212,240,0,0.035);border-top:1px solid rgba(212,240,0,0.08)}
+    .cta-band p{font-size:1.05rem;color:var(--muted);line-height:1.7;max-width:620px;margin:0 auto 32px}
+    footer{border-top:1px solid var(--border);padding:48px 24px}
+    .footer-inner{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px}
+    .footer-links{display:flex;flex-wrap:wrap;gap:24px;list-style:none}
+    .footer-links a{font-size:0.875rem;color:var(--muted);text-decoration:none}
+    .footer-links a:hover{color:var(--cream)}
+    .footer-copy{width:100%;font-size:0.75rem;color:rgba(245,240,232,0.25);margin-top:32px}
+    @media(max-width:1050px){.bench-grid{grid-template-columns:repeat(2,1fr)}.proof-grid{grid-template-columns:1fr}}
+    @media(max-width:900px){:root{--promo-height:132px}.promo{padding:12px 16px}.promo-inner,.promo-copy{align-items:flex-start}.promo-inner{flex-direction:column;gap:10px}.promo-cta{width:100%}nav{padding:16px 24px}.nav-links{display:none}.nav-links.open{display:flex;flex-direction:column;position:fixed;top:calc(var(--promo-height) + 64px);left:0;right:0;background:rgba(7,8,15,0.97);padding:32px 24px;gap:24px;border-bottom:1px solid var(--border)}.nav-hamburger{display:flex}.hero{padding:130px 24px 70px}.hero::before{background:linear-gradient(180deg,rgba(7,8,15,0.92),rgba(7,8,15,0.78)),url('/images/bench-hero.png') center/cover no-repeat}.hero-actions .cta-primary,.hero-actions .cta-secondary{width:100%}.bench-grid{grid-template-columns:1fr}.bench-card{min-height:auto}}
+  </style>
+</head>
+<body>
+  <aside class="promo" aria-label="Free Prompt Library announcement">
+    <div class="promo-inner">
+      <div class="promo-copy">
+        <span class="promo-badge">Free Prompt Library</span>
+        <span><strong>23 free AI prompts</strong> for realtors, SMBs, HerBench, life, and sports.</span>
       </div>
-    </aside>
-    <div id="root"></div>
-  </body>
+      <a class="promo-cta" href="/prompt-library/">Open Library</a>
+    </div>
+  </aside>
+
+  <nav>
+    <a href="/" class="nav-logo"><span class="brand-mark" aria-hidden="true"></span><span>The Bench Club</span></a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/pages/about.html">About</a></li>
+      <li><a href="/pages/results.html">Results</a></li>
+      <li><a href="/pages/dispatches.html">Dispatches</a></li>
+      <li><a href="/pages/contact.html">Contact</a></li>
+      <li><a href="/webbench/" class="cta">SMB Bench</a></li>
+    </ul>
+    <div class="nav-hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')"><span></span><span></span><span></span></div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-tag">AI coworkers for the pressure you are carrying</div>
+        <h1>The Bench built for your world.</h1>
+        <p class="hero-sub">Not just AI. Not just chat. A bench of AI workers behind you, built for the business, household, team, or website you are trying to keep moving.</p>
+        <div class="hero-actions">
+          <a href="#benches" class="cta-primary">Find Your Bench</a>
+          <a href="/webbench/" class="cta-secondary">$999 Website Bench Agent</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="benches">
+      <div class="container">
+        <div class="section-label">Choose your Bench</div>
+        <h2>Four ways to get the right help behind you.</h2>
+        <p class="section-copy">Each Bench is a focused AI coworker system with a job, a voice, and a practical operating lane. These cards are real links into the current product pages.</p>
+        <div class="bench-grid">
+          <a class="bench-card her" href="/pages/herbench.html">
+            <img src="/images/herbench.png" alt="HerBench visual">
+            <div class="bench-body">
+              <span class="bench-name">HerBench</span>
+              <h3>For the weight no one sees.</h3>
+              <p>Warm, practical support for home, work, logistics, and the invisible load.</p>
+              <span class="bench-action">Open HerBench</span>
+            </div>
+          </a>
+          <a class="bench-card realtor" href="/pages/realtorbench.html">
+            <img src="/images/realtorbench.png" alt="Realtor Bench visual">
+            <div class="bench-body">
+              <span class="bench-name">Realtor Bench</span>
+              <h3>For the business that runs on timing.</h3>
+              <p>Follow-up, lead response, listing prep, and client updates for real estate operators.</p>
+              <span class="bench-action">Open Realtor Bench</span>
+            </div>
+          </a>
+          <a class="bench-card sports" href="/pages/sportsbench.html">
+            <img src="/images/sportsbench.png" alt="Sports Bench visual">
+            <div class="bench-body">
+              <span class="bench-name">Sports Bench</span>
+              <h3>For the people holding the whole team up.</h3>
+              <p>Scheduling, parent communication, rosters, and event operations for sports organizations.</p>
+              <span class="bench-action">Open Sports Bench</span>
+            </div>
+          </a>
+          <a class="bench-card web" href="/webbench/">
+            <img src="/images/smbbench.png" alt="SMB Bench visual">
+            <div class="bench-body">
+              <span class="bench-name">SMB Bench</span>
+              <h3>Small business support that starts with your website.</h3>
+              <p>SMB Bench includes WebBench: the $999 Website Bench Agent for a 10-page site and ongoing updates.</p>
+              <span class="bench-action">Open SMB Bench</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="container">
+        <div class="section-label">Why The Bench</div>
+        <h2>Support in reserve. Ready when it matters.</h2>
+        <div class="proof-grid">
+          <div class="proof-card"><h3>Built around pressure</h3><p>Each Bench starts with the work that is already heavy: follow-up, planning, decisions, updates, and coordination.</p></div>
+          <div class="proof-card"><h3>Designed to be used</h3><p>The goal is not a demo. The goal is a practical AI coworker that gives you a clearer next move on a normal day.</p></div>
+          <div class="proof-card"><h3>Connected to real offers</h3><p>For this campaign, SMB Bench starts with WebBench: a $999 website build plus a named AI web developer agent.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="container">
+        <div class="section-label">Campaign launch</div>
+        <h2>Need the website offer?</h2>
+        <p>Start with the WebBench offer inside SMB Bench. We map the 10-page site, build the launch version, and set up the AI web developer agent that helps keep it current.</p>
+        <a href="/webbench/" class="cta-primary">$999 Website Bench Agent</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <a href="/" class="nav-logo"><span class="brand-mark" aria-hidden="true"></span><span>The Bench Club</span></a>
+      <ul class="footer-links">
+        <li><a href="/pages/herbench.html">HerBench</a></li>
+        <li><a href="/pages/realtorbench.html">Realtor Bench</a></li>
+        <li><a href="/pages/sportsbench.html">Sports Bench</a></li>
+        <li><a href="/webbench/">SMB Bench</a></li>
+        <li><a href="/prompt-library/">Prompt Library</a></li>
+        <li><a href="/pages/contact.html">Contact</a></li>
+      </ul>
+      <div class="footer-copy">© 2026 The Bench Club · Houston, TX · <a href="mailto:christy@thebenchclub.ai" style="color:inherit">christy@thebenchclub.ai</a></div>
+    </div>
+  </footer>
+</body>
 </html>
