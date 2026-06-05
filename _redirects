@@ -1,3 +1,7 @@
 /weboffer           /weboffer/index.html  200
+/contact            /pages/contact.html  200
+/contact/           /pages/contact.html  200
+/pages/contact      /pages/contact.html  200
+/pages/contact.html /pages/contact.html  200
 /pages/smbbench.html  /webbench/  301
 /pages/smbbench      /webbench/  301
