@@ -35,17 +35,18 @@
     .nav-links{display:flex;align-items:center;gap:32px;list-style:none}
     .nav-links a{font-size:1rem;font-weight:700;color:rgba(7,8,15,0.88);text-decoration:none;transition:color 0.2s}
     .nav-links a:hover{color:#07080f}
-    .nav-links .cta{color:#07080f;border:1px solid rgba(7,8,15,0.22);background:rgba(245,230,66,0.22);padding:11px 24px;border-radius:100px}
+    .nav-links .cta{color:#07080f;border:1px solid rgba(7,8,15,0.22);background:rgba(212,240,0,0.22);padding:11px 24px;border-radius:100px}
     .nav-links .cta:hover{background:var(--yellow);color:var(--bg)}
     .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
-    .nav-hamburger span{display:block;width:24px;height:2px;background:var(--cream);border-radius:2px}
+    .nav-hamburger span{display:block;width:24px;height:2px;background:#07080f;border-radius:2px}
     .container{max-width:1100px;margin:0 auto}
-    .hero{min-height:calc(100vh - var(--promo-height));padding:150px 24px 72px;position:relative;display:flex;align-items:center;overflow:hidden;border-bottom:1px solid var(--border)}
-    .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,8,15,0.98) 0%,rgba(7,8,15,0.88) 42%,rgba(7,8,15,0.46) 100%),url('/images/bench-hero.png') center right/cover no-repeat;opacity:0.96}
+    .hero{min-height:clamp(620px,76vh,760px);padding:150px 24px 44px;position:relative;display:flex;align-items:center;overflow:hidden;border-bottom:1px solid var(--border);background:#07080f}
+    .hero::before{content:"";position:absolute;inset:0;background:url('/images/bench-hero.png') center bottom/cover no-repeat;opacity:1}
+    .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 28% 14%,rgba(232,200,122,0.22),transparent 30rem),radial-gradient(ellipse at 28% 50%,rgba(245,240,232,0.14),transparent 28rem),linear-gradient(90deg,rgba(7,8,15,0.56) 0%,rgba(7,8,15,0.42) 36%,rgba(7,8,15,0.12) 70%,rgba(7,8,15,0.04) 100%),linear-gradient(180deg,rgba(7,8,15,0.04) 0%,rgba(7,8,15,0.16) 62%,rgba(7,8,15,0.72) 100%)}
     .hero .container{position:relative;z-index:1;width:100%}
-    .hero-tag{display:inline-block;background:rgba(212,240,0,0.08);color:var(--yellow);border:1px solid rgba(212,240,0,0.2);border-radius:100px;padding:6px 18px;font-size:0.8125rem;font-weight:500;letter-spacing:0.04em;margin-bottom:24px}
-    h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,8vw,7rem);line-height:0.92;color:var(--cream);letter-spacing:0;max-width:780px;margin-bottom:24px}
-    .hero-sub{font-size:1.16rem;color:var(--muted);line-height:1.75;max-width:620px;margin-bottom:36px}
+    .hero-tag{display:inline-block;background:rgba(7,8,15,0.56);color:var(--yellow);border:1px solid rgba(212,240,0,0.28);border-radius:100px;padding:6px 18px;font-size:0.8125rem;font-weight:500;letter-spacing:0.04em;margin-bottom:24px;box-shadow:0 12px 30px rgba(7,8,15,0.28)}
+    h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,8vw,7rem);line-height:0.92;color:var(--cream);letter-spacing:0;max-width:780px;margin-bottom:24px;text-shadow:0 6px 24px rgba(0,0,0,0.74)}
+    .hero-sub{font-size:1.16rem;color:rgba(245,240,232,0.78);line-height:1.75;max-width:620px;margin-bottom:36px;text-shadow:0 3px 18px rgba(0,0,0,0.76)}
     .hero-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
     .cta-primary,.cta-secondary{display:inline-flex;align-items:center;justify-content:center;min-height:50px;border-radius:100px;text-decoration:none;font-weight:700;font-size:0.98rem;padding:0 28px}
     .cta-primary{background:var(--yellow);color:var(--bg)}
@@ -57,7 +58,7 @@
     .bench-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
     .bench-card{display:flex;min-height:420px;flex-direction:column;overflow:hidden;border:1px solid var(--border);border-radius:16px;background:var(--card-bg);text-decoration:none;color:var(--cream);transition:transform 0.2s,border-color 0.2s,background 0.2s}
     .bench-card:hover{transform:translateY(-4px);border-color:rgba(212,240,0,0.25);background:rgba(255,255,255,0.06)}
-    .bench-card img{width:100%;height:180px;object-fit:cover;object-position:center}
+    .bench-card img{width:100%;height:190px;object-fit:contain;object-position:center;background:#07080f;padding:10px}
     .bench-body{display:flex;flex:1;flex-direction:column;padding:24px}
     .bench-name{display:inline-flex;width:max-content;border-radius:999px;padding:6px 12px;font-size:0.78rem;font-weight:700;letter-spacing:0.04em;margin-bottom:16px}
     .bench-card h3{font-size:1.05rem;font-weight:500;color:var(--cream);line-height:1.35;margin-bottom:10px}
@@ -81,7 +82,7 @@
     .footer-links a:hover{color:var(--cream)}
     .footer-copy{width:100%;font-size:0.75rem;color:rgba(245,240,232,0.25);margin-top:32px}
     @media(max-width:1050px){.bench-grid{grid-template-columns:repeat(2,1fr)}.proof-grid{grid-template-columns:1fr}}
-    @media(max-width:900px){.brand-logo-img{width:118px;height:118px}:root{--promo-height:132px}.promo{padding:12px 16px}.promo-inner,.promo-copy{align-items:flex-start}.promo-inner{flex-direction:column;gap:10px}.promo-cta{width:100%}nav{padding:16px 24px}.nav-links{display:none}.nav-links.open{display:flex;flex-direction:column;position:fixed;top:calc(var(--promo-height) + 64px);left:0;right:0;background:rgba(7,8,15,0.97);padding:32px 24px;gap:24px;border-bottom:1px solid var(--border)}.nav-hamburger{display:flex}.hero{padding:130px 24px 70px}.hero::before{background:linear-gradient(180deg,rgba(7,8,15,0.92),rgba(7,8,15,0.78)),url('/images/bench-hero.png') center/cover no-repeat}.hero-actions .cta-primary,.hero-actions .cta-secondary{width:100%}.bench-grid{grid-template-columns:1fr}.bench-card{min-height:auto}}
+    @media(max-width:900px){.brand-logo-img{width:118px;height:118px}:root{--promo-height:132px}.promo{padding:12px 16px}.promo-inner,.promo-copy{align-items:flex-start}.promo-inner{flex-direction:column;gap:10px}.promo-cta{width:100%}nav{padding:16px 24px}.nav-links{display:none}.nav-links.open{display:flex;flex-direction:column;position:fixed;top:calc(var(--promo-height) + 150px);left:0;right:0;background:#f7f3ea;padding:32px 24px;gap:24px;border-bottom:1px solid rgba(7,8,15,0.12)}.nav-links.open a{color:rgba(7,8,15,0.88)}.nav-links.open a:hover{color:#07080f}.nav-hamburger{display:flex}.hero{align-items:flex-end;min-height:720px;padding:340px 24px 48px}.hero::before{background:url('/images/bench-hero.png') center 44px/135% auto no-repeat;opacity:1}.hero::after{background:radial-gradient(circle at 20% 16%,rgba(232,200,122,0.22),transparent 16rem),linear-gradient(180deg,rgba(7,8,15,0.02) 0%,rgba(7,8,15,0.08) 32%,rgba(7,8,15,0.76) 56%,rgba(7,8,15,0.98) 100%)}.hero-actions .cta-primary,.hero-actions .cta-secondary{width:100%}.bench-grid{grid-template-columns:1fr}.bench-card{min-height:auto}}
   footer a,.site-footer a{color:#07080f;text-decoration:none;font-weight:700}footer a:hover,.site-footer a:hover{color:#000}.footer-links a{color:#07080f}.footer-bottom,.site-footer p{color:rgba(7,8,15,.68)}
   </style>
 
@@ -92,7 +93,7 @@
   <meta name="twitter:description" content="The Bench Club builds AI coworkers called Benches for realtors, small business owners, sports organizations, and busy households. Find the Bench built for your world.">
   <meta name="twitter:image" content="https://thebench.love/images/bench-hero.png">
   <script type="application/ld+json" data-seo-geo="foundation">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"Organization","name":"The Bench Club","url":"https://thebench.love","description":"The Bench Club builds AI coworkers called Benches for overloaded households, realtors, sports organizations, and small businesses in Houston and beyond.","image":"https://thebench.love/images/bench-hero.png","areaServed":["Houston, TX","Pearland, TX","United States"],"sameAs":["https://thebenchclub.ai"],"email":"christy@thebenchclub.ai"},{"@context":"https://schema.org","@type":"WebSite","name":"The Bench Club","url":"https://thebench.love","description":"The Bench Club builds AI coworkers called Benches for overloaded households, realtors, sports organizations, and small businesses in Houston and beyond.","inLanguage":"en-US"}]}</script>
-</head></head>
+</head>
 <body>
   <aside class="promo" aria-label="Free Prompt Library announcement">
     <div class="promo-inner">
@@ -111,7 +112,7 @@
       <li><a href="/pages/results.html">Results</a></li>
       <li><a href="/pages/dispatches.html">Dispatches</a></li>
       <li><a href="/contact">Contact</a></li>
-      <li><a href="/weboffer/#claim-website-bench" class="cta">Let's get started</a></li>
+      <li><a href="/contact/" class="cta">Let's get started</a></li>
     </ul>
     <div class="nav-hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')"><span></span><span></span><span></span></div>
   </nav>
@@ -124,7 +125,7 @@
         <p class="hero-sub">Not just AI. Not just chat. A bench of AI workers behind you, built for the business, household, team, or website you are trying to keep moving.</p>
         <div class="hero-actions">
           <a href="#benches" class="cta-primary">Find Your Bench</a>
-          <a href="/webbench/" class="cta-secondary">$999 Website Bench Agent</a>
+          <a href="/weboffer/" class="cta-secondary">$999 Website Bench Agent</a>
         </div>
       </div>
     </section>
@@ -162,7 +163,7 @@
               <span class="bench-action">Open Sports Bench</span>
             </div>
           </a>
-          <a class="bench-card web" href="/webbench/">
+          <a class="bench-card web" href="/weboffer/">
             <img src="/images/smbbench.png" alt="SMB Bench visual">
             <div class="bench-body">
               <span class="bench-name">SMB Bench</span>
@@ -192,7 +193,7 @@
         <div class="section-label">Campaign launch</div>
         <h2>Need the website offer?</h2>
         <p>Start with the WebBench offer inside SMB Bench. We map the 10-page site, build the launch version, and set up the AI web developer agent that helps keep it current.</p>
-        <a href="/webbench/" class="cta-primary">$999 Website Bench Agent</a>
+        <a href="/weboffer/" class="cta-primary">$999 Website Bench Agent</a>
       </div>
     </section>
   </main>
@@ -204,8 +205,10 @@
         <li><a href="/pages/herbench.html">HerBench</a></li>
         <li><a href="/pages/realtorbench.html">Realtor Bench</a></li>
         <li><a href="/pages/sportsbench.html">Sports Bench</a></li>
-        <li><a href="/webbench/">SMB Bench</a></li>
+        <li><a href="/weboffer/">SMB Bench</a></li>
         <li><a href="/prompt-library/">Prompt Library</a></li>
+        <li><a href="/pages/privacy.html">Privacy</a></li>
+        <li><a href="/pages/terms.html">Terms</a></li>
         <li><a href="/contact">Contact</a></li>
       </ul>
       <div class="footer-copy">© 2026 The Bench Club · Houston, TX · <a href="mailto:christy@thebenchclub.ai" style="color:inherit">christy@thebenchclub.ai</a></div>

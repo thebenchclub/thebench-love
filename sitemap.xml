@@ -91,10 +91,16 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://thebench.love/pages/smbbench.html</loc>
+    <loc>https://thebench.love/pages/privacy.html</loc>
     <lastmod>2026-06-08</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://thebench.love/pages/terms.html</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://thebench.love/pages/sportsbench.html</loc>

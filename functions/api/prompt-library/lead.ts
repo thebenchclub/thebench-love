@@ -4,7 +4,7 @@ interface Env {
 }
 
 const CHRISTY_EMAIL = "christy@thebenchclub.ai";
-const CHRISTY_SMS_PHONE = "7136282949";
+const CHRISTY_SMS_PHONE = "7138189833";
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "POST, OPTIONS",

@@ -33,8 +33,9 @@ AI automation Houston, AI coworkers, The Bench Club, HerBench, Realtor Bench, Sp
 - [pages/herbench.html](https://thebench.love/pages/herbench.html): public page intended for crawling.
 - [pages/realtorbench.html](https://thebench.love/pages/realtorbench.html): public page intended for crawling.
 - [pages/results.html](https://thebench.love/pages/results.html): public page intended for crawling.
-- [pages/smbbench.html](https://thebench.love/pages/smbbench.html): public page intended for crawling.
+- [pages/privacy.html](https://thebench.love/pages/privacy.html): public page intended for crawling.
 - [pages/sportsbench.html](https://thebench.love/pages/sportsbench.html): public page intended for crawling.
+- [pages/terms.html](https://thebench.love/pages/terms.html): public page intended for crawling.
 - [prompt-library/index.html](https://thebench.love/prompt-library/): public page intended for crawling.
 - [real-estate-bench/index.html](https://thebench.love/real-estate-bench/): public page intended for crawling.
 - [webbench/index.html](https://thebench.love/webbench/): public page intended for crawling.

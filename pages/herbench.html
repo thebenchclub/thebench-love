@@ -20,15 +20,15 @@
     .nav-links{display:flex;align-items:center;gap:32px;list-style:none}
     .nav-links a{font-size:1rem;font-weight:700;color:rgba(7,8,15,0.88);text-decoration:none;transition:color 0.2s}
     .nav-links a:hover{color:#07080f}
-    .nav-links .cta{color:#07080f;border:1px solid rgba(7,8,15,0.22);background:rgba(245,230,66,0.22);padding:11px 24px;border-radius:100px}
+    .nav-links .cta{color:#07080f;border:1px solid rgba(7,8,15,0.22);background:rgba(212,240,0,0.22);padding:11px 24px;border-radius:100px}
     .nav-links .cta:hover{background:var(--yellow);color:var(--bg)}
     .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
-    .nav-hamburger span{display:block;width:24px;height:2px;background:var(--cream);border-radius:2px}
+    .nav-hamburger span{display:block;width:24px;height:2px;background:#07080f;border-radius:2px}
     .back-link{display:inline-flex;align-items:center;gap:8px;font-size:0.875rem;color:var(--muted);text-decoration:none;margin-bottom:32px;transition:color 0.2s}
     .back-link:hover{color:var(--cream)}
 
     /* HERO */
-    .page-hero{padding:160px 24px 80px;position:relative;overflow:hidden}
+    .page-hero{padding:220px 24px 80px;position:relative;overflow:hidden}
     .page-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(232,200,122,0.12) 0%,transparent 70%);pointer-events:none}
     .hero-tag{display:inline-block;background:var(--accent-dim);color:var(--accent);border:1px solid rgba(232,200,122,0.25);border-radius:100px;padding:6px 18px;font-size:0.8125rem;font-weight:500;letter-spacing:0.04em;margin-bottom:24px}
     h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,7vw,6rem);line-height:0.95;color:var(--cream);margin-bottom:24px}
@@ -77,7 +77,7 @@
     .footer-links a{font-size:0.875rem;color:var(--muted);text-decoration:none}
     .footer-links a:hover{color:var(--cream)}
     .footer-copy{width:100%;font-size:0.75rem;color:rgba(245,240,232,0.25);margin-top:32px}
-    @media(max-width:900px){.brand-logo-img{width:118px;height:118px}nav{padding:16px 24px}.nav-links{display:none}.nav-links.open{display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:rgba(7,8,15,0.97);padding:32px 24px;gap:24px;border-bottom:1px solid var(--border)}.nav-hamburger{display:flex}.feature-grid{grid-template-columns:1fr}.before-after{grid-template-columns:1fr}.cta-secondary{margin-left:0;margin-top:12px;display:block}}
+    @media(max-width:900px){.brand-logo-img{width:118px;height:118px}nav{padding:16px 24px}.nav-links{display:none}.nav-links.open{display:flex;flex-direction:column;position:fixed;top:142px;left:0;right:0;background:#f7f3ea;padding:32px 24px;gap:24px;border-bottom:1px solid var(--border)}.nav-hamburger{display:flex}.feature-grid{grid-template-columns:1fr}.before-after{grid-template-columns:1fr}.cta-secondary{margin-left:0;margin-top:12px;display:block}}
   footer a,.site-footer a{color:#07080f;text-decoration:none;font-weight:700}footer a:hover,.site-footer a:hover{color:#000}.footer-links a{color:#07080f}.footer-bottom,.site-footer p{color:rgba(7,8,15,.68)}
   </style>
 
@@ -101,7 +101,7 @@
       <li><a href="/pages/results.html">Results</a></li>
       <li><a href="/pages/dispatches.html">Dispatches</a></li>
       <li><a href="/contact">Contact</a></li>
-      <li><a href="/weboffer/#claim-website-bench" class="cta">Let's get started</a></li>
+      <li><a href="/contact/" class="cta">Let's get started</a></li>
     </ul>
     <div class="nav-hamburger" id="hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')">
       <span></span><span></span><span></span>
@@ -199,7 +199,7 @@
         <li><a href="/pages/herbench.html">HerBench</a></li>
         <li><a href="/pages/realtorbench.html">Realtor Bench</a></li>
         <li><a href="/pages/sportsbench.html">Sports Bench</a></li>
-        <li><a href="/webbench/">SMB Bench</a></li>
+        <li><a href="/weboffer/">SMB Bench</a></li>
         <li><a href="/pages/dispatches.html">Dispatches</a></li>
         <li><a href="/contact">Contact</a></li>
       </ul>
